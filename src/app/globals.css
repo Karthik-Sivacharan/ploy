@@ -1,0 +1,321 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Glass surface tokens — Tailwind-accessible as bg-surface-*, border-glass, etc. */
+  --color-surface-translucent: var(--surface-translucent);
+  --color-surface-translucent-hover: var(--surface-translucent-hover);
+  --color-surface-inset: var(--surface-inset);
+  --color-surface-overlay: var(--surface-overlay);
+  --color-surface-overlay-hover: var(--surface-overlay-hover);
+  --color-border-glass: var(--border-glass);
+  --color-border-subtle: var(--border-subtle);
+
+  /* Glow accent colors */
+  --color-glow-accent: var(--glow-accent);
+  --color-glow-success: var(--glow-success);
+
+  /* Shadow tiers */
+  --shadow-glass: var(--shadow-glass);
+  --shadow-glow-blue: var(--shadow-glow-blue);
+  --shadow-glow-green: var(--shadow-glow-green);
+  --shadow-elevated: var(--shadow-elevated);
+
+  /* ── Motion tokens ── */
+  /* Durations */
+  --duration-instant: 0ms;
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-panel: 250ms;
+  --duration-slow: 400ms;
+
+  /* Easing curves (from animations.dev — sorted weak → strong) */
+  --ease-out: cubic-bezier(0.165, 0.84, 0.44, 1);        /* quart — snappy for enter/exit */
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);       /* expo — dramatic for large panels */
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);        /* quart — on-screen movement */
+  --ease-hover: cubic-bezier(0.25, 0.1, 0.25, 1);        /* ease — hover/color changes */
+
+  /* ── Icon size tokens ── */
+  --icon-xs: 14px;
+  --icon-sm: 16px;
+  --icon-md: 20px;
+  --icon-lg: 24px;
+
+  /* ── Layout tokens ── */
+  --layout-sidebar-width: 208px;
+  --layout-config-panel-width: 360px;
+  --layout-logs-panel-height: 240px;
+  --layout-header-height: 3.5rem;
+  --layout-panel-gap: 1rem;
+  --layout-collapsed-height: 48px;
+
+  /* ── Breakpoints (reference only — Tailwind handles actual queries) ── */
+  --breakpoint-mobile: 768px;
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.541 0.281 293.009);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.606 0.25 292.717);
+  --chart-1: oklch(0.606 0.25 292.717);
+  --chart-2: oklch(0.696 0.17 142.495);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.541 0.281 293.009);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.606 0.25 292.717);
+
+  /* Glass tokens — light mode: opaque fallback */
+  --surface-translucent: oklch(1 0 0 / 90%);
+  --surface-translucent-hover: oklch(1 0 0 / 95%);
+  --surface-inset: oklch(0.97 0 0 / 90%);
+  --surface-overlay: oklch(0 0 0 / 3%);
+  --surface-overlay-hover: oklch(0 0 0 / 6%);
+  --border-glass: oklch(0 0 0 / 8%);
+  --border-subtle: oklch(0 0 0 / 5%);
+  --glow-accent: oklch(0.541 0.281 293.009 / 10%);
+  --glow-success: oklch(0.696 0.17 142.495 / 30%);
+  --shadow-glass: 0 4px 24px -1px oklch(0 0 0 / 10%);
+  --shadow-glow-blue: 0 0 20px -5px oklch(0.541 0.281 293.009 / 10%);
+  --shadow-glow-green: 0 0 6px oklch(0.696 0.17 142.495 / 30%);
+  --shadow-elevated: 0 8px 32px -4px oklch(0 0 0 / 15%);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.606 0.25 292.717);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.541 0.281 293.009);
+  --chart-1: oklch(0.606 0.25 292.717);
+  --chart-2: oklch(0.696 0.17 142.495);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.606 0.25 292.717);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.541 0.281 293.009);
+
+  /* Glass surface tokens */
+  --surface-translucent: oklch(0.11 0 0 / 85%);
+  --surface-translucent-hover: oklch(0.11 0 0 / 90%);
+  --surface-inset: oklch(0.06 0 0 / 80%);
+  --surface-overlay: oklch(1 0 0 / 5%);
+  --surface-overlay-hover: oklch(1 0 0 / 10%);
+  --border-glass: oklch(1 0 0 / 8%);
+  --border-subtle: oklch(1 0 0 / 5%);
+
+  /* Glow accent colors */
+  --glow-accent: oklch(0.606 0.25 292.717 / 18%);
+  --glow-success: oklch(0.696 0.17 142.495 / 50%);
+
+  /* Shadow tiers */
+  --shadow-glass: 0 4px 24px -1px oklch(0 0 0 / 30%);
+  --shadow-glow-blue: 0 0 30px -5px oklch(0.606 0.25 292.717 / 18%);
+  --shadow-glow-green: 0 0 8px oklch(0.696 0.17 142.495 / 50%);
+  --shadow-elevated: 0 8px 32px -4px oklch(0 0 0 / 50%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+/* React Flow overrides */
+.react-flow__attribution {
+  background: transparent !important;
+}
+
+.react-flow__pane {
+  cursor: grab;
+}
+
+.react-flow__pane:active {
+  cursor: grabbing;
+}
+
+.react-flow__handle {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--primary);
+  background: var(--background);
+  cursor: crosshair;
+}
+
+.react-flow__handle:hover {
+  background: var(--primary);
+}
+
+@media (pointer: coarse) {
+  .react-flow__handle {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Larger node targets on touch devices */
+  .react-flow__node {
+    touch-action: none;
+  }
+
+  /* Show node toolbar on tap (selected) instead of hover */
+  .react-flow__node.selected .group\/node > :first-child {
+    opacity: 1;
+  }
+}
+
+/* Edge animation */
+@keyframes dashdraw {
+  from {
+    stroke-dashoffset: 10;
+  }
+}
+
+.react-flow__edge-path {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: var(--primary);
+}
+
+.react-flow__connection-path {
+  stroke: var(--ring);
+  stroke-width: 1;
+}
+
+/* Node selection */
+.react-flow__node.selected .node-container {
+  ring: 2px;
+  ring-color: var(--primary);
+}
+
+/* ── Glass backdrop utilities ── */
+@layer utilities {
+  .backdrop-panel {
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+  }
+  .backdrop-toolbar {
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+  }
+  .backdrop-overlay {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+}
+
+/* ── Custom scrollbar (dark mode) ── */
+.dark ::-webkit-scrollbar {
+  width: 4px;
+}
+.dark ::-webkit-scrollbar-track {
+  background: transparent;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: oklch(0.3 0 0);
+  border-radius: 2px;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.4 0 0);
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
