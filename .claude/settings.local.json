@@ -9,7 +9,11 @@
       "mcp__playwright__browser_navigate",
       "mcp__playwright__browser_take_screenshot",
       "mcp__playwright__browser_click",
-      "mcp__playwright__browser_press_key"
+      "mcp__playwright__browser_press_key",
+      "Bash(wc -l /Users/karthiksivacharan/.claude/commands/tools/*.md)",
+      "Bash(head -1 /Users/karthiksivacharan/Projects/Ploy/app/.claude/commands/tools/*.md)",
+      "Bash(grep -l \"model:\" /Users/karthiksivacharan/.claude/commands/tools/*.md)",
+      "Bash(find ~/.claude -iname *frontend* -o -iname *front-end*)"
     ]
   }
 }

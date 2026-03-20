@@ -14,5 +14,8 @@
       "Bash(git -C:*)"
     ]
   },
-  "enableAllProjectMcpServers": true
+  "enableAllProjectMcpServers": true,
+  "enabledPlugins": {
+    "frontend-mobile-development@claude-code-workflows": true
+  }
 }
