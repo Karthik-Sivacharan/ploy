@@ -22,6 +22,8 @@ import { ActionGrid } from "@/components/workflow/action-grid";
 import { ProviderIcon } from "@/components/ui/provider-icon";
 import { BrandAssetsBody } from "@/components/workflow/node-bodies/brand-assets-body";
 import { BrandVoiceBody } from "@/components/workflow/node-bodies/brand-voice-body";
+import { TargetAudienceBody } from "@/components/workflow/node-bodies/target-audience-body";
+import { AiCampaignBody } from "@/components/workflow/node-bodies/ai-campaign-body";
 import type { TriggerNodeData, ActionNodeData, TriggerType } from "@/lib/workflow/types";
 
 function TriggerConfig({ nodeId, data }: { nodeId: string; data: TriggerNodeData }) {
@@ -136,6 +138,36 @@ function ActionConfig({ nodeId, data }: { nodeId: string; data: ActionNodeData }
           </div>
         </div>
         <BrandVoiceBody variant="expanded" />
+      </div>
+    );
+  }
+
+  if (data.actionType === "hubspot-target-audience") {
+    return (
+      <div className="flex flex-col">
+        <div className="flex items-center gap-2 border-b border-border-subtle px-4 py-3">
+          <ProviderIcon provider="HubSpot" size="sm" className="shrink-0 rounded" />
+          <div className="flex flex-col">
+            <span className="text-sm font-semibold text-foreground">{data.label}</span>
+            <span className="text-xs text-muted-foreground">{data.description}</span>
+          </div>
+        </div>
+        <TargetAudienceBody variant="expanded" />
+      </div>
+    );
+  }
+
+  if (data.actionType === "ploy-ai-campaign") {
+    return (
+      <div className="flex flex-col">
+        <div className="flex items-center gap-2 border-b border-border-subtle px-4 py-3">
+          <ProviderIcon provider="Ploy" size="sm" className="shrink-0 rounded" />
+          <div className="flex flex-col">
+            <span className="text-sm font-semibold text-foreground">{data.label}</span>
+            <span className="text-xs text-muted-foreground">{data.description}</span>
+          </div>
+        </div>
+        <AiCampaignBody variant="expanded" />
       </div>
     );
   }

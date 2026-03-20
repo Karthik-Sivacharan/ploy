@@ -47,6 +47,13 @@ export const PROVIDERS: Record<string, ProviderConfig> = {
     colors: "bg-muted text-foreground",
   },
 
+  // --- CRM ---
+  HubSpot: {
+    icon: "user-group",
+    logo: "hubspot.com",
+    colors: "bg-muted text-foreground",
+  },
+
   // --- Integrations (with brand logos) ---
   Gmail: {
     icon: "mail",

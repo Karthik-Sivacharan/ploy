@@ -99,6 +99,10 @@ import {
   BubbleChatIcon,
   Route01Icon,
 
+  // CRM / Audience
+  UserGroupIcon,
+  Link01Icon,
+
   // Text formatting
   TextBoldIcon,
   TextItalicIcon,
@@ -196,6 +200,10 @@ export const icons = {
   "git-fork": GitForkIcon,
   "message-circle": BubbleChatIcon,
   "route": Route01Icon,
+
+  // CRM / Audience
+  "user-group": UserGroupIcon,
+  "link": Link01Icon,
 
   // Text formatting
   "text-bold": TextBoldIcon,

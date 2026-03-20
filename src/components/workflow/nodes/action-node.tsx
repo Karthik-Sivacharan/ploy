@@ -18,6 +18,8 @@ import { ProviderIcon } from "@/components/ui/provider-icon";
 import { getProvider } from "@/lib/providers";
 import { BrandAssetsBody } from "@/components/workflow/node-bodies/brand-assets-body";
 import { BrandVoiceBody } from "@/components/workflow/node-bodies/brand-voice-body";
+import { TargetAudienceBody } from "@/components/workflow/node-bodies/target-audience-body";
+import { AiCampaignBody } from "@/components/workflow/node-bodies/ai-campaign-body";
 
 const DEFAULT_ACTION_FIELDS: Record<string, { key: string; value: string }[]> = {
   "generate-text": [
@@ -112,6 +114,26 @@ function renderNodeBody(nodeData: ActionNodeData, fields: { key: string; value: 
           </NodeFooter>
         </>
       );
+    case "hubspot-target-audience":
+      return (
+        <>
+          <TargetAudienceBody variant="compact" />
+          <NodeFooter className="flex items-center gap-1.5 text-xs text-muted-foreground">
+            <Icon name="check-circle" size="xs" className="text-chart-2" />
+            Active &middot; Auto-updating
+          </NodeFooter>
+        </>
+      );
+    case "ploy-ai-campaign":
+      return (
+        <>
+          <AiCampaignBody variant="compact" />
+          <NodeFooter className="flex items-center gap-1.5 text-xs text-muted-foreground">
+            <Icon name="check-circle" size="xs" className="text-chart-2" />
+            Generated
+          </NodeFooter>
+        </>
+      );
     default:
       return (
         <NodeFields>
@@ -128,12 +150,13 @@ export function ActionNode({ id, data }: NodeProps) {
   const providerConfig = getProvider(nodeData.provider);
   const hasAction = Boolean(nodeData.actionType);
   const fields = nodeData.fields ?? DEFAULT_ACTION_FIELDS[nodeData.actionType] ?? [];
+  const widthClass = (nodeData.width as string) ?? "w-64";
 
   if (!hasAction) {
     return (
       <Node
         handles={{ target: true, source: true }}
-        className="w-64"
+        className={widthClass}
         toolbar={<NodeHoverToolbar nodeId={id} />}
       >
         <NodeContent className="flex flex-col items-center justify-center gap-2 py-8">
@@ -147,7 +170,7 @@ export function ActionNode({ id, data }: NodeProps) {
   return (
     <Node
       handles={{ target: true, source: true }}
-      className="w-64"
+      className={widthClass}
       toolbar={<NodeHoverToolbar nodeId={id} />}
     >
       <NodeHeader className="flex items-center gap-2">

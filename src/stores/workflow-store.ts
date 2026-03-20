@@ -85,9 +85,42 @@ const INITIAL_NODES: WorkflowNode[] = [
       locked: false,
     },
   },
+  {
+    id: "target-audience",
+    type: "action",
+    position: { x: 0, y: 800 },
+    data: {
+      type: "action",
+      actionType: "hubspot-target-audience",
+      label: "Target Audience",
+      description: "Audience segment from HubSpot",
+      provider: "HubSpot",
+      enabled: true,
+      locked: false,
+    },
+  },
+  {
+    id: "ai-agent",
+    type: "action",
+    position: { x: 400, y: 200 },
+    data: {
+      type: "action",
+      actionType: "ploy-ai-campaign",
+      label: "AI Campaign Agent",
+      description: "Generate multi-channel campaign with Claude Opus",
+      provider: "Ploy",
+      enabled: true,
+      locked: false,
+      width: "w-80",
+    },
+  },
 ];
 
-const INITIAL_EDGES: WorkflowEdge[] = [];
+const INITIAL_EDGES: WorkflowEdge[] = [
+  { id: "e-brand-assets-ai", source: "brand-assets", target: "ai-agent", type: "animated" },
+  { id: "e-brand-voice-ai", source: "brand-voice", target: "ai-agent", type: "animated" },
+  { id: "e-target-audience-ai", source: "target-audience", target: "ai-agent", type: "animated" },
+];
 
 export const useWorkflowStore = create<WorkflowState>((set, get) => ({
   nodes: INITIAL_NODES,
