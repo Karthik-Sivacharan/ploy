@@ -23,7 +23,7 @@ const NODE_HEIGHT_OVERRIDES: Record<string, number> = {
 
 function getNodeHeight(node: WorkflowNode): number {
   const actionType = (node.data as Record<string, unknown>).actionType as string | undefined;
-  return (actionType && NODE_HEIGHT_OVERRIDES[actionType]) ?? DEFAULT_NODE_HEIGHT;
+  return (actionType ? NODE_HEIGHT_OVERRIDES[actionType] : undefined) ?? DEFAULT_NODE_HEIGHT;
 }
 
 /**
