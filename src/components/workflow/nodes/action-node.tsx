@@ -9,12 +9,15 @@ import {
   NodeContent,
   NodeFields,
   NodeFieldRow,
+  NodeFooter,
   NodeStatusBar,
 } from "@/components/ai-elements/node";
 import { NodeHoverToolbar } from "@/components/workflow/node-hover-toolbar";
 import { Icon } from "@/components/ui/icon";
 import { ProviderIcon } from "@/components/ui/provider-icon";
 import { getProvider } from "@/lib/providers";
+import { BrandAssetsBody } from "@/components/workflow/node-bodies/brand-assets-body";
+import { BrandVoiceBody } from "@/components/workflow/node-bodies/brand-voice-body";
 
 const DEFAULT_ACTION_FIELDS: Record<string, { key: string; value: string }[]> = {
   "generate-text": [
@@ -87,6 +90,39 @@ const DEFAULT_ACTION_FIELDS: Record<string, { key: string; value: string }[]> = 
   ],
 };
 
+function renderNodeBody(nodeData: ActionNodeData, fields: { key: string; value: string }[]) {
+  switch (nodeData.actionType) {
+    case "frontify-brand-assets":
+      return (
+        <>
+          <BrandAssetsBody variant="compact" />
+          <NodeFooter className="flex items-center gap-1.5 text-xs text-muted-foreground">
+            <Icon name="check-circle" size="xs" className="text-chart-2" />
+            24 assets synced
+          </NodeFooter>
+        </>
+      );
+    case "notion-brand-voice":
+      return (
+        <>
+          <BrandVoiceBody variant="compact" />
+          <NodeFooter className="flex items-center gap-1.5 text-xs text-muted-foreground">
+            <Icon name="clock" size="xs" className="text-muted-foreground" />
+            Last edited Mar 12, 2026
+          </NodeFooter>
+        </>
+      );
+    default:
+      return (
+        <NodeFields>
+          {fields.map((field) => (
+            <NodeFieldRow key={field.key} label={field.key} value={field.value} />
+          ))}
+        </NodeFields>
+      );
+  }
+}
+
 export function ActionNode({ id, data }: NodeProps) {
   const nodeData = data as unknown as ActionNodeData;
   const providerConfig = getProvider(nodeData.provider);
@@ -115,23 +151,22 @@ export function ActionNode({ id, data }: NodeProps) {
       toolbar={<NodeHoverToolbar nodeId={id} />}
     >
       <NodeHeader className="flex items-center gap-2">
-        <div className={`flex size-6 items-center justify-center rounded-md ${providerConfig.colors}`}>
-          <ProviderIcon provider={nodeData.provider} size="xs" />
+        <div className={`flex size-9 items-center justify-center rounded-lg ${providerConfig.colors}`}>
+          <ProviderIcon provider={nodeData.provider} size="md" />
         </div>
-        <NodeTitle className="text-sm font-semibold">
-          {nodeData.label}
-        </NodeTitle>
+        <div className="flex flex-col">
+          <NodeTitle className="text-sm font-semibold">
+            {nodeData.label}
+          </NodeTitle>
+          {nodeData.provider && (
+            <span className="text-[10px] leading-tight text-muted-foreground">
+              from {nodeData.provider}
+            </span>
+          )}
+        </div>
       </NodeHeader>
 
-      <NodeFields>
-        {fields.map((field) => (
-          <NodeFieldRow
-            key={field.key}
-            label={field.key}
-            value={field.value}
-          />
-        ))}
-      </NodeFields>
+      {renderNodeBody(nodeData, fields)}
 
       <NodeStatusBar status={nodeData.status} />
     </Node>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useWorkflowStore } from "@/stores/workflow-store";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -20,6 +20,8 @@ import {
 } from "@/components/ui/select";
 import { ActionGrid } from "@/components/workflow/action-grid";
 import { ProviderIcon } from "@/components/ui/provider-icon";
+import { BrandAssetsBody } from "@/components/workflow/node-bodies/brand-assets-body";
+import { BrandVoiceBody } from "@/components/workflow/node-bodies/brand-voice-body";
 import type { TriggerNodeData, ActionNodeData, TriggerType } from "@/lib/workflow/types";
 
 function TriggerConfig({ nodeId, data }: { nodeId: string; data: TriggerNodeData }) {
@@ -104,6 +106,37 @@ function ActionConfig({ nodeId, data }: { nodeId: string; data: ActionNodeData }
           })
         }
       />
+    );
+  }
+
+  /* Custom expanded editors for prototype nodes */
+  if (data.actionType === "frontify-brand-assets") {
+    return (
+      <div className="flex flex-col">
+        <div className="flex items-center gap-2 border-b border-border-subtle px-4 py-3">
+          <ProviderIcon provider="Frontify" size="sm" className="shrink-0 rounded" />
+          <div className="flex flex-col">
+            <span className="text-sm font-semibold text-foreground">{data.label}</span>
+            <span className="text-xs text-muted-foreground">{data.description}</span>
+          </div>
+        </div>
+        <BrandAssetsBody variant="expanded" />
+      </div>
+    );
+  }
+
+  if (data.actionType === "notion-brand-voice") {
+    return (
+      <div className="flex flex-col">
+        <div className="flex items-center gap-2 border-b border-border-subtle px-4 py-3">
+          <ProviderIcon provider="Notion" size="sm" className="shrink-0 rounded" />
+          <div className="flex flex-col">
+            <span className="text-sm font-semibold text-foreground">{data.label}</span>
+            <span className="text-xs text-muted-foreground">{data.description}</span>
+          </div>
+        </div>
+        <BrandVoiceBody variant="expanded" />
+      </div>
     );
   }
 
@@ -374,10 +407,18 @@ function ToolbarTab() {
 
 export function NodeConfigPanel() {
   const { selectedNodeId, nodes } = useWorkflowStore();
+  const [activeTab, setActiveTab] = useState("copilot");
 
   const selectedNode = selectedNodeId
     ? nodes.find((n) => n.id === selectedNodeId)
     : null;
+
+  /* Auto-switch to editor tab when a node is selected */
+  useEffect(() => {
+    if (selectedNodeId) {
+      setActiveTab("editor");
+    }
+  }, [selectedNodeId]);
 
   const renderProperties = () => {
     if (!selectedNode) {
@@ -409,7 +450,7 @@ export function NodeConfigPanel() {
   };
 
   return (
-    <Tabs defaultValue="copilot" className="flex h-full flex-col py-4">
+    <Tabs value={activeTab} onValueChange={setActiveTab} className="flex h-full flex-col py-4">
       <TabsList variant="line" className="w-full shrink-0 justify-center border-b px-4">
         <TabsTrigger value="copilot">Copilot</TabsTrigger>
         <TabsTrigger value="toolbar">Toolbar</TabsTrigger>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Icon } from "@/components/ui/icon";
+import { cn } from "@/lib/utils";
 import { getProvider } from "@/lib/providers";
 
 const BRANDFETCH_CLIENT_ID = process.env.NEXT_PUBLIC_BRANDFETCH_CLIENT_ID ?? "";
@@ -55,7 +56,7 @@ export function ProviderIcon({ provider, size = "sm", className }: ProviderIconP
         alt={provider}
         width={px}
         height={px}
-        className={className}
+        className={cn("rounded", className)}
         style={{ width: px, height: px }}
         onError={() => setLogoFailed(true)}
       />

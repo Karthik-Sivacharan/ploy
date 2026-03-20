@@ -58,77 +58,36 @@ const pushHistory = (state: WorkflowState): Partial<WorkflowState> => ({
 
 const INITIAL_NODES: WorkflowNode[] = [
   {
-    id: "gmail-1",
+    id: "brand-assets",
     type: "action",
     position: { x: 0, y: 0 },
     data: {
       type: "action",
-      actionType: "gmail-read",
-      label: "Gmail 1",
-      description: "Read emails from Gmail",
-      provider: "Gmail",
+      actionType: "frontify-brand-assets",
+      label: "Brand Assets",
+      description: "Brand colors, fonts, and logos from Frontify",
+      provider: "Frontify",
       enabled: true,
       locked: false,
-      fields: [
-        { key: "Credentials", value: "-" },
-        { key: "Gmail Labels To Monitor", value: "-" },
-        { key: "Label Filter Behavior", value: "INCLUDE" },
-        { key: "Gmail Search Query", value: "-" },
-        { key: "Mark As Read", value: "false" },
-        { key: "Include Attachments", value: "false" },
-      ],
     },
   },
   {
-    id: "agent-1",
+    id: "brand-voice",
     type: "action",
-    position: { x: 400, y: -20 },
+    position: { x: 0, y: 400 },
     data: {
       type: "action",
-      actionType: "agent",
-      label: "Agent 1",
-      description: "AI Agent",
-      provider: "AI Gateway",
+      actionType: "notion-brand-voice",
+      label: "Brand Voice",
+      description: "Tone and voice guidelines from Notion",
+      provider: "Notion",
       enabled: true,
       locked: false,
-      fields: [
-        { key: "Messages", value: "# Task You are an agent ..." },
-        { key: "Model", value: "gpt-4o" },
-        { key: "Tools", value: "-" },
-        { key: "Skills", value: "-" },
-        { key: "Memory", value: "None" },
-        { key: "Response Format", value: "-" },
-        { key: "Error", value: "-" },
-      ],
-    },
-  },
-  {
-    id: "gmail-2",
-    type: "action",
-    position: { x: 800, y: -10 },
-    data: {
-      type: "action",
-      actionType: "gmail-label",
-      label: "Gmail 2",
-      description: "Add label to Gmail message",
-      provider: "Gmail",
-      enabled: true,
-      locked: false,
-      fields: [
-        { key: "Operation", value: "Add Label" },
-        { key: "Gmail Account", value: "-" },
-        { key: "Message ID", value: "<gmail1.email.id>" },
-        { key: "Label", value: "-" },
-        { key: "Error", value: "-" },
-      ],
     },
   },
 ];
 
-const INITIAL_EDGES: WorkflowEdge[] = [
-  { id: "e-gmail1-agent1", source: "gmail-1", target: "agent-1", type: "animated" },
-  { id: "e-agent1-gmail2", source: "agent-1", target: "gmail-2", type: "animated" },
-];
+const INITIAL_EDGES: WorkflowEdge[] = [];
 
 export const useWorkflowStore = create<WorkflowState>((set, get) => ({
   nodes: INITIAL_NODES,

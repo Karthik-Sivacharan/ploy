@@ -20,18 +20,18 @@ export function CanvasControls() {
   ];
 
   return (
-    <div className="flex h-10 items-center gap-0.5 rounded-xl border border-border-glass bg-surface-translucent px-1 shadow-glass backdrop-panel">
+    <div className="flex h-12 items-center gap-1 rounded-2xl border border-border-glass bg-surface-translucent px-1.5 shadow-glass backdrop-panel">
       {actions.map(({ icon, label, onClick }) => (
         <Tooltip key={label}>
           <TooltipTrigger
             render={
               <Button
                 variant="ghost"
-                size="icon-xs"
-                className="text-muted-foreground hover:text-foreground"
+                size="icon-sm"
+                className="size-9 text-muted-foreground hover:text-foreground"
                 onClick={onClick}
               >
-                <Icon name={icon} size="md" />
+                <Icon name={icon} size="lg" />
               </Button>
             }
           />

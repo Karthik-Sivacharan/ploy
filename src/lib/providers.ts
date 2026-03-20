@@ -35,11 +35,23 @@ export const PROVIDERS: Record<string, ProviderConfig> = {
     colors: "bg-primary/15 text-primary",
   },
 
+  // --- Brand / DAM ---
+  Notion: {
+    icon: "book-open",
+    logo: "notion.so",
+    colors: "bg-muted text-foreground",
+  },
+  Frontify: {
+    icon: "layers",
+    logo: "frontify.com",
+    colors: "bg-muted text-foreground",
+  },
+
   // --- Integrations (with brand logos) ---
   Gmail: {
     icon: "mail",
     logo: "gmail.com",
-    colors: "bg-red-500/15 text-red-500",
+    colors: "bg-muted text-foreground",
   },
   GitHub: {
     icon: "github",
@@ -54,41 +66,46 @@ export const PROVIDERS: Record<string, ProviderConfig> = {
   Resend: {
     icon: "mail",
     logo: "resend.com",
-    colors: "bg-blue-500/15 text-blue-500",
+    colors: "bg-muted text-foreground",
   },
   Stripe: {
     icon: "credit-card",
     logo: "stripe.com",
-    colors: "bg-purple-500/15 text-purple-500",
+    colors: "bg-muted text-foreground",
   },
   Webflow: {
     icon: "layout-template",
     logo: "webflow.com",
-    colors: "bg-blue-500/15 text-blue-500",
+    colors: "bg-muted text-foreground",
   },
   Mailchimp: {
     icon: "mail",
     logo: "mailchimp.com",
-    colors: "bg-yellow-500/15 text-yellow-500",
+    colors: "bg-muted text-foreground",
   },
   LinkedIn: {
     icon: "message-square",
     logo: "linkedin.com",
-    colors: "bg-blue-600/15 text-blue-600",
+    colors: "bg-muted text-foreground",
+  },
+  Meta: {
+    icon: "image",
+    logo: "meta.com",
+    colors: "bg-muted text-foreground",
   },
   CMS: {
     icon: "book-open",
     logo: "wordpress.com",
-    colors: "bg-sky-500/15 text-sky-500",
+    colors: "bg-muted text-foreground",
   },
 
   // --- Toolbar triggers (logo-only, used in ToolbarTab) ---
-  Outlook: { logo: "outlook.com", colors: "bg-blue-500/15 text-blue-500" },
-  "RSS Feed": { logo: "rss.com", colors: "bg-orange-500/15 text-orange-500" },
-  Telegram: { logo: "telegram.org", colors: "bg-sky-500/15 text-sky-500" },
-  "Twilio Voice": { logo: "twilio.com", colors: "bg-red-500/15 text-red-500" },
+  Outlook: { logo: "outlook.com", colors: "bg-muted text-foreground" },
+  "RSS Feed": { logo: "rss.com", colors: "bg-muted text-foreground" },
+  Telegram: { logo: "telegram.org", colors: "bg-muted text-foreground" },
+  "Twilio Voice": { logo: "twilio.com", colors: "bg-muted text-foreground" },
   Typeform: { logo: "typeform.com", colors: "bg-muted text-foreground" },
-  WhatsApp: { logo: "whatsapp.com", colors: "bg-green-500/15 text-green-500" },
+  WhatsApp: { logo: "whatsapp.com", colors: "bg-muted text-foreground" },
 };
 
 /** Resolve a provider config with safe fallbacks. */

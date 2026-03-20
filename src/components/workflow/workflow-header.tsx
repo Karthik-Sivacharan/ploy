@@ -40,13 +40,16 @@ export function WorkflowHeader() {
         </div>
       </div>
 
-      {/* Center: toolbar actions */}
-      <div className="flex items-center gap-2">
+      {/* Center: toolbar actions (mobile only) */}
+      <div className="flex items-center gap-2 md:hidden">
         <WorkflowToolbar />
       </div>
 
-      {/* Right: theme + config panel toggle (mobile) */}
+      {/* Right: deploy/run (desktop) + theme + config panel toggle (mobile) */}
       <div className="flex items-center gap-2">
+        <div className="hidden md:flex">
+          <WorkflowToolbar />
+        </div>
         <ThemeToggle />
         <Button
           variant="ghost"

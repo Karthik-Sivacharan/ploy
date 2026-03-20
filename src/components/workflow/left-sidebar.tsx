@@ -25,7 +25,6 @@ const WORKFLOWS = [
 ] as const;
 
 const bottomItems: { icon: IconName; label: string }[] = [
-  { icon: "scroll-text", label: "Logs" },
   { icon: "layout-template", label: "Templates" },
   { icon: "book-open", label: "Knowledge Base" },
   { icon: "help-circle", label: "Help" },
@@ -172,7 +171,7 @@ function SidebarContent({
 
 /** Desktop: floating absolute panel. Mobile: slide-in Sheet from left. */
 export function LeftSidebar() {
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
   const [activeWorkflow, setActiveWorkflow] = useState<string>("2");
   const isMobile = useIsMobile();
   const { leftSidebarOpen, setLeftSidebarOpen } = useWorkflowStore();

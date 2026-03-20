@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, type ReactNode } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import type { NodeTypes, EdgeTypes, NodeMouseHandler, Node } from "@xyflow/react";
 import { ReactFlowProvider, useReactFlow } from "@xyflow/react";
 import { Canvas } from "@/components/ai-elements/canvas";
@@ -10,6 +10,7 @@ import { useWorkflowStore } from "@/stores/workflow-store";
 import { useIsMobile } from "@/hooks/use-is-mobile";
 import { TriggerNode } from "@/components/workflow/nodes/trigger-node";
 import { ActionNode } from "@/components/workflow/nodes/action-node";
+import { CanvasControls } from "@/components/workflow/canvas-controls";
 
 const nodeTypes: NodeTypes = {
   trigger: TriggerNode,
@@ -21,7 +22,7 @@ const edgeTypes: EdgeTypes = {
   temporary: Edge.Temporary,
 };
 
-function WorkflowCanvasInner({ children }: { children?: ReactNode }) {
+function WorkflowCanvasInner() {
   const {
     nodes,
     edges,
@@ -97,15 +98,17 @@ function WorkflowCanvasInner({ children }: { children?: ReactNode }) {
         /* On mobile: disable selection-on-drag so touch pan works naturally */
         selectionOnDrag={!isMobile}
       />
-      {children}
+      <div className="absolute bottom-[var(--layout-panel-gap)] left-1/2 z-10 -translate-x-1/2">
+        <CanvasControls />
+      </div>
     </>
   );
 }
 
-export function WorkflowCanvas({ children }: { children?: ReactNode }) {
+export function WorkflowCanvas() {
   return (
     <ReactFlowProvider>
-      <WorkflowCanvasInner>{children}</WorkflowCanvasInner>
+      <WorkflowCanvasInner />
     </ReactFlowProvider>
   );
 }

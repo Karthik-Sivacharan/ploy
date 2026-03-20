@@ -98,6 +98,12 @@ import {
   GitForkIcon,
   BubbleChatIcon,
   Route01Icon,
+
+  // Text formatting
+  TextBoldIcon,
+  TextItalicIcon,
+  TextUnderlineIcon,
+  TextStrikethroughIcon,
 } from "@hugeicons/core-free-icons";
 
 export const icons = {
@@ -190,6 +196,12 @@ export const icons = {
   "git-fork": GitForkIcon,
   "message-circle": BubbleChatIcon,
   "route": Route01Icon,
+
+  // Text formatting
+  "text-bold": TextBoldIcon,
+  "text-italic": TextItalicIcon,
+  "text-underline": TextUnderlineIcon,
+  "text-strikethrough": TextStrikethroughIcon,
 } as const;
 
 export type IconName = keyof typeof icons;
