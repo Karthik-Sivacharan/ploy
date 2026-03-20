@@ -13,27 +13,8 @@ import {
 } from "@/components/ai-elements/node";
 import { NodeHoverToolbar } from "@/components/workflow/node-hover-toolbar";
 import { Icon } from "@/components/ui/icon";
-import type { IconName } from "@/lib/icons";
-
-const PROVIDER_ICONS: Record<string, IconName> = {
-  System: "settings",
-  "AI Gateway": "sparkles",
-  GitHub: "github",
-  Slack: "message-square",
-  Resend: "mail",
-  Stripe: "credit-card",
-  Gmail: "mail",
-};
-
-const PROVIDER_COLORS: Record<string, string> = {
-  System: "bg-muted text-foreground",
-  "AI Gateway": "bg-primary/15 text-primary",
-  GitHub: "bg-muted text-foreground",
-  Slack: "bg-muted text-foreground",
-  Resend: "bg-blue-500/15 text-blue-500",
-  Stripe: "bg-purple-500/15 text-purple-500",
-  Gmail: "bg-red-500/15 text-red-500",
-};
+import { ProviderIcon } from "@/components/ui/provider-icon";
+import { getProvider } from "@/lib/providers";
 
 const DEFAULT_ACTION_FIELDS: Record<string, { key: string; value: string }[]> = {
   "generate-text": [
@@ -108,8 +89,7 @@ const DEFAULT_ACTION_FIELDS: Record<string, { key: string; value: string }[]> = 
 
 export function ActionNode({ id, data }: NodeProps) {
   const nodeData = data as unknown as ActionNodeData;
-  const iconName = PROVIDER_ICONS[nodeData.provider] ?? "zap";
-  const iconColors = PROVIDER_COLORS[nodeData.provider] ?? "bg-muted text-muted-foreground";
+  const providerConfig = getProvider(nodeData.provider);
   const hasAction = Boolean(nodeData.actionType);
   const fields = nodeData.fields ?? DEFAULT_ACTION_FIELDS[nodeData.actionType] ?? [];
 
@@ -135,8 +115,8 @@ export function ActionNode({ id, data }: NodeProps) {
       toolbar={<NodeHoverToolbar nodeId={id} />}
     >
       <NodeHeader className="flex items-center gap-2">
-        <div className={`flex size-6 items-center justify-center rounded-md ${iconColors}`}>
-          <Icon name={iconName} size="xs" />
+        <div className={`flex size-6 items-center justify-center rounded-md ${providerConfig.colors}`}>
+          <ProviderIcon provider={nodeData.provider} size="xs" />
         </div>
         <NodeTitle className="text-sm font-semibold">
           {nodeData.label}

@@ -19,6 +19,7 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { ActionGrid } from "@/components/workflow/action-grid";
+import { ProviderIcon } from "@/components/ui/provider-icon";
 import type { TriggerNodeData, ActionNodeData, TriggerType } from "@/lib/workflow/types";
 
 function TriggerConfig({ nodeId, data }: { nodeId: string; data: TriggerNodeData }) {
@@ -306,15 +307,15 @@ function CopilotChat() {
 }
 
 const TRIGGERS = [
-  { name: "Outlook", logo: "outlook.com" },
-  { name: "RSS Feed", logo: "rss.com" },
-  { name: "Slack", logo: "slack.com" },
-  { name: "Stripe", logo: "stripe.com" },
-  { name: "Telegram", logo: "telegram.org" },
-  { name: "Twilio Voice", logo: "twilio.com" },
-  { name: "Typeform", logo: "typeform.com" },
-  { name: "Webflow", logo: "webflow.com" },
-  { name: "WhatsApp", logo: "whatsapp.com" },
+  "Outlook",
+  "RSS Feed",
+  "Slack",
+  "Stripe",
+  "Telegram",
+  "Twilio Voice",
+  "Typeform",
+  "Webflow",
+  "WhatsApp",
 ] as const;
 
 const BLOCKS = [
@@ -339,16 +340,12 @@ function ToolbarTab() {
       {/* Triggers */}
       <h3 className="mb-2 text-sm font-medium text-foreground">Triggers</h3>
       <div className="flex flex-col">
-        {TRIGGERS.map(({ name, logo }) => (
+        {TRIGGERS.map((name) => (
           <button
             key={name}
             className="flex items-center gap-3 rounded-lg px-2 py-2 text-sm text-foreground transition-colors hover:bg-muted"
           >
-            <img
-              src={`https://cdn.brandfetch.io/${logo}/w/128/h/128`}
-              alt={name}
-              className="size-5 shrink-0 rounded"
-            />
+            <ProviderIcon provider={name} size="sm" className="shrink-0 rounded" />
             {name}
           </button>
         ))}

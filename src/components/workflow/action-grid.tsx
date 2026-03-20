@@ -9,20 +9,9 @@ import {
 } from "@/components/ui/collapsible";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
-import { HugeiconsIcon } from "@hugeicons/react";
-import { icons } from "@/lib/icons";
-import type { IconName } from "@/lib/icons";
+import { ProviderIcon } from "@/components/ui/provider-icon";
 import { ACTION_GROUPS } from "@/lib/workflow/constants";
 import type { ActionDefinition, ActionGroup } from "@/lib/workflow/types";
-
-const PROVIDER_ICONS: Record<string, IconName> = {
-  System: "settings",
-  "AI Gateway": "sparkles",
-  GitHub: "github",
-  Slack: "message-square",
-  Resend: "mail",
-  Stripe: "credit-card",
-};
 
 interface ActionGridProps {
   onSelectAction: (action: ActionDefinition) => void;
@@ -35,8 +24,6 @@ function ActionGroupSection({
   group: ActionGroup;
   onSelectAction: (action: ActionDefinition) => void;
 }) {
-  const iconName = PROVIDER_ICONS[group.provider] ?? "settings";
-
   return (
     <Collapsible defaultOpen>
       <div className="flex items-center justify-between px-3 py-2">
@@ -44,13 +31,7 @@ function ActionGroupSection({
           render={
             <Button variant="ghost" size="sm" className="gap-1.5 px-1">
               <Icon name="chevron-down" size="xs" className="transition-transform [[data-open]_&]:rotate-0 [[data-closed]_&]:-rotate-90" />
-              <HugeiconsIcon
-                icon={icons[iconName]}
-                size="var(--icon-sm)"
-                strokeWidth={2}
-                color="currentColor"
-                className="shrink-0"
-              />
+              <ProviderIcon provider={group.provider} size="sm" className="shrink-0" />
               <span className="text-sm font-medium">{group.provider}</span>
             </Button>
           }
