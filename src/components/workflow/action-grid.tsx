@@ -43,10 +43,12 @@ function ActionGroupSection({
       <CollapsibleContent>
         <div className="flex flex-col">
           {group.actions.map((action) => (
-            <button
+            <Button
               key={action.id}
+              variant="ghost"
+              size="sm"
               onClick={() => onSelectAction(action)}
-              className="flex items-baseline gap-1 px-3 py-2 text-left text-sm transition-colors hover:bg-muted"
+              className="justify-start gap-1 px-3 py-2 text-left"
             >
               <span className="font-medium text-foreground">
                 {action.label}
@@ -54,7 +56,7 @@ function ActionGroupSection({
               <span className="text-muted-foreground">
                 - {action.description}
               </span>
-            </button>
+            </Button>
           ))}
         </div>
       </CollapsibleContent>

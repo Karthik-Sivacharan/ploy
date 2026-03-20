@@ -11,6 +11,7 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
+import { SectionHeader, InfoRow, SourceInfo } from "@/components/workflow/node-bodies/shared";
 
 const AVAILABLE_MODELS = [
   { id: "claude-opus-4-6", label: "Claude Opus 4.6", provider: "anthropic" },
@@ -41,7 +42,7 @@ function CompactBody() {
     <div className="flex flex-col gap-3 p-3">
       {/* Model badge */}
       <div className="flex justify-start">
-        <Badge variant="secondary" className="gap-1 text-[10px]">
+        <Badge variant="secondary" className="gap-1 text-badge">
           <ModelSelectorLogo provider="google" className="size-3" />
           Gemini 2.0 Flash
         </Badge>
@@ -58,26 +59,26 @@ function CompactBody() {
         {/* Headline + sponsored */}
         <div className="flex items-center justify-between">
           <span className="text-xs font-medium text-foreground">Your Journey Starts Here</span>
-          <Badge variant="secondary" className="text-[9px]">Sponsored</Badge>
+          <Badge variant="secondary" className="text-caption">Sponsored</Badge>
         </div>
       </div>
 
       {/* Format line */}
-      <span className="text-[11px] text-muted-foreground">
+      <span className="text-detail text-muted-foreground">
         Carousel — 4 slides
       </span>
 
       {/* Targeting pills */}
       <div className="flex flex-wrap gap-1">
         {TARGETING_PILLS.map((pill) => (
-          <Badge key={pill} variant="outline" className="text-[10px]">
+          <Badge key={pill} variant="outline" className="text-badge">
             {pill}
           </Badge>
         ))}
       </div>
 
       {/* Budget */}
-      <span className="text-[11px] text-muted-foreground">
+      <span className="text-detail text-muted-foreground">
         $500/day
       </span>
     </div>
@@ -91,9 +92,7 @@ function ExpandedBody() {
     <div className="flex flex-col gap-5 p-4">
       {/* Model */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Model
-        </h4>
+        <SectionHeader>Model</SectionHeader>
         <Select defaultValue="gemini-2-0-flash">
           <SelectTrigger className="w-full">
             <SelectValue />
@@ -113,9 +112,7 @@ function ExpandedBody() {
 
       {/* Ad creative */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Ad Creative
-        </h4>
+        <SectionHeader>Ad Creative</SectionHeader>
         <div className="flex flex-col gap-2 rounded-lg border border-border-subtle bg-secondary/50 p-3">
           {/* Ad image */}
           <img
@@ -131,41 +128,27 @@ function ExpandedBody() {
           </p>
           {/* Sponsored badge */}
           <div className="flex justify-start">
-            <Badge variant="secondary" className="text-[9px]">Sponsored</Badge>
+            <Badge variant="secondary" className="text-caption">Sponsored</Badge>
           </div>
         </div>
       </section>
 
       {/* Campaign details */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Campaign Details
-        </h4>
+        <SectionHeader>Campaign Details</SectionHeader>
         <div className="flex flex-col gap-1.5">
           {CAMPAIGN_DETAILS.map((detail) => (
-            <div
-              key={detail.key}
-              className="flex items-center justify-between rounded-lg border border-border-subtle bg-secondary/50 px-2.5 py-2"
-            >
-              <span className="text-xs text-muted-foreground">
-                {detail.key}
-              </span>
-              <span className="text-xs font-medium text-foreground">
-                {detail.value}
-              </span>
-            </div>
+            <InfoRow key={detail.key} label={detail.key} value={detail.value} />
           ))}
         </div>
       </section>
 
       {/* Targeting */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Targeting
-        </h4>
+        <SectionHeader>Targeting</SectionHeader>
         <div className="flex flex-wrap gap-1.5">
           {EXPANDED_TARGETING_PILLS.map((pill) => (
-            <Badge key={pill} variant="outline" className="text-[10px]">
+            <Badge key={pill} variant="outline" className="text-badge">
               {pill}
             </Badge>
           ))}
@@ -179,10 +162,7 @@ function ExpandedBody() {
       </Button>
 
       {/* Source info */}
-      <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
-        <Icon name="check-circle" size="xs" className="text-chart-2" />
-        Campaign draft &middot; Pending review
-      </div>
+      <SourceInfo>Campaign draft &middot; Pending review</SourceInfo>
     </div>
   );
 }

@@ -11,6 +11,7 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
+import { SectionHeader, SourceInfo } from "@/components/workflow/node-bodies/shared";
 
 const AVAILABLE_MODELS = [
   { id: "claude-opus-4-6", label: "Claude Opus 4.6", provider: "anthropic" },
@@ -37,7 +38,7 @@ function CompactBody() {
     <div className="flex flex-col gap-3 p-3">
       {/* Model badge */}
       <div className="flex justify-start">
-        <Badge variant="secondary" className="gap-1 text-[10px]">
+        <Badge variant="secondary" className="gap-1 text-badge">
           <ModelSelectorLogo provider="anthropic" className="size-3" />
           Claude Opus 4.6
         </Badge>
@@ -66,7 +67,7 @@ function CompactBody() {
       {/* Channel output pills */}
       <div className="flex flex-wrap gap-1.5">
         {CHANNEL_OUTPUTS.map((channel) => (
-          <Badge key={channel} variant="outline" className="text-[10px]">
+          <Badge key={channel} variant="outline" className="text-badge">
             {channel}
           </Badge>
         ))}
@@ -82,9 +83,7 @@ function ExpandedBody() {
     <div className="flex flex-col gap-5 p-4">
       {/* Model */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-          Model
-        </h4>
+        <SectionHeader>Model</SectionHeader>
         <Select defaultValue="claude-opus-4-6">
           <SelectTrigger className="w-full">
             <SelectValue />
@@ -104,9 +103,7 @@ function ExpandedBody() {
 
       {/* Campaign title */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-          Campaign Title
-        </h4>
+        <SectionHeader>Campaign Title</SectionHeader>
         <div className="rounded-lg border border-border-subtle bg-secondary/50 px-2.5 py-2">
           <span className="text-sm font-semibold text-foreground">{CAMPAIGN_TITLE}</span>
         </div>
@@ -114,9 +111,7 @@ function ExpandedBody() {
 
       {/* Campaign prompt */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-          Campaign Prompt
-        </h4>
+        <SectionHeader>Campaign Prompt</SectionHeader>
         <textarea
           defaultValue={CAMPAIGN_PROMPT}
           rows={5}
@@ -126,9 +121,7 @@ function ExpandedBody() {
 
       {/* Connected sources */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-          Connected Sources
-        </h4>
+        <SectionHeader>Connected Sources</SectionHeader>
         <div className="flex flex-col gap-1.5">
           {CONNECTED_SOURCES.map((source) => (
             <div
@@ -144,12 +137,10 @@ function ExpandedBody() {
 
       {/* Channel outputs */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-          Channel Outputs
-        </h4>
+        <SectionHeader>Channel Outputs</SectionHeader>
         <div className="flex flex-wrap gap-1.5">
           {CHANNEL_OUTPUTS.map((channel) => (
-            <Badge key={channel} variant="outline" className="text-[10px]">
+            <Badge key={channel} variant="outline" className="text-badge">
               {channel}
             </Badge>
           ))}
@@ -157,10 +148,7 @@ function ExpandedBody() {
       </section>
 
       {/* Status */}
-      <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
-        <Icon name="check-circle" size="xs" className="text-chart-2" />
-        Generated &middot; All channels ready
-      </div>
+      <SourceInfo>Generated &middot; All channels ready</SourceInfo>
     </div>
   );
 }

@@ -16,6 +16,7 @@ import {
   ProgressTrack,
   ProgressIndicator,
 } from "@/components/ui/progress";
+import { SectionHeader, InfoRow, SourceInfo } from "@/components/workflow/node-bodies/shared";
 
 const AVAILABLE_MODELS = [
   { id: "claude-opus-4-6", label: "Claude Opus 4.6", provider: "anthropic" },
@@ -40,7 +41,7 @@ function CompactBody() {
     <div className="flex flex-col gap-3 p-3">
       {/* Model badge */}
       <div className="flex justify-start">
-        <Badge variant="secondary" className="gap-1 text-[10px]">
+        <Badge variant="secondary" className="gap-1 text-badge">
           <ModelSelectorLogo provider="anthropic" className="size-3" />
           Claude Sonnet 4.6
         </Badge>
@@ -53,30 +54,30 @@ function CompactBody() {
           <div className="flex size-5 items-center justify-center rounded-md bg-muted">
             <Icon name="bell" size="xs" />
           </div>
-          <span className="text-[10px] font-medium text-foreground">
+          <span className="text-badge font-medium text-foreground">
             Peloton
           </span>
-          <span className="ml-auto text-[10px] text-muted-foreground">now</span>
+          <span className="ml-auto text-badge text-muted-foreground">now</span>
         </div>
         {/* Title */}
-        <p className="mt-1.5 text-[11px] font-semibold text-foreground">
+        <p className="mt-1.5 text-detail font-semibold text-foreground">
           Your Summer Starts Here 🚴
         </p>
         {/* Body */}
-        <p className="mt-0.5 text-[10px] leading-snug text-muted-foreground line-clamp-2">
+        <p className="mt-0.5 text-badge leading-snug text-muted-foreground line-clamp-2">
           Start your free trial today and join millions riding together.
         </p>
       </div>
 
       {/* Recipients */}
-      <span className="text-[11px] text-muted-foreground">
+      <span className="text-detail text-muted-foreground">
         12,847 recipients
       </span>
 
       {/* Platform pills */}
       <div className="flex gap-1.5">
-        <Badge variant="outline" className="text-[10px]">iOS</Badge>
-        <Badge variant="outline" className="text-[10px]">Android</Badge>
+        <Badge variant="outline" className="text-badge">iOS</Badge>
+        <Badge variant="outline" className="text-badge">Android</Badge>
       </div>
     </div>
   );
@@ -89,9 +90,7 @@ function ExpandedBody() {
     <div className="flex flex-col gap-5 p-4">
       {/* Model */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Model
-        </h4>
+        <SectionHeader>Model</SectionHeader>
         <Select defaultValue="claude-sonnet-4-6">
           <SelectTrigger className="w-full">
             <SelectValue />
@@ -111,9 +110,7 @@ function ExpandedBody() {
 
       {/* Notification preview */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Notification Preview
-        </h4>
+        <SectionHeader>Notification Preview</SectionHeader>
         <div className="rounded-xl border border-border-subtle bg-secondary/50 p-3">
           {/* App header row */}
           <div className="flex items-center gap-2">
@@ -121,7 +118,7 @@ function ExpandedBody() {
               <Icon name="bell" size="xs" />
             </div>
             <span className="text-xs font-medium text-foreground">Peloton</span>
-            <span className="ml-auto text-[10px] text-muted-foreground">now</span>
+            <span className="ml-auto text-badge text-muted-foreground">now</span>
           </div>
           {/* Title */}
           <p className="mt-2 text-sm font-semibold text-foreground">
@@ -137,9 +134,7 @@ function ExpandedBody() {
 
       {/* Delivery */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Delivery
-        </h4>
+        <SectionHeader>Delivery</SectionHeader>
         <Progress value={0}>
           <ProgressTrack className="h-2">
             <ProgressIndicator />
@@ -152,41 +147,27 @@ function ExpandedBody() {
 
       {/* Campaign details */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Campaign Details
-        </h4>
+        <SectionHeader>Campaign Details</SectionHeader>
         <div className="flex flex-col gap-1.5">
           {CAMPAIGN_DETAILS.map((detail) => (
-            <div
-              key={detail.key}
-              className="flex items-center justify-between rounded-lg border border-border-subtle bg-secondary/50 px-2.5 py-2"
-            >
-              <span className="text-xs text-muted-foreground">
-                {detail.key}
-              </span>
-              <span className="text-xs font-medium text-foreground">
-                {detail.value}
-              </span>
-            </div>
+            <InfoRow key={detail.key} label={detail.key} value={detail.value} />
           ))}
           {/* Priority row with badge */}
-          <div className="flex items-center justify-between rounded-lg border border-border-subtle bg-secondary/50 px-2.5 py-2">
-            <span className="text-xs text-muted-foreground">Priority</span>
-            <Badge variant="secondary" className="text-[10px]">High</Badge>
-          </div>
+          <InfoRow
+            label="Priority"
+            value={<Badge variant="secondary" className="text-badge">High</Badge>}
+          />
         </div>
       </section>
 
       {/* Targeting pills */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Targeting
-        </h4>
+        <SectionHeader>Targeting</SectionHeader>
         <div className="flex flex-wrap gap-1.5">
-          <Badge variant="outline" className="text-[10px]">iOS</Badge>
-          <Badge variant="outline" className="text-[10px]">Android</Badge>
-          <Badge variant="outline" className="text-[10px]">Fitness</Badge>
-          <Badge variant="outline" className="text-[10px]">25-54</Badge>
+          <Badge variant="outline" className="text-badge">iOS</Badge>
+          <Badge variant="outline" className="text-badge">Android</Badge>
+          <Badge variant="outline" className="text-badge">Fitness</Badge>
+          <Badge variant="outline" className="text-badge">25-54</Badge>
         </div>
       </section>
 
@@ -197,10 +178,7 @@ function ExpandedBody() {
       </Button>
 
       {/* Source info */}
-      <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
-        <Icon name="clock" size="xs" className="text-muted-foreground" />
-        Scheduled &middot; Jun 1, 2026
-      </div>
+      <SourceInfo icon="clock">Scheduled &middot; Jun 1, 2026</SourceInfo>
     </div>
   );
 }

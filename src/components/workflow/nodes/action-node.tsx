@@ -226,7 +226,7 @@ export function ActionNode({ id, data }: NodeProps) {
             {nodeData.label}
           </NodeTitle>
           {nodeData.provider && (
-            <span className="text-[10px] leading-tight text-muted-foreground">
+            <span className="text-badge leading-tight text-muted-foreground">
               from {nodeData.provider}
             </span>
           )}

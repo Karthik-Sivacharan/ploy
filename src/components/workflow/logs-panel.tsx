@@ -57,14 +57,15 @@ export function LogsPanel() {
       <>
         {/* Collapsed trigger — centered pill at bottom */}
         <div className="absolute bottom-[var(--layout-panel-gap)] left-1/2 z-10 flex -translate-x-1/2 items-center gap-2">
-          <button
+          <Button
+            variant="outline"
             onClick={() => setLogsPanelOpen(true)}
-            className="flex h-10 items-center gap-1.5 rounded-xl border border-border-glass bg-surface-translucent px-3 shadow-glass backdrop-panel transition-colors duration-[var(--duration-fast)] ease-[var(--ease-hover)] hover:bg-surface-translucent-hover"
+            className="h-10 rounded-xl border-border-glass bg-surface-translucent px-3 shadow-glass backdrop-panel transition-colors duration-[var(--duration-fast)] ease-[var(--ease-hover)] hover:bg-surface-translucent-hover"
           >
             <Icon name="scroll-text" size="sm" className="text-muted-foreground" />
             <span className="text-sm font-medium">Logs</span>
             <Icon name="chevron-up" size="xs" className="text-muted-foreground" />
-          </button>
+          </Button>
           <CanvasControls />
         </div>
 
@@ -91,22 +92,23 @@ export function LogsPanel() {
             : "opacity-100 duration-[var(--duration-normal)]"
         )}
       >
-        <button
+        <Button
+          variant="outline"
           onClick={toggle}
-          className="flex h-10 items-center gap-1.5 rounded-xl border border-border-glass bg-surface-translucent px-3 shadow-glass backdrop-panel transition-colors duration-[var(--duration-fast)] ease-[var(--ease-hover)] hover:bg-surface-translucent-hover"
+          className="h-10 rounded-xl border-border-glass bg-surface-translucent px-3 shadow-glass backdrop-panel transition-colors duration-[var(--duration-fast)] ease-[var(--ease-hover)] hover:bg-surface-translucent-hover"
           tabIndex={open ? -1 : 0}
         >
           <Icon name="scroll-text" size="sm" className="text-muted-foreground" />
           <span className="text-sm font-medium">Logs</span>
           <Icon name="chevron-up" size="xs" className="text-muted-foreground" />
-        </button>
+        </Button>
         <CanvasControls />
       </div>
 
       {/* Expanded panel — spans between sidebar and config panel */}
       <div
         className={cn(
-          "absolute bottom-[var(--layout-panel-gap)] left-60 z-10 flex flex-col overflow-hidden will-change-transform",
+          "absolute bottom-[var(--layout-panel-gap)] left-[var(--layout-sidebar-width)] z-10 flex flex-col overflow-hidden will-change-transform",
           "rounded-2xl border border-border-glass bg-surface-translucent shadow-glass backdrop-panel",
           "transition-[opacity,transform] ease-[var(--ease-out-expo)]",
           open

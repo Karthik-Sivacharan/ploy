@@ -17,6 +17,7 @@ import {
   CardTitle,
   CardContent,
 } from "@/components/ui/card";
+import { SectionHeader, InfoRow, SourceInfo } from "@/components/workflow/node-bodies/shared";
 
 const AVAILABLE_MODELS = [
   { id: "claude-opus-4-6", label: "Claude Opus 4.6", provider: "anthropic" },
@@ -59,7 +60,7 @@ function CompactBody() {
     <div className="flex flex-col gap-3 p-3">
       {/* Model badge */}
       <div className="flex justify-start">
-        <Badge variant="secondary" className="gap-1 text-[10px]">
+        <Badge variant="secondary" className="gap-1 text-badge">
           <ModelSelectorLogo provider="anthropic" className="size-3" />
           Claude Sonnet 4.6
         </Badge>
@@ -72,10 +73,10 @@ function CompactBody() {
             key={email.day}
             className="flex items-center justify-between rounded-lg border border-border-subtle bg-secondary/50 px-2.5 py-2"
           >
-            <span className="text-[10px] font-medium text-foreground">
+            <span className="text-badge font-medium text-foreground">
               Day {email.day}
             </span>
-            <span className="text-[10px] text-muted-foreground">
+            <span className="text-badge text-muted-foreground">
               {email.label}
             </span>
           </div>
@@ -83,13 +84,13 @@ function CompactBody() {
       </div>
 
       {/* Recipients */}
-      <span className="text-[11px] text-muted-foreground">
+      <span className="text-detail text-muted-foreground">
         12,847 contacts
       </span>
 
       {/* Automation type */}
       <div className="flex justify-start">
-        <Badge variant="outline" className="text-[10px]">
+        <Badge variant="outline" className="text-badge">
           Tag trigger
         </Badge>
       </div>
@@ -104,9 +105,7 @@ function ExpandedBody() {
     <div className="flex flex-col gap-5 p-4">
       {/* Model */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Model
-        </h4>
+        <SectionHeader>Model</SectionHeader>
         <Select defaultValue="claude-sonnet-4-6">
           <SelectTrigger className="w-full">
             <SelectValue />
@@ -126,9 +125,7 @@ function ExpandedBody() {
 
       {/* Email sequence */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Email Sequence
-        </h4>
+        <SectionHeader>Email Sequence</SectionHeader>
         <div className="flex flex-col gap-2">
           {EMAILS.map((email) => (
             <Card key={email.day} size="sm">
@@ -142,7 +139,7 @@ function ExpandedBody() {
                   {email.subject}
                 </p>
                 <div className="mt-2">
-                  <Badge variant="secondary" className="text-[10px]">
+                  <Badge variant="secondary" className="text-badge">
                     Draft
                   </Badge>
                 </div>
@@ -154,22 +151,10 @@ function ExpandedBody() {
 
       {/* Campaign details */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Campaign Details
-        </h4>
+        <SectionHeader>Campaign Details</SectionHeader>
         <div className="flex flex-col gap-1.5">
           {CAMPAIGN_DETAILS.map((detail) => (
-            <div
-              key={detail.key}
-              className="flex items-center justify-between rounded-lg border border-border-subtle bg-secondary/50 px-2.5 py-2"
-            >
-              <span className="text-xs text-muted-foreground">
-                {detail.key}
-              </span>
-              <span className="text-xs font-medium text-foreground">
-                {detail.value}
-              </span>
-            </div>
+            <InfoRow key={detail.key} label={detail.key} value={detail.value} />
           ))}
         </div>
       </section>
@@ -181,10 +166,7 @@ function ExpandedBody() {
       </Button>
 
       {/* Source info */}
-      <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
-        <Icon name="check-circle" size="xs" className="text-chart-2" />
-        Ready to send &middot; 3 emails queued
-      </div>
+      <SourceInfo>Ready to send &middot; 3 emails queued</SourceInfo>
     </div>
   );
 }

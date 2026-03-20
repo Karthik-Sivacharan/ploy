@@ -3,7 +3,7 @@
 import { Icon } from "@/components/ui/icon";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { SectionHeader, SourceInfo } from "@/components/workflow/node-bodies/shared";
 
 const BRAND_COLORS = [
   { name: "Primary", hex: "#6C3AED" },
@@ -43,7 +43,7 @@ function CompactBody() {
               className="size-6 rounded-full border border-border-subtle"
               style={{ backgroundColor: color.hex }}
             />
-            <span className="text-[9px] text-muted-foreground">{color.name}</span>
+            <span className="text-caption text-muted-foreground">{color.name}</span>
           </div>
         ))}
       </div>
@@ -73,7 +73,7 @@ function ExpandedBody() {
     <div className="flex flex-col gap-5 p-4">
       {/* Colors */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Colors</h4>
+        <SectionHeader>Colors</SectionHeader>
         <div className="grid grid-cols-2 gap-2">
           {BRAND_COLORS.map((color) => (
             <div
@@ -86,7 +86,7 @@ function ExpandedBody() {
               />
               <div className="flex flex-col">
                 <span className="text-xs font-medium text-foreground">{color.name}</span>
-                <span className="text-[10px] font-mono text-muted-foreground">{color.hex}</span>
+                <span className="text-badge font-mono text-muted-foreground">{color.hex}</span>
               </div>
             </div>
           ))}
@@ -95,7 +95,7 @@ function ExpandedBody() {
 
       {/* Typography */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Typography</h4>
+        <SectionHeader>Typography</SectionHeader>
         <div className="flex flex-col gap-1.5">
           {BRAND_FONTS.map((font) => (
             <div
@@ -104,10 +104,7 @@ function ExpandedBody() {
             >
               <div className="flex items-center gap-2">
                 <span
-                  className={cn(
-                    "text-sm text-foreground",
-                    font.weight === "Semibold" ? "font-semibold" : "font-normal"
-                  )}
+                  className={`text-sm text-foreground ${font.weight === "Semibold" ? "font-semibold" : "font-normal"}`}
                 >
                   Aa
                 </span>
@@ -115,7 +112,7 @@ function ExpandedBody() {
                   {font.family} &middot; {font.weight}
                 </span>
               </div>
-              <Badge variant="secondary" className="text-[10px]">{font.role}</Badge>
+              <Badge variant="secondary" className="text-badge">{font.role}</Badge>
             </div>
           ))}
         </div>
@@ -123,7 +120,7 @@ function ExpandedBody() {
 
       {/* Logos */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Logos</h4>
+        <SectionHeader>Logos</SectionHeader>
         {/* Primary logo — full width */}
         <div className="flex flex-col items-center justify-center gap-1.5 overflow-hidden rounded-lg border border-border-subtle bg-secondary/50 px-4 py-4">
           <img
@@ -131,7 +128,7 @@ function ExpandedBody() {
             alt="Peloton logo"
             className="h-7 w-auto rounded-md object-contain"
           />
-          <span className="text-[10px] text-muted-foreground">Logo &middot; Primary</span>
+          <span className="text-badge text-muted-foreground">Logo &middot; Primary</span>
         </div>
         {/* Secondary marks */}
         <div className="grid grid-cols-2 gap-2">
@@ -143,7 +140,7 @@ function ExpandedBody() {
               <div className="flex size-8 items-center justify-center rounded-md bg-muted text-muted-foreground">
                 <Icon name="image" size="sm" />
               </div>
-              <span className="text-[10px] text-muted-foreground">{logo.name} &middot; {logo.type}</span>
+              <span className="text-badge text-muted-foreground">{logo.name} &middot; {logo.type}</span>
             </div>
           ))}
         </div>
@@ -151,7 +148,7 @@ function ExpandedBody() {
 
       {/* Asset library summary */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Asset Library</h4>
+        <SectionHeader>Asset Library</SectionHeader>
         <div className="flex flex-col gap-1.5">
           {ASSET_TYPES.map((asset) => (
             <div
@@ -173,10 +170,7 @@ function ExpandedBody() {
       </section>
 
       {/* Source info */}
-      <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
-        <Icon name="check-circle" size="xs" className="text-chart-2" />
-        Synced from Frontify &middot; Mar 18, 2026
-      </div>
+      <SourceInfo>Synced from Frontify &middot; Mar 18, 2026</SourceInfo>
     </div>
   );
 }

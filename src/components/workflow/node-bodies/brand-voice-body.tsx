@@ -12,6 +12,7 @@ import { Icon } from "@/components/ui/icon";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BrandVoiceEditor } from "@/components/workflow/node-bodies/brand-voice-editor";
+import { SectionHeader, InfoRow, SourceInfo } from "@/components/workflow/node-bodies/shared";
 
 const INITIAL_EDITOR_STATE = {
   root: {
@@ -154,20 +155,20 @@ function CompactBody() {
         </ArtifactTitle>
       </ArtifactHeader>
       <ArtifactContent className="flex flex-col gap-3 px-3 py-3">
-        <blockquote className="border-l-2 border-border pl-2.5 text-[11px] leading-relaxed text-muted-foreground italic">
+        <blockquote className="border-l-2 border-border pl-2.5 text-detail leading-relaxed text-muted-foreground italic">
           &ldquo;Motivating without being pushy. Inclusive, never exclusive. We&rsquo;re a coach in your corner, not a drill sergeant.&rdquo;
         </blockquote>
 
         <div className="flex flex-col gap-1.5">
-          <div className="flex items-center justify-between text-[11px]">
+          <div className="flex items-center justify-between text-detail">
             <span className="text-muted-foreground">Audience</span>
             <span className="font-medium text-foreground">Fitness adults, 25-54</span>
           </div>
-          <div className="flex items-center justify-between text-[11px]">
+          <div className="flex items-center justify-between text-detail">
             <span className="text-muted-foreground">Tone</span>
             <span className="font-medium text-foreground">Empowering &amp; warm</span>
           </div>
-          <div className="flex items-center justify-between text-[11px]">
+          <div className="flex items-center justify-between text-detail">
             <span className="text-muted-foreground">Style</span>
             <span className="font-medium text-foreground">Community-first</span>
           </div>
@@ -200,27 +201,17 @@ function ExpandedBody() {
     <div className="flex flex-col gap-5 p-4">
       {/* Voice attributes */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Voice Attributes
-        </h4>
+        <SectionHeader>Voice Attributes</SectionHeader>
         <div className="flex flex-col gap-1.5">
           {VOICE_ATTRIBUTES.map((attr) => (
-            <div
-              key={attr.label}
-              className="flex items-center justify-between rounded-lg border border-border-subtle bg-secondary/50 px-2.5 py-2"
-            >
-              <span className="text-xs text-muted-foreground">{attr.label}</span>
-              <span className="text-xs font-medium text-foreground">{attr.value}</span>
-            </div>
+            <InfoRow key={attr.label} label={attr.label} value={attr.value} />
           ))}
         </div>
       </section>
 
       {/* Guidelines editor */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Guidelines
-        </h4>
+        <SectionHeader>Guidelines</SectionHeader>
         <BrandVoiceEditor
           editorSerializedState={editorState}
           onSerializedChange={setEditorState}
@@ -229,9 +220,7 @@ function ExpandedBody() {
 
       {/* Dont's */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Avoid
-        </h4>
+        <SectionHeader>Avoid</SectionHeader>
         <div className="flex flex-col gap-1.5">
           {VOICE_DONTS.map((rule) => (
             <div
@@ -247,10 +236,10 @@ function ExpandedBody() {
 
       {/* Tags */}
       <div className="flex flex-wrap gap-1.5">
-        <Badge variant="secondary" className="text-[10px]">Fitness</Badge>
-        <Badge variant="secondary" className="text-[10px]">DTC</Badge>
-        <Badge variant="secondary" className="text-[10px]">Community</Badge>
-        <Badge variant="secondary" className="text-[10px]">Wellness</Badge>
+        <Badge variant="secondary" className="text-badge">Fitness</Badge>
+        <Badge variant="secondary" className="text-badge">DTC</Badge>
+        <Badge variant="secondary" className="text-badge">Community</Badge>
+        <Badge variant="secondary" className="text-badge">Wellness</Badge>
       </div>
 
       {/* Open in Notion */}
@@ -260,10 +249,7 @@ function ExpandedBody() {
       </Button>
 
       {/* Source info */}
-      <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
-        <Icon name="check-circle" size="xs" className="text-chart-2" />
-        Synced from Notion &middot; Mar 12, 2026
-      </div>
+      <SourceInfo>Synced from Notion &middot; Mar 12, 2026</SourceInfo>
     </div>
   );
 }

@@ -381,12 +381,12 @@ function CopilotChat() {
         <div className="rounded-xl border border-border bg-muted/50 p-3">
           {/* Top row — @ and / buttons */}
           <div className="mb-2 flex items-center gap-1.5">
-            <button className="flex size-7 items-center justify-center rounded-md border border-border bg-background text-muted-foreground transition-colors hover:text-foreground">
+            <Button variant="outline" size="icon-sm" className="text-muted-foreground">
               <Icon name="at-sign" size="xs" />
-            </button>
-            <button className="flex size-7 items-center justify-center rounded-md border border-border bg-background text-muted-foreground transition-colors hover:text-foreground">
+            </Button>
+            <Button variant="outline" size="icon-sm" className="text-muted-foreground">
               <Icon name="slash" size="xs" />
-            </button>
+            </Button>
           </div>
 
           {/* Textarea */}
@@ -407,26 +407,27 @@ function CopilotChat() {
           {/* Bottom row — actions */}
           <div className="mt-2 flex items-center justify-between">
             <div className="flex items-center gap-1.5">
-              <button className="flex h-7 items-center gap-1.5 rounded-full border border-border bg-background px-2.5 text-sm md:text-xs text-muted-foreground transition-colors hover:text-foreground">
+              <Button variant="outline" size="sm" className="rounded-full text-sm md:text-xs text-muted-foreground">
                 <Icon name="box" size="xs" />
                 Build
-              </button>
-              <button className="flex h-7 max-w-32 md:max-w-none items-center gap-1.5 rounded-full border border-border bg-background px-2.5 text-sm md:text-xs text-muted-foreground transition-colors hover:text-foreground">
-                <span className="shrink-0 font-mono text-[10px] font-semibold">A\</span>
+              </Button>
+              <Button variant="outline" size="sm" className="max-w-32 md:max-w-none rounded-full text-sm md:text-xs text-muted-foreground">
+                <span className="shrink-0 font-mono text-badge font-semibold">A\</span>
                 <span className="truncate">Claude Opus 4.5</span>
-              </button>
+              </Button>
             </div>
 
             <div className="flex items-center gap-1.5">
-              <button className="flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground">
+              <Button variant="ghost" size="icon-sm" className="text-muted-foreground">
                 <Icon name="image" size="sm" />
-              </button>
-              <button
+              </Button>
+              <Button
                 onClick={handleSubmit}
-                className="flex size-7 items-center justify-center rounded-full bg-foreground text-background transition-colors hover:bg-foreground/80"
+                size="icon-sm"
+                className="rounded-full"
               >
                 <Icon name="arrow-up" size="xs" />
-              </button>
+              </Button>
             </div>
           </div>
         </div>

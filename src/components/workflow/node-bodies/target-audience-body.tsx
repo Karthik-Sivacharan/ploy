@@ -3,6 +3,7 @@
 import { Icon } from "@/components/ui/icon";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { SectionHeader, InfoRow, SourceInfo } from "@/components/workflow/node-bodies/shared";
 
 const SEGMENT_NAME = "Summer Trial Prospects";
 const CONTACT_COUNT = "12,847";
@@ -39,14 +40,14 @@ function CompactBody() {
       {/* Filter pills */}
       <div className="flex flex-wrap gap-1.5">
         {FILTER_PILLS.map((pill) => (
-          <Badge key={pill} variant="outline" className="text-[10px]">
+          <Badge key={pill} variant="outline" className="text-badge">
             {pill}
           </Badge>
         ))}
       </div>
 
       {/* List type */}
-      <div className="flex items-center justify-between text-[11px]">
+      <div className="flex items-center justify-between text-detail">
         <span className="text-muted-foreground">List type</span>
         <span className="font-medium text-foreground">Dynamic - Auto-updating</span>
       </div>
@@ -61,9 +62,7 @@ function ExpandedBody() {
     <div className="flex flex-col gap-5 p-4">
       {/* Segment overview */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Segment
-        </h4>
+        <SectionHeader>Segment</SectionHeader>
         <div className="flex flex-col gap-2 rounded-lg border border-border-subtle bg-secondary/50 px-3 py-3">
           <span className="text-sm font-semibold text-foreground">{SEGMENT_NAME}</span>
           <div className="flex items-baseline gap-1.5">
@@ -72,7 +71,7 @@ function ExpandedBody() {
           </div>
           <div className="flex flex-wrap gap-1.5">
             {FILTER_PILLS.map((pill) => (
-              <Badge key={pill} variant="outline" className="text-[10px]">
+              <Badge key={pill} variant="outline" className="text-badge">
                 {pill}
               </Badge>
             ))}
@@ -82,49 +81,31 @@ function ExpandedBody() {
 
       {/* Filters */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Filters
-        </h4>
+        <SectionHeader>Filters</SectionHeader>
         <div className="flex flex-col gap-1.5">
           {FILTERS.map((filter) => (
-            <div
-              key={filter.label}
-              className="flex items-center justify-between rounded-lg border border-border-subtle bg-secondary/50 px-2.5 py-2"
-            >
-              <span className="text-xs text-muted-foreground">{filter.label}</span>
-              <span className="text-xs font-medium text-foreground">{filter.value}</span>
-            </div>
+            <InfoRow key={filter.label} label={filter.label} value={filter.value} />
           ))}
         </div>
       </section>
 
       {/* Contact breakdown */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Contact Breakdown
-        </h4>
+        <SectionHeader>Contact Breakdown</SectionHeader>
         <div className="flex flex-col gap-1.5">
           {CONTACT_BREAKDOWN.map((item) => (
-            <div
-              key={item.label}
-              className="flex items-center justify-between rounded-lg border border-border-subtle bg-secondary/50 px-2.5 py-2"
-            >
-              <span className="text-xs text-muted-foreground">{item.label}</span>
-              <span className="text-xs font-medium text-foreground">{item.value}</span>
-            </div>
+            <InfoRow key={item.label} label={item.label} value={item.value} />
           ))}
         </div>
       </section>
 
       {/* List type */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          List Type
-        </h4>
-        <div className="flex items-center justify-between rounded-lg border border-border-subtle bg-secondary/50 px-2.5 py-2">
-          <span className="text-xs text-foreground">Dynamic - Auto-updating</span>
-          <Badge variant="secondary" className="text-[10px]">Active</Badge>
-        </div>
+        <SectionHeader>List Type</SectionHeader>
+        <InfoRow
+          label="Dynamic - Auto-updating"
+          value={<Badge variant="secondary" className="text-badge">Active</Badge>}
+        />
       </section>
 
       {/* Open in HubSpot */}
@@ -134,10 +115,7 @@ function ExpandedBody() {
       </Button>
 
       {/* Source info */}
-      <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
-        <Icon name="check-circle" size="xs" className="text-chart-2" />
-        Synced from HubSpot &middot; Mar 18, 2026
-      </div>
+      <SourceInfo>Synced from HubSpot &middot; Mar 18, 2026</SourceInfo>
     </div>
   );
 }

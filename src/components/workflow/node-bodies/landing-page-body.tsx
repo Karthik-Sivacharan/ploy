@@ -11,6 +11,7 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
+import { SectionHeader, InfoRow, SourceInfo } from "@/components/workflow/node-bodies/shared";
 
 const PAGE_SCREENSHOT = "/assets/landing-pages/summer-trial.png";
 const STAGING_URL = "https://peloton-summer.webflow.io/summer-trial";
@@ -31,7 +32,7 @@ function CompactBody() {
     <div className="flex flex-col gap-3 p-3">
       {/* Model badge */}
       <div className="flex justify-start">
-        <Badge variant="secondary" className="gap-1 text-[10px]">
+        <Badge variant="secondary" className="gap-1 text-badge">
           <ModelSelectorLogo provider="anthropic" className="size-3" />
           Claude Sonnet 4.6
         </Badge>
@@ -49,7 +50,7 @@ function CompactBody() {
       {/* Page metadata */}
       <div className="flex flex-col gap-1">
         <span className="text-xs font-medium text-foreground">/summer-trial</span>
-        <span className="truncate text-[11px] text-muted-foreground">{STAGING_URL}</span>
+        <span className="truncate text-detail text-muted-foreground">{STAGING_URL}</span>
       </div>
     </div>
   );
@@ -62,9 +63,7 @@ function ExpandedBody() {
     <div className="flex flex-col gap-5 p-4">
       {/* Page preview */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Page Preview
-        </h4>
+        <SectionHeader>Page Preview</SectionHeader>
         <div className="overflow-hidden rounded-lg border border-border-subtle">
           <img
             src={PAGE_SCREENSHOT}
@@ -76,34 +75,25 @@ function ExpandedBody() {
 
       {/* Page details */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Details
-        </h4>
+        <SectionHeader>Details</SectionHeader>
         <div className="flex flex-col gap-1.5">
-          <div className="flex items-center justify-between rounded-lg border border-border-subtle bg-secondary/50 px-2.5 py-2">
-            <span className="text-xs text-muted-foreground">Title</span>
-            <span className="text-xs font-medium text-foreground">Start Your Free Trial</span>
-          </div>
-          <div className="flex items-center justify-between rounded-lg border border-border-subtle bg-secondary/50 px-2.5 py-2">
-            <span className="text-xs text-muted-foreground">Slug</span>
-            <span className="text-xs font-mono font-medium text-foreground">/summer-trial</span>
-          </div>
-          <div className="flex items-center justify-between rounded-lg border border-border-subtle bg-secondary/50 px-2.5 py-2">
-            <span className="text-xs text-muted-foreground">Status</span>
-            <Badge variant="secondary" className="text-[10px] text-chart-2">Published</Badge>
-          </div>
-          <div className="flex items-start justify-between rounded-lg border border-border-subtle bg-secondary/50 px-2.5 py-2">
-            <span className="text-xs text-muted-foreground">Staging</span>
-            <span className="max-w-[60%] truncate text-xs font-medium text-foreground">{STAGING_URL}</span>
-          </div>
+          <InfoRow label="Title" value="Start Your Free Trial" />
+          <InfoRow label="Slug" value={<span className="font-mono">/summer-trial</span>} />
+          <InfoRow
+            label="Status"
+            value={<Badge variant="secondary" className="text-badge text-chart-2">Published</Badge>}
+          />
+          <InfoRow
+            label="Staging"
+            value={<span className="max-w-[60%] truncate">{STAGING_URL}</span>}
+            className="items-start"
+          />
         </div>
       </section>
 
       {/* Model */}
       <section className="flex flex-col gap-2">
-        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Model
-        </h4>
+        <SectionHeader>Model</SectionHeader>
         <Select defaultValue="claude-sonnet-4-6">
           <SelectTrigger className="w-full">
             <SelectValue />
@@ -128,10 +118,7 @@ function ExpandedBody() {
       </Button>
 
       {/* Source info */}
-      <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
-        <Icon name="check-circle" size="xs" className="text-chart-2" />
-        Published to Webflow &middot; Mar 18, 2026
-      </div>
+      <SourceInfo>Published to Webflow &middot; Mar 18, 2026</SourceInfo>
     </div>
   );
 }
