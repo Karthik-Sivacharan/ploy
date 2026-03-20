@@ -8,6 +8,7 @@ import {
   type OnConnect,
 } from "@xyflow/react";
 import type { WorkflowNode, WorkflowEdge } from "@/lib/workflow/types";
+import { getLayoutedElements } from "@/lib/workflow/layout";
 
 interface HistoryEntry {
   nodes: WorkflowNode[];
@@ -42,6 +43,7 @@ interface WorkflowState {
   deleteNode: (id: string) => void;
   duplicateNode: (id: string) => void;
   deleteEdge: (id: string) => void;
+  layoutNodes: () => void;
   undo: () => void;
   redo: () => void;
   canUndo: () => boolean;
@@ -142,6 +144,34 @@ const INITIAL_NODES: WorkflowNode[] = [
       locked: false,
     },
   },
+  {
+    id: "instagram-ads",
+    type: "action",
+    position: { x: 800, y: 360 },
+    data: {
+      type: "action",
+      actionType: "meta-instagram-ads",
+      label: "Instagram Ads",
+      description: "Instagram ad campaign via Meta",
+      provider: "Meta",
+      enabled: true,
+      locked: false,
+    },
+  },
+  {
+    id: "push-notification",
+    type: "action",
+    position: { x: 800, y: 580 },
+    data: {
+      type: "action",
+      actionType: "onesignal-push-notification",
+      label: "Push Notification",
+      description: "Mobile push notification via OneSignal",
+      provider: "OneSignal",
+      enabled: true,
+      locked: false,
+    },
+  },
 ];
 
 const INITIAL_EDGES: WorkflowEdge[] = [
@@ -150,12 +180,19 @@ const INITIAL_EDGES: WorkflowEdge[] = [
   { id: "e-target-audience-ai", source: "target-audience", target: "ai-agent", type: "animated" },
   { id: "e-ai-landing", source: "ai-agent", target: "landing-page", type: "animated" },
   { id: "e-ai-email", source: "ai-agent", target: "email-sequence", type: "animated" },
+  { id: "e-ai-instagram", source: "ai-agent", target: "instagram-ads", type: "animated" },
+  { id: "e-ai-push", source: "ai-agent", target: "push-notification", type: "animated" },
 ];
 
+const { nodes: LAID_OUT_NODES, edges: LAID_OUT_EDGES } = getLayoutedElements(
+  INITIAL_NODES,
+  INITIAL_EDGES,
+);
+
 export const useWorkflowStore = create<WorkflowState>((set, get) => ({
-  nodes: INITIAL_NODES,
-  edges: INITIAL_EDGES,
-  selectedNodeId: null,
+  nodes: LAID_OUT_NODES,
+  edges: LAID_OUT_EDGES,
+  selectedNodeId: "ai-agent",
   selectedEdgeId: null,
   workflowName: "",
   history: [],
@@ -257,6 +294,15 @@ export const useWorkflowStore = create<WorkflowState>((set, get) => ({
       selectedEdgeId:
         state.selectedEdgeId === id ? null : state.selectedEdgeId,
     }));
+  },
+
+  layoutNodes: () => {
+    const state = get();
+    const { nodes: layoutedNodes } = getLayoutedElements(state.nodes, state.edges);
+    set({
+      ...pushHistory(state),
+      nodes: layoutedNodes,
+    });
   },
 
   undo: () => {

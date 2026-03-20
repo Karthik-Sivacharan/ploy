@@ -22,6 +22,8 @@ import { TargetAudienceBody } from "@/components/workflow/node-bodies/target-aud
 import { AiCampaignBody } from "@/components/workflow/node-bodies/ai-campaign-body";
 import { LandingPageBody } from "@/components/workflow/node-bodies/landing-page-body";
 import { EmailSequenceBody } from "@/components/workflow/node-bodies/email-sequence-body";
+import { InstagramAdsBody } from "@/components/workflow/node-bodies/instagram-ads-body";
+import { PushNotificationBody } from "@/components/workflow/node-bodies/push-notification-body";
 
 const DEFAULT_ACTION_FIELDS: Record<string, { key: string; value: string }[]> = {
   "generate-text": [
@@ -153,6 +155,26 @@ function renderNodeBody(nodeData: ActionNodeData, fields: { key: string; value: 
           <NodeFooter className="flex items-center gap-1.5 text-xs text-muted-foreground">
             <Icon name="check-circle" size="xs" className="text-chart-2" />
             Ready to send
+          </NodeFooter>
+        </>
+      );
+    case "meta-instagram-ads":
+      return (
+        <>
+          <InstagramAdsBody variant="compact" />
+          <NodeFooter className="flex items-center gap-1.5 text-xs text-muted-foreground">
+            <Icon name="clock" size="xs" className="text-muted-foreground" />
+            Campaign draft
+          </NodeFooter>
+        </>
+      );
+    case "onesignal-push-notification":
+      return (
+        <>
+          <PushNotificationBody variant="compact" />
+          <NodeFooter className="flex items-center gap-1.5 text-xs text-muted-foreground">
+            <Icon name="clock" size="xs" className="text-muted-foreground" />
+            Scheduled &middot; Jun 1, 2026
           </NodeFooter>
         </>
       );

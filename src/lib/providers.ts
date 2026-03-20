@@ -106,6 +106,13 @@ export const PROVIDERS: Record<string, ProviderConfig> = {
     colors: "bg-muted text-foreground",
   },
 
+  // --- Push Notifications ---
+  OneSignal: {
+    icon: "bell",
+    logo: "onesignal.com",
+    colors: "bg-muted text-foreground",
+  },
+
   // --- Toolbar triggers (logo-only, used in ToolbarTab) ---
   Outlook: { logo: "outlook.com", colors: "bg-muted text-foreground" },
   "RSS Feed": { logo: "rss.com", colors: "bg-muted text-foreground" },

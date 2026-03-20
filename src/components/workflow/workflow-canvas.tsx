@@ -35,16 +35,24 @@ function WorkflowCanvasInner() {
   } = useWorkflowStore();
 
   const isMobile = useIsMobile();
-  const { fitView } = useReactFlow();
+  const { fitView, getViewport, setViewport } = useReactFlow();
 
-  /* Re-center the canvas when switching between mobile/desktop layouts */
+  /* Re-center the canvas in the visible area (offset for the right sidebar on desktop) */
   useEffect(() => {
-    const timeout = setTimeout(
-      () => fitView({ padding: isMobile ? 0.5 : 0.3, maxZoom: 0.85 }),
-      100
-    );
+    const timeout = setTimeout(() => {
+      fitView({ padding: isMobile ? 0.5 : 0.3, maxZoom: 0.85 });
+
+      if (!isMobile) {
+        const styles = getComputedStyle(document.documentElement);
+        const panelWidth = parseFloat(styles.getPropertyValue("--layout-config-panel-width"));
+        const panelGap = parseFloat(styles.getPropertyValue("--layout-panel-gap")) * 16;
+        const sidebarWidth = panelWidth + panelGap;
+        const { x, y, zoom } = getViewport();
+        setViewport({ x: x - (sidebarWidth / 2), y, zoom });
+      }
+    }, 100);
     return () => clearTimeout(timeout);
-  }, [isMobile, fitView]);
+  }, [isMobile, fitView, getViewport, setViewport]);
 
   const handleNodeClick: NodeMouseHandler<Node> = useCallback(
     (_event, node) => {

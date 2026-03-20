@@ -24,11 +24,11 @@ const AVAILABLE_MODELS = [
 const CAMPAIGN_TITLE = "Peloton Summer Launch";
 
 const CAMPAIGN_PROMPT =
-  "Launch our summer campaign targeting fitness-motivated adults (25-54). Goal: drive free trial signups. Tone: empowering, warm, community-first. Generate on-brand assets across web, email, Instagram, and blog.";
+  "Launch our summer campaign targeting fitness-motivated adults (25-54). Goal: drive free trial signups. Tone: empowering, warm, community-first. Generate on-brand assets across web, email, Instagram, and push.";
 
 const CONNECTED_SOURCES = ["Frontify", "Notion", "HubSpot"] as const;
 
-const CHANNEL_OUTPUTS = ["Web", "Email", "Instagram", "Blog"] as const;
+const CHANNEL_OUTPUTS = ["Web", "Email", "Instagram", "Push"] as const;
 
 /* ── Compact variant — rendered inside the canvas node ── */
 

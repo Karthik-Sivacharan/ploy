@@ -103,6 +103,9 @@ import {
   UserGroupIcon,
   Link01Icon,
 
+  // Notifications
+  Notification03Icon,
+
   // Text formatting
   TextBoldIcon,
   TextItalicIcon,
@@ -204,6 +207,9 @@ export const icons = {
   // CRM / Audience
   "user-group": UserGroupIcon,
   "link": Link01Icon,
+
+  // Notifications
+  "bell": Notification03Icon,
 
   // Text formatting
   "text-bold": TextBoldIcon,
