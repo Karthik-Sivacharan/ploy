@@ -37,18 +37,15 @@ function WorkflowCanvasInner() {
   const isMobile = useIsMobile();
   const { fitView, getViewport, setViewport } = useReactFlow();
 
-  /* Re-center the canvas in the visible area (offset for the right sidebar on desktop) */
+  /* Re-center the canvas in the visible area (offset for sidebars on desktop) */
   useEffect(() => {
     const timeout = setTimeout(() => {
-      fitView({ padding: isMobile ? 0.5 : 0.3, maxZoom: 0.85 });
+      fitView({ padding: isMobile ? 0.5 : 0.08, maxZoom: 0.55 });
 
       if (!isMobile) {
-        const styles = getComputedStyle(document.documentElement);
-        const panelWidth = parseFloat(styles.getPropertyValue("--layout-config-panel-width"));
-        const panelGap = parseFloat(styles.getPropertyValue("--layout-panel-gap")) * 16;
-        const sidebarWidth = panelWidth + panelGap;
+        // Shift left to keep nodes visible between the two sidebars
         const { x, y, zoom } = getViewport();
-        setViewport({ x: x - (sidebarWidth / 2), y, zoom });
+        setViewport({ x: x - 120 * zoom, y, zoom });
       }
     }, 100);
     return () => clearTimeout(timeout);

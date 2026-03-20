@@ -22,7 +22,7 @@ const AVAILABLE_MODELS = [
   { id: "deepseek-r1", label: "DeepSeek R1", provider: "deepseek" },
 ] as const;
 
-const AD_IMAGE_SRC = "/assets/instagram-ads/peloton-instagram-ad.webp";
+const AD_IMAGE_SRC = "/assets/instagram-ads/peloton-instagram-ad.jpeg";
 
 const TARGETING_PILLS = ["Fitness", "25-54", "Urban"] as const;
 const EXPANDED_TARGETING_PILLS = ["Fitness", "25-54", "Urban", "Instagram Feed", "Instagram Stories"] as const;
