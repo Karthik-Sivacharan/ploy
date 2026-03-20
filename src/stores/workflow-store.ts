@@ -8,7 +8,7 @@ import {
   type OnConnect,
 } from "@xyflow/react";
 import type { WorkflowNode, WorkflowEdge } from "@/lib/workflow/types";
-import { getLayoutedElements } from "@/lib/workflow/layout";
+
 
 interface HistoryEntry {
   nodes: WorkflowNode[];
@@ -43,7 +43,7 @@ interface WorkflowState {
   deleteNode: (id: string) => void;
   duplicateNode: (id: string) => void;
   deleteEdge: (id: string) => void;
-  layoutNodes: () => void;
+
   undo: () => void;
   redo: () => void;
   canUndo: () => boolean;
@@ -296,14 +296,6 @@ export const useWorkflowStore = create<WorkflowState>((set, get) => ({
     }));
   },
 
-  layoutNodes: () => {
-    const state = get();
-    const { nodes: layoutedNodes } = getLayoutedElements(state.nodes, state.edges);
-    set({
-      ...pushHistory(state),
-      nodes: layoutedNodes,
-    });
-  },
 
   undo: () => {
     const { history, nodes, edges } = get();
