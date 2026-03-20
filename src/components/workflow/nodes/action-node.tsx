@@ -20,6 +20,8 @@ import { BrandAssetsBody } from "@/components/workflow/node-bodies/brand-assets-
 import { BrandVoiceBody } from "@/components/workflow/node-bodies/brand-voice-body";
 import { TargetAudienceBody } from "@/components/workflow/node-bodies/target-audience-body";
 import { AiCampaignBody } from "@/components/workflow/node-bodies/ai-campaign-body";
+import { LandingPageBody } from "@/components/workflow/node-bodies/landing-page-body";
+import { EmailSequenceBody } from "@/components/workflow/node-bodies/email-sequence-body";
 
 const DEFAULT_ACTION_FIELDS: Record<string, { key: string; value: string }[]> = {
   "generate-text": [
@@ -131,6 +133,26 @@ function renderNodeBody(nodeData: ActionNodeData, fields: { key: string; value: 
           <NodeFooter className="flex items-center gap-1.5 text-xs text-muted-foreground">
             <Icon name="check-circle" size="xs" className="text-chart-2" />
             Generated
+          </NodeFooter>
+        </>
+      );
+    case "webflow-landing-page":
+      return (
+        <>
+          <LandingPageBody variant="compact" />
+          <NodeFooter className="flex items-center gap-1.5 text-xs text-muted-foreground">
+            <Icon name="check-circle" size="xs" className="text-chart-2" />
+            Published
+          </NodeFooter>
+        </>
+      );
+    case "mailchimp-email-sequence":
+      return (
+        <>
+          <EmailSequenceBody variant="compact" />
+          <NodeFooter className="flex items-center gap-1.5 text-xs text-muted-foreground">
+            <Icon name="check-circle" size="xs" className="text-chart-2" />
+            Ready to send
           </NodeFooter>
         </>
       );

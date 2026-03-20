@@ -24,6 +24,8 @@ import { BrandAssetsBody } from "@/components/workflow/node-bodies/brand-assets-
 import { BrandVoiceBody } from "@/components/workflow/node-bodies/brand-voice-body";
 import { TargetAudienceBody } from "@/components/workflow/node-bodies/target-audience-body";
 import { AiCampaignBody } from "@/components/workflow/node-bodies/ai-campaign-body";
+import { LandingPageBody } from "@/components/workflow/node-bodies/landing-page-body";
+import { EmailSequenceBody } from "@/components/workflow/node-bodies/email-sequence-body";
 import type { TriggerNodeData, ActionNodeData, TriggerType } from "@/lib/workflow/types";
 
 function TriggerConfig({ nodeId, data }: { nodeId: string; data: TriggerNodeData }) {
@@ -168,6 +170,36 @@ function ActionConfig({ nodeId, data }: { nodeId: string; data: ActionNodeData }
           </div>
         </div>
         <AiCampaignBody variant="expanded" />
+      </div>
+    );
+  }
+
+  if (data.actionType === "webflow-landing-page") {
+    return (
+      <div className="flex flex-col">
+        <div className="flex items-center gap-2 border-b border-border-subtle px-4 py-3">
+          <ProviderIcon provider="Webflow" size="sm" className="shrink-0 rounded" />
+          <div className="flex flex-col">
+            <span className="text-sm font-semibold text-foreground">{data.label}</span>
+            <span className="text-xs text-muted-foreground">{data.description}</span>
+          </div>
+        </div>
+        <LandingPageBody variant="expanded" />
+      </div>
+    );
+  }
+
+  if (data.actionType === "mailchimp-email-sequence") {
+    return (
+      <div className="flex flex-col">
+        <div className="flex items-center gap-2 border-b border-border-subtle px-4 py-3">
+          <ProviderIcon provider="Mailchimp" size="sm" className="shrink-0 rounded" />
+          <div className="flex flex-col">
+            <span className="text-sm font-semibold text-foreground">{data.label}</span>
+            <span className="text-xs text-muted-foreground">{data.description}</span>
+          </div>
+        </div>
+        <EmailSequenceBody variant="expanded" />
       </div>
     );
   }

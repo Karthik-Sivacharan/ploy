@@ -114,12 +114,42 @@ const INITIAL_NODES: WorkflowNode[] = [
       width: "w-80",
     },
   },
+  {
+    id: "landing-page",
+    type: "action",
+    position: { x: 800, y: -80 },
+    data: {
+      type: "action",
+      actionType: "webflow-landing-page",
+      label: "Landing Page",
+      description: "Landing page published to Webflow",
+      provider: "Webflow",
+      enabled: true,
+      locked: false,
+    },
+  },
+  {
+    id: "email-sequence",
+    type: "action",
+    position: { x: 800, y: 480 },
+    data: {
+      type: "action",
+      actionType: "mailchimp-email-sequence",
+      label: "Email Sequence",
+      description: "3-email drip campaign via Mailchimp",
+      provider: "Mailchimp",
+      enabled: true,
+      locked: false,
+    },
+  },
 ];
 
 const INITIAL_EDGES: WorkflowEdge[] = [
   { id: "e-brand-assets-ai", source: "brand-assets", target: "ai-agent", type: "animated" },
   { id: "e-brand-voice-ai", source: "brand-voice", target: "ai-agent", type: "animated" },
   { id: "e-target-audience-ai", source: "target-audience", target: "ai-agent", type: "animated" },
+  { id: "e-ai-landing", source: "ai-agent", target: "landing-page", type: "animated" },
+  { id: "e-ai-email", source: "ai-agent", target: "email-sequence", type: "animated" },
 ];
 
 export const useWorkflowStore = create<WorkflowState>((set, get) => ({

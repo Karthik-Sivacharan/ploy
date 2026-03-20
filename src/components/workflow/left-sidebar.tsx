@@ -19,9 +19,9 @@ import { useWorkflowStore } from "@/stores/workflow-store";
 import type { IconName } from "@/lib/icons";
 
 const WORKFLOWS = [
-  { id: "1", name: "Chatbot with Internal …" },
-  { id: "2", name: "Automated Gmail Lab…" },
-  { id: "3", name: "Support Ticket Router" },
+  { id: "1", name: "Q1 Product Launch GTM" },
+  { id: "2", name: "Inbound Lead Nurture Se…" },
+  { id: "3", name: "Multi-Channel Ad Campa…" },
 ] as const;
 
 const bottomItems: { icon: IconName; label: string }[] = [
