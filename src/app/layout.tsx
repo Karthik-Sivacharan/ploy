@@ -25,7 +25,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ploy — AI-Native Marketing Platform",
+  title: "AI-Native Marketing Platform",
   description: "One platform for brand, website, and multi-channel growth",
 };
 
