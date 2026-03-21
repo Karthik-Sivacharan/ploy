@@ -8,6 +8,7 @@ import {
   type OnConnect,
 } from "@xyflow/react";
 import type { WorkflowNode, WorkflowEdge } from "@/lib/workflow/types";
+import { getLayoutedElements } from "@/lib/workflow/layout";
 
 
 interface HistoryEntry {
