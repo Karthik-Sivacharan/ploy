@@ -79,6 +79,7 @@
   --duration-fast: 150ms;
   --duration-normal: 200ms;
   --duration-panel: 250ms;
+  --duration-moderate: 300ms;
   --duration-slow: 400ms;
 
   /* Easing curves (from animations.dev — sorted weak → strong) */
@@ -87,16 +88,34 @@
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);        /* quart — on-screen movement */
   --ease-hover: cubic-bezier(0.25, 0.1, 0.25, 1);        /* ease — hover/color changes */
 
-  /* ── Node-content font sizes ── */
+  /* ── Typography scale ── */
   --font-size-caption: 9px;
   --font-size-badge: 10px;
   --font-size-detail: 11px;
+  --font-size-body-sm: 0.8125rem;   /* 13px */
+  --font-size-body: 0.875rem;       /* 14px */
+  --font-size-body-lg: 1rem;        /* 16px */
+  --font-size-heading-sm: 1.125rem; /* 18px */
+  --font-size-heading: 1.25rem;     /* 20px */
+  --font-size-heading-lg: 1.5rem;   /* 24px */
+  --font-size-heading-xl: 2rem;     /* 32px */
 
   /* ── Icon size tokens ── */
   --icon-xs: 14px;
   --icon-sm: 16px;
   --icon-md: 20px;
   --icon-lg: 24px;
+
+  /* ── Z-index scale ── */
+  --z-base: 0;
+  --z-raised: 10;
+  --z-popup: 50;
+  --z-modal: 100;
+
+  /* ── Focus ring ── */
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 0px;
+  --focus-ring-color: var(--ring);
 
   /* ── Layout tokens ── */
   --layout-sidebar-width: 208px;

@@ -26,7 +26,7 @@ export const Node = ({ handles, className, toolbar, ...props }: NodeProps) => (
     {toolbar}
     <Card
       className={cn(
-        "node-container relative h-auto gap-0 overflow-visible rounded-2xl p-0 transition-shadow duration-300 hover:shadow-glow-blue",
+        "node-container relative h-auto gap-0 overflow-visible rounded-2xl p-0 transition-shadow duration-[var(--duration-moderate)] hover:shadow-glow-blue",
         className
       )}
       {...props}
@@ -107,7 +107,7 @@ export const NodeStatusBar = ({ status, className, ...props }: NodeStatusBarProp
 
   const colorMap = {
     running: "bg-primary",
-    success: "bg-chart-2",
+    success: "bg-success",
     error: "bg-destructive",
   };
 
