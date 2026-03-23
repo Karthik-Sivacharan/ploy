@@ -105,7 +105,53 @@ Open [http://localhost:3000](http://localhost:3000).
 npm run dev          # Start dev server (Turbopack)
 npm run build        # Production build
 npm run lint         # ESLint
+npm run storybook    # Storybook dev server (localhost:6006)
+npm run build-storybook  # Build static Storybook
 ```
+
+---
+
+## Storybook & Chromatic
+
+Visual component catalog covering all design system tokens, UI primitives, workflow nodes, and page compositions.
+
+### Run Storybook locally
+
+```bash
+npm run storybook
+```
+
+Opens at [http://localhost:6006](http://localhost:6006).
+
+### Build static Storybook
+
+```bash
+npm run build-storybook
+```
+
+Output goes to `storybook-static/` (gitignored).
+
+### Chromatic (Visual Testing & Auto-Publishing)
+
+Chromatic publishes Storybook on every push via GitHub Actions, giving the team a shareable URL with visual diffs.
+
+**Setup (one-time):**
+
+1. Sign up at [chromatic.com/start](https://www.chromatic.com/start) with your GitHub account
+2. Select the `ploy` repository
+3. Copy the `CHROMATIC_PROJECT_TOKEN`
+4. Add it as a GitHub Actions secret:
+   - Go to **Settings > Secrets and variables > Actions** in the GitHub repo
+   - Click **New repository secret**
+   - Name: `CHROMATIC_PROJECT_TOKEN`, Value: paste the token
+
+**Manual publish:**
+
+```bash
+npx chromatic --project-token=<your-token>
+```
+
+The `.github/workflows/chromatic.yml` workflow handles CI — it runs automatically on every push.
 
 ---
 
