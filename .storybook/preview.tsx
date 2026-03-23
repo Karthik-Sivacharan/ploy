@@ -1,6 +1,7 @@
 import type { Preview } from "@storybook/nextjs-vite";
 import { withThemeByClassName } from "@storybook/addon-themes";
 import "../src/app/globals.css";
+import "./fonts.css";
 
 const preview: Preview = {
   decorators: [
@@ -11,6 +12,19 @@ const preview: Preview = {
       },
       defaultTheme: "light",
     }),
+    // Set the CSS variable that next/font would normally set, and apply antialiased
+    (Story) => (
+      <div
+        style={{
+          "--font-clash-grotesk": '"Clash Grotesk"',
+          fontFamily:
+            'var(--font-clash-grotesk), ui-sans-serif, system-ui, sans-serif',
+        } as React.CSSProperties}
+        className="antialiased"
+      >
+        <Story />
+      </div>
+    ),
   ],
   parameters: {
     nextjs: {

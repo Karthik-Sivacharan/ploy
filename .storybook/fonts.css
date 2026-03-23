@@ -1,0 +1,44 @@
+/* Manual @font-face declarations for Storybook.
+   next/font/local only works inside Next.js — Storybook needs raw CSS. */
+
+@font-face {
+  font-family: "Clash Grotesk";
+  src: url("../src/app/fonts/ClashGrotesk-Extralight.woff2") format("woff2");
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clash Grotesk";
+  src: url("../src/app/fonts/ClashGrotesk-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clash Grotesk";
+  src: url("../src/app/fonts/ClashGrotesk-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clash Grotesk";
+  src: url("../src/app/fonts/ClashGrotesk-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clash Grotesk";
+  src: url("../src/app/fonts/ClashGrotesk-Semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clash Grotesk";
+  src: url("../src/app/fonts/ClashGrotesk-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
