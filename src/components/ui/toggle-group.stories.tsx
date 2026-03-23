@@ -14,6 +14,16 @@ type Story = StoryObj<typeof meta>
 export const Horizontal: Story = {
   render: () => (
     <ToggleGroup defaultValue={["bold"]} spacing={0}>
+      <ToggleGroupItem value="bold">Bold</ToggleGroupItem>
+      <ToggleGroupItem value="italic">Italic</ToggleGroupItem>
+      <ToggleGroupItem value="underline">Underline</ToggleGroupItem>
+    </ToggleGroup>
+  ),
+}
+
+export const HorizontalWithIcons: Story = {
+  render: () => (
+    <ToggleGroup defaultValue={["bold"]} spacing={0}>
       <ToggleGroupItem value="bold" aria-label="Bold">
         <Icon name="text" size="sm" />
       </ToggleGroupItem>
