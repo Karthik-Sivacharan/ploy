@@ -5,3 +5,6 @@ node_modules/
 .env*.local
 .vercel
 storybook-static/
+build-storybook.log
+.DS_Store
+tsconfig.tsbuildinfo
