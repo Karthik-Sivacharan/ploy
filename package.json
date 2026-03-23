@@ -54,10 +54,8 @@
     "zustand": "^5.0.11"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^5.0.2",
     "@storybook/addon-a11y": "^10.3.3",
     "@storybook/addon-docs": "^10.3.3",
-    "@storybook/addon-onboarding": "^10.3.3",
     "@storybook/addon-themes": "^10.3.3",
     "@storybook/addon-vitest": "^10.3.3",
     "@storybook/nextjs-vite": "^10.3.3",
@@ -68,7 +66,6 @@
     "@types/react-dom": "^19",
     "@vitest/browser-playwright": "^4.1.1",
     "@vitest/coverage-v8": "^4.1.1",
-    "chromatic": "^16.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "eslint-plugin-storybook": "^10.3.3",
