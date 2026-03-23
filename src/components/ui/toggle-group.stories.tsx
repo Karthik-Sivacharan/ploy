@@ -13,7 +13,7 @@ type Story = StoryObj<typeof meta>
 
 export const Horizontal: Story = {
   render: () => (
-    <ToggleGroup defaultValue={["bold"]}>
+    <ToggleGroup defaultValue={["bold"]} spacing={0}>
       <ToggleGroupItem value="bold" aria-label="Bold">
         <Icon name="text" size="sm" />
       </ToggleGroupItem>
@@ -59,7 +59,7 @@ export const VariantOutline: Story = {
 
 export const SingleSelection: Story = {
   render: () => (
-    <ToggleGroup toggleMultiple={false} defaultValue={["one"]}>
+    <ToggleGroup defaultValue={["one"]}>
       <ToggleGroupItem value="one">One</ToggleGroupItem>
       <ToggleGroupItem value="two">Two</ToggleGroupItem>
       <ToggleGroupItem value="three">Three</ToggleGroupItem>
@@ -69,7 +69,7 @@ export const SingleSelection: Story = {
 
 export const MultiSelection: Story = {
   render: () => (
-    <ToggleGroup toggleMultiple defaultValue={["a", "c"]}>
+    <ToggleGroup multiple defaultValue={["a", "c"]}>
       <ToggleGroupItem value="a">A</ToggleGroupItem>
       <ToggleGroupItem value="b">B</ToggleGroupItem>
       <ToggleGroupItem value="c">C</ToggleGroupItem>
