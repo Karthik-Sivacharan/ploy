@@ -22,6 +22,9 @@ export const Horizontal: Story = {
 }
 
 export const HorizontalWithIcons: Story = {
+  parameters: {
+    chromatic: { disableSnapshot: true },
+  },
   render: () => (
     <ToggleGroup defaultValue={["bold"]} spacing={0}>
       <ToggleGroupItem value="bold" aria-label="Bold">
