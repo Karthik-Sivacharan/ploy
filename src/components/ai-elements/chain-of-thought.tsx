@@ -1,6 +1,6 @@
 "use client";
 
-import type { LucideIcon } from "lucide-react";
+import type { IconName } from "@/lib/icons";
 import type { ComponentProps, ReactNode } from "react";
 
 import { useControllableState } from "@radix-ui/react-use-controllable-state";
@@ -11,7 +11,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { cn } from "@/lib/utils";
-import { BrainIcon, ChevronDownIcon, DotIcon } from "lucide-react";
+import { Icon } from "@/components/ui/icon";
 import { createContext, memo, useContext, useMemo } from "react";
 
 interface ChainOfThoughtContextValue {
@@ -86,13 +86,15 @@ export const ChainOfThoughtHeader = memo(
           )}
           {...props}
         >
-          <BrainIcon className="size-4" />
+          <Icon name="brain" size="xs" />
           <span className="flex-1 text-left">
             {children ?? "Chain of Thought"}
           </span>
-          <ChevronDownIcon
+          <Icon
+            name="chevron-down"
+            size="xs"
             className={cn(
-              "size-4 transition-transform",
+              "transition-transform",
               isOpen ? "rotate-180" : "rotate-0"
             )}
           />
@@ -103,7 +105,7 @@ export const ChainOfThoughtHeader = memo(
 );
 
 export type ChainOfThoughtStepProps = ComponentProps<"div"> & {
-  icon?: LucideIcon;
+  icon?: IconName;
   label: ReactNode;
   description?: ReactNode;
   status?: "complete" | "active" | "pending";
@@ -118,7 +120,7 @@ const stepStatusStyles = {
 export const ChainOfThoughtStep = memo(
   ({
     className,
-    icon: Icon = DotIcon,
+    icon: iconName = "dot",
     label,
     description,
     status = "complete",
@@ -135,7 +137,7 @@ export const ChainOfThoughtStep = memo(
       {...props}
     >
       <div className="relative mt-0.5">
-        <Icon className="size-4" />
+        <Icon name={iconName} size="xs" />
         <div className="absolute top-7 bottom-0 left-1/2 -mx-px w-px bg-border" />
       </div>
       <div className="flex-1 space-y-2 overflow-hidden">

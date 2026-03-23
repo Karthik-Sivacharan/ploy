@@ -4,7 +4,7 @@ import type { HTMLAttributes } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { ArrowRightIcon, MinusIcon, PackageIcon, PlusIcon } from "lucide-react";
+import { Icon } from "@/components/ui/icon";
 import { createContext, useContext } from "react";
 
 type ChangeType = "major" | "minor" | "patch" | "added" | "removed";
@@ -82,7 +82,7 @@ export const PackageInfoName = ({
 
   return (
     <div className={cn("flex items-center gap-2", className)} {...props}>
-      <PackageIcon className="size-4 text-muted-foreground" />
+      <Icon name="package" size="xs" className="text-muted-foreground" />
       <span className="font-medium font-mono text-sm">{children ?? name}</span>
     </div>
   );
@@ -98,11 +98,11 @@ const changeTypeStyles: Record<ChangeType, string> = {
 };
 
 const changeTypeIcons: Record<ChangeType, React.ReactNode> = {
-  added: <PlusIcon className="size-3" />,
-  major: <ArrowRightIcon className="size-3" />,
-  minor: <ArrowRightIcon className="size-3" />,
-  patch: <ArrowRightIcon className="size-3" />,
-  removed: <MinusIcon className="size-3" />,
+  added: <Icon name="plus" size={12} />,
+  major: <Icon name="arrow-right" size={12} />,
+  minor: <Icon name="arrow-right" size={12} />,
+  patch: <Icon name="arrow-right" size={12} />,
+  removed: <Icon name="minus" size={12} />,
 };
 
 export type PackageInfoChangeTypeProps = HTMLAttributes<HTMLDivElement>;
@@ -159,7 +159,7 @@ export const PackageInfoVersion = ({
         <>
           {currentVersion && <span>{currentVersion}</span>}
           {currentVersion && newVersion && (
-            <ArrowRightIcon className="size-3" />
+            <Icon name="arrow-right" size={12} />
           )}
           {newVersion && (
             <span className="font-medium text-foreground">{newVersion}</span>

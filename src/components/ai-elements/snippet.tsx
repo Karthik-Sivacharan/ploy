@@ -10,7 +10,7 @@ import {
   InputGroupText,
 } from "@/components/ui/input-group";
 import { cn } from "@/lib/utils";
-import { CheckIcon, CopyIcon } from "lucide-react";
+import { Icon } from "@/components/ui/icon";
 import {
   createContext,
   useCallback,
@@ -124,7 +124,7 @@ export const SnippetCopyButton = ({
     []
   );
 
-  const Icon = isCopied ? CheckIcon : CopyIcon;
+  const iconName = isCopied ? "tick" : "copy";
 
   return (
     <InputGroupButton
@@ -135,7 +135,7 @@ export const SnippetCopyButton = ({
       title="Copy"
       {...props}
     >
-      {children ?? <Icon className="size-3.5" size={14} />}
+      {children ?? <Icon name={iconName} size="xs" />}
     </InputGroupButton>
   );
 };

@@ -10,14 +10,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { cn } from "@/lib/utils";
-import {
-  CheckIcon,
-  CopyIcon,
-  FileIcon,
-  GitCommitIcon,
-  MinusIcon,
-  PlusIcon,
-} from "lucide-react";
+import { Icon } from "@/components/ui/icon";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export type CommitProps = ComponentProps<typeof Collapsible>;
@@ -52,7 +45,7 @@ export const CommitHash = ({
   ...props
 }: CommitHashProps) => (
   <span className={cn("font-mono text-xs", className)} {...props}>
-    <GitCommitIcon className="mr-1 inline-block size-3" />
+    <Icon name="git-commit" size={12} className="mr-1 inline-block" />
     {children}
   </span>
 );
@@ -237,7 +230,7 @@ export const CommitCopyButton = ({
     []
   );
 
-  const Icon = isCopied ? CheckIcon : CopyIcon;
+  const iconName = isCopied ? "tick" : "copy";
 
   return (
     <Button
@@ -247,7 +240,7 @@ export const CommitCopyButton = ({
       variant="ghost"
       {...props}
     >
-      {children ?? <Icon size={14} />}
+      {children ?? <Icon name={iconName} size="xs" />}
     </Button>
   );
 };
@@ -342,16 +335,14 @@ export const CommitFileStatus = ({
   </span>
 );
 
-export type CommitFileIconProps = ComponentProps<typeof FileIcon>;
+export type CommitFileIconProps = {
+  className?: string;
+};
 
 export const CommitFileIcon = ({
   className,
-  ...props
 }: CommitFileIconProps) => (
-  <FileIcon
-    className={cn("size-3.5 shrink-0 text-muted-foreground", className)}
-    {...props}
-  />
+  <Icon name="file" size="xs" className={cn("shrink-0 text-muted-foreground", className)} />
 );
 
 export type CommitFilePathProps = HTMLAttributes<HTMLSpanElement>;
@@ -405,7 +396,7 @@ export const CommitFileAdditions = ({
     >
       {children ?? (
         <>
-          <PlusIcon className="inline-block size-3" />
+          <Icon name="plus" size={12} className="inline-block" />
           {count}
         </>
       )}
@@ -434,7 +425,7 @@ export const CommitFileDeletions = ({
     >
       {children ?? (
         <>
-          <MinusIcon className="inline-block size-3" />
+          <Icon name="minus" size={12} className="inline-block" />
           {count}
         </>
       )}

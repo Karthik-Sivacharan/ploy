@@ -16,7 +16,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
-import { ChevronDownIcon } from "lucide-react";
+import { Icon } from "@/components/ui/icon";
 import {
   createContext,
   useCallback,
@@ -223,9 +223,11 @@ export const WebPreviewConsole = ({
       {...props}
     >
       <CollapsibleTrigger render={<Button className="flex w-full items-center justify-between p-4 text-left font-medium hover:bg-muted/50" variant="ghost" />}>Console
-                    <ChevronDownIcon
+                    <Icon
+                      name="chevron-down"
+                      size="xs"
                       className={cn(
-                        "h-4 w-4 transition-transform duration-200",
+                        "transition-transform duration-200",
                         consoleOpen && "rotate-180"
                       )}
                     /></CollapsibleTrigger>

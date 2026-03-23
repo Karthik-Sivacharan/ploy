@@ -19,7 +19,7 @@ import { cjk } from "@streamdown/cjk";
 import { code } from "@streamdown/code";
 import { math } from "@streamdown/math";
 import { mermaid } from "@streamdown/mermaid";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { Icon } from "@/components/ui/icon";
 import {
   createContext,
   memo,
@@ -271,7 +271,7 @@ export const MessageBranchPrevious = ({
       variant="ghost"
       {...props}
     >
-      {children ?? <ChevronLeftIcon size={14} />}
+      {children ?? <Icon name="chevron-left" size="xs" />}
     </Button>
   );
 };
@@ -294,7 +294,7 @@ export const MessageBranchNext = ({
       variant="ghost"
       {...props}
     >
-      {children ?? <ChevronRightIcon size={14} />}
+      {children ?? <Icon name="chevron-right" size="xs" />}
     </Button>
   );
 };

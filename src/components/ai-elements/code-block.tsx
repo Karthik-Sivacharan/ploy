@@ -17,7 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
-import { CheckIcon, CopyIcon } from "lucide-react";
+import { Icon } from "@/components/ui/icon";
 import {
   createContext,
   memo,
@@ -488,7 +488,7 @@ export const CodeBlockCopyButton = ({
     []
   );
 
-  const Icon = isCopied ? CheckIcon : CopyIcon;
+  const iconName = isCopied ? "tick" : "copy";
 
   return (
     <Button
@@ -498,7 +498,7 @@ export const CodeBlockCopyButton = ({
       variant="ghost"
       {...props}
     >
-      {children ?? <Icon size={14} />}
+      {children ?? <Icon name={iconName} size="xs" />}
     </Button>
   );
 };

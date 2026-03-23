@@ -23,17 +23,7 @@ import {
 } from "@/components/ui/dialog";
 import { Spinner } from "@/components/ui/spinner";
 import { cn } from "@/lib/utils";
-import {
-  CircleSmallIcon,
-  MarsIcon,
-  MarsStrokeIcon,
-  NonBinaryIcon,
-  PauseIcon,
-  PlayIcon,
-  TransgenderIcon,
-  VenusAndMarsIcon,
-  VenusIcon,
-} from "lucide-react";
+import { Icon } from "@/components/ui/icon";
 import { createContext, useCallback, useContext, useMemo } from "react";
 
 interface VoiceSelectorContextValue {
@@ -203,31 +193,31 @@ export const VoiceSelectorGender = ({
 
   switch (value) {
     case "male": {
-      icon = <MarsIcon className="size-4" />;
+      icon = <Icon name="circle" size="xs" />;
       break;
     }
     case "female": {
-      icon = <VenusIcon className="size-4" />;
+      icon = <Icon name="circle" size="xs" />;
       break;
     }
     case "transgender": {
-      icon = <TransgenderIcon className="size-4" />;
+      icon = <Icon name="circle" size="xs" />;
       break;
     }
     case "androgyne": {
-      icon = <MarsStrokeIcon className="size-4" />;
+      icon = <Icon name="circle" size="xs" />;
       break;
     }
     case "non-binary": {
-      icon = <NonBinaryIcon className="size-4" />;
+      icon = <Icon name="circle" size="xs" />;
       break;
     }
     case "intersex": {
-      icon = <VenusAndMarsIcon className="size-4" />;
+      icon = <Icon name="circle" size="xs" />;
       break;
     }
     default: {
-      icon = <CircleSmallIcon className="size-4" />;
+      icon = <Icon name="dot" size="xs" />;
     }
   }
 
@@ -500,12 +490,12 @@ export const VoiceSelectorPreview = ({
     [onClick, onPlay]
   );
 
-  let icon = <PlayIcon className="size-3" />;
+  let icon = <Icon name="play" size={12} />;
 
   if (loading) {
     icon = <Spinner className="size-3" />;
   } else if (playing) {
-    icon = <PauseIcon className="size-3" />;
+    icon = <Icon name="pause" size={12} />;
   }
 
   return (

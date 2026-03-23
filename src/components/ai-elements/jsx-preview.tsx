@@ -4,7 +4,7 @@ import type { ComponentProps, ReactNode } from "react";
 import type { TProps as JsxParserProps } from "react-jsx-parser";
 
 import { cn } from "@/lib/utils";
-import { AlertCircle } from "lucide-react";
+import { Icon } from "@/components/ui/icon";
 import {
   createContext,
   memo,
@@ -238,7 +238,7 @@ export const JSXPreviewError = memo(
           renderChildren(children, error)
         ) : (
           <>
-            <AlertCircle className="size-4 shrink-0" />
+            <Icon name="alert-triangle" size="xs" className="shrink-0" />
             <span>{error.message}</span>
           </>
         )}

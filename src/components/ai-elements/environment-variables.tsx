@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
-import { CheckIcon, CopyIcon, EyeIcon, EyeOffIcon } from "lucide-react";
+import { Icon } from "@/components/ui/icon";
 import {
   createContext,
   useCallback,
@@ -116,7 +116,7 @@ export const EnvironmentVariablesToggle = ({
   return (
     <div className={cn("flex items-center gap-2", className)}>
       <span className="text-muted-foreground text-xs">
-        {showValues ? <EyeIcon size={14} /> : <EyeOffIcon size={14} />}
+        {showValues ? <Icon name="eye" size="xs" /> : <Icon name="eye-off" size="xs" />}
       </span>
       <Switch
         aria-label="Toggle value visibility"
@@ -297,7 +297,7 @@ export const EnvironmentVariableCopyButton = ({
     []
   );
 
-  const Icon = isCopied ? CheckIcon : CopyIcon;
+  const iconName = isCopied ? "tick" : "copy";
 
   return (
     <Button
@@ -307,7 +307,7 @@ export const EnvironmentVariableCopyButton = ({
       variant="ghost"
       {...props}
     >
-      {children ?? <Icon size={12} />}
+      {children ?? <Icon name={iconName} size={12} />}
     </Button>
   );
 };

@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { BotIcon } from "lucide-react";
+import { Icon } from "@/components/ui/icon";
 import { memo } from "react";
 
 import { CodeBlock } from "./code-block";
@@ -40,7 +40,7 @@ export const AgentHeader = memo(
       {...props}
     >
       <div className="flex items-center gap-2">
-        <BotIcon className="size-4 text-muted-foreground" />
+        <Icon name="bot" size="xs" className="text-muted-foreground" />
         <span className="font-medium text-sm">{name}</span>
         {model && (
           <Badge className="font-mono text-xs" variant="secondary">

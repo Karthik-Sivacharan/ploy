@@ -10,15 +10,8 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { cn } from "@/lib/utils";
-import {
-  FileTextIcon,
-  GlobeIcon,
-  ImageIcon,
-  Music2Icon,
-  PaperclipIcon,
-  VideoIcon,
-  XIcon,
-} from "lucide-react";
+import { Icon } from "@/components/ui/icon";
+import type { IconName } from "@/lib/icons";
 import { createContext, useCallback, useContext, useMemo } from "react";
 
 // ============================================================================
@@ -39,13 +32,13 @@ export type AttachmentMediaCategory =
 
 export type AttachmentVariant = "grid" | "inline" | "list";
 
-const mediaCategoryIcons: Record<AttachmentMediaCategory, typeof ImageIcon> = {
-  audio: Music2Icon,
-  document: FileTextIcon,
-  image: ImageIcon,
-  source: GlobeIcon,
-  unknown: PaperclipIcon,
-  video: VideoIcon,
+const mediaCategoryIcons: Record<AttachmentMediaCategory, IconName> = {
+  audio: "music",
+  document: "file-text",
+  image: "image",
+  source: "globe",
+  unknown: "paperclip",
+  video: "video",
 };
 
 // ============================================================================
@@ -241,10 +234,10 @@ export const AttachmentPreview = ({
 }: AttachmentPreviewProps) => {
   const { data, mediaCategory, variant } = useAttachmentContext();
 
-  const iconSize = variant === "inline" ? "size-3" : "size-4";
+  const iconSize = variant === "inline" ? 12 : "xs";
 
-  const renderIcon = (Icon: typeof ImageIcon) => (
-    <Icon className={cn(iconSize, "text-muted-foreground")} />
+  const renderIcon = (iconName: IconName) => (
+    <Icon name={iconName} size={iconSize} className="text-muted-foreground" />
   );
 
   const renderContent = () => {
@@ -256,8 +249,8 @@ export const AttachmentPreview = ({
       return <video className="size-full object-cover" muted src={data.url} />;
     }
 
-    const Icon = mediaCategoryIcons[mediaCategory];
-    return fallbackIcon ?? renderIcon(Icon);
+    const iconName = mediaCategoryIcons[mediaCategory];
+    return fallbackIcon ?? renderIcon(iconName);
   };
 
   return (
@@ -360,7 +353,7 @@ export const AttachmentRemove = ({
       variant="ghost"
       {...props}
     >
-      {children ?? <XIcon />}
+      {children ?? <Icon name="close" size="xs" />}
       <span className="sr-only">{label}</span>
     </Button>
   );

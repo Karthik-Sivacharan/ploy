@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/collapsible";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
-import { ChevronDownIcon, PaperclipIcon } from "lucide-react";
+import { Icon } from "@/components/ui/icon";
 
 export interface QueueMessagePart {
   type: string;
@@ -175,7 +175,7 @@ export const QueueItemFile = ({
     )}
     {...props}
   >
-    <PaperclipIcon size={12} />
+    <Icon name="paperclip" size={12} />
     <span className="max-w-[100px] truncate">{children}</span>
   </span>
 );
@@ -234,7 +234,7 @@ export const QueueSectionLabel = ({
   ...props
 }: QueueSectionLabelProps) => (
   <span className={cn("flex items-center gap-2", className)} {...props}>
-    <ChevronDownIcon className="size-4 transition-transform group-data-[state=closed]:-rotate-90" />
+    <Icon name="chevron-down" size="xs" className="transition-transform group-data-[state=closed]:-rotate-90" />
     {icon}
     <span>
       {count} {label}

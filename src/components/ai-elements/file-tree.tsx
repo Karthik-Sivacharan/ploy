@@ -8,12 +8,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { cn } from "@/lib/utils";
-import {
-  ChevronRightIcon,
-  FileIcon,
-  FolderIcon,
-  FolderOpenIcon,
-} from "lucide-react";
+import { Icon } from "@/components/ui/icon";
 import {
   createContext,
   useCallback,
@@ -149,16 +144,18 @@ export const FileTreeFolder = ({
           <CollapsibleTrigger render={<button className={cn(
                                   "flex w-full items-center gap-1 rounded px-2 py-1 text-left transition-colors hover:bg-muted/50",
                                   isSelected && "bg-muted"
-                                )} onClick={handleSelect} type="button" />}><ChevronRightIcon
+                                )} onClick={handleSelect} type="button" />}><Icon
+                                  name="chevron-right"
+                                  size="xs"
                                   className={cn(
-                                    "size-4 shrink-0 text-muted-foreground transition-transform",
+                                    "shrink-0 text-muted-foreground transition-transform",
                                     isExpanded && "rotate-90"
                                   )}
                                 /><FileTreeIcon>
                                   {isExpanded ? (
-                                    <FolderOpenIcon className="size-4 text-primary" />
+                                    <Icon name="folder-open" size="xs" className="text-primary" />
                                   ) : (
-                                    <FolderIcon className="size-4 text-primary" />
+                                    <Icon name="folder" size="xs" className="text-primary" />
                                   )}
                                 </FileTreeIcon><FileTreeName>{name}</FileTreeName></CollapsibleTrigger>
           <CollapsibleContent>
@@ -231,7 +228,7 @@ export const FileTreeFile = ({
             {/* Spacer for alignment */}
             <span className="size-4" />
             <FileTreeIcon>
-              {icon ?? <FileIcon className="size-4 text-muted-foreground" />}
+              {icon ?? <Icon name="file" size="xs" className="text-muted-foreground" />}
             </FileTreeIcon>
             <FileTreeName>{name}</FileTreeName>
           </>

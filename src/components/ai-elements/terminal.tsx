@@ -5,7 +5,7 @@ import type { ComponentProps, HTMLAttributes } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Ansi from "ansi-to-react";
-import { CheckIcon, CopyIcon, TerminalIcon, Trash2Icon } from "lucide-react";
+import { Icon } from "@/components/ui/icon";
 import {
   createContext,
   useCallback,
@@ -110,7 +110,7 @@ export const TerminalTitle = ({
     className={cn("flex items-center gap-2 text-sm text-zinc-400", className)}
     {...props}
   >
-    <TerminalIcon className="size-4" />
+    <Icon name="terminal" size="xs" />
     {children ?? "Terminal"}
   </div>
 );
@@ -191,7 +191,7 @@ export const TerminalCopyButton = ({
     []
   );
 
-  const Icon = isCopied ? CheckIcon : CopyIcon;
+  const iconName = isCopied ? "tick" : "copy";
 
   return (
     <Button
@@ -204,7 +204,7 @@ export const TerminalCopyButton = ({
       variant="ghost"
       {...props}
     >
-      {children ?? <Icon size={14} />}
+      {children ?? <Icon name={iconName} size="xs" />}
     </Button>
   );
 };
@@ -233,7 +233,7 @@ export const TerminalClearButton = ({
       variant="ghost"
       {...props}
     >
-      {children ?? <Trash2Icon size={14} />}
+      {children ?? <Icon name="delete" size="xs" />}
     </Button>
   );
 };

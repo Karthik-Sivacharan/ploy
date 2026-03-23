@@ -4,7 +4,7 @@ import type { ComponentProps } from "react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ArrowDownIcon, DownloadIcon } from "lucide-react";
+import { Icon } from "@/components/ui/icon";
 import { useCallback } from "react";
 import { StickToBottom, useStickToBottomContext } from "use-stick-to-bottom";
 
@@ -94,7 +94,7 @@ export const ConversationScrollButton = ({
         variant="outline"
         {...props}
       >
-        <ArrowDownIcon className="size-4" />
+        <Icon name="arrow-down" size="xs" />
       </Button>
     )
   );
@@ -161,7 +161,7 @@ export const ConversationDownload = ({
       variant="outline"
       {...props}
     >
-      {children ?? <DownloadIcon className="size-4" />}
+      {children ?? <Icon name="download" size="xs" />}
     </Button>
   );
 };
