@@ -262,7 +262,7 @@
   --success: var(--green-600);
   --success-foreground: oklch(0.985 0 0);
   --success-muted: var(--green-100);
-  --success-muted-foreground: var(--green-800);
+  --success-muted-foreground: var(--green-900);
   /* Warning — amber-derived */
   --warning: var(--amber-400);
   --warning-foreground: var(--amber-900);
@@ -337,7 +337,7 @@
   --success: var(--green-400);
   --success-foreground: oklch(0.985 0 0);
   --success-muted: var(--green-950);
-  --success-muted-foreground: var(--green-300);
+  --success-muted-foreground: var(--green-400);
   /* Warning — amber-derived */
   --warning: var(--amber-400);
   --warning-foreground: var(--amber-900);
