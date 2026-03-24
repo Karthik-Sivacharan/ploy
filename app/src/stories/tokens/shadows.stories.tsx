@@ -21,7 +21,7 @@ function ShadowCard({
       className={`bg-card ${shadowClass} rounded-xl p-6 min-w-[200px] min-h-[120px] flex flex-col justify-between`}
     >
       <p className="text-sm font-semibold text-foreground">{label}</p>
-      <span className="text-[11px] text-muted-foreground mt-2">
+      <span className="text-detail text-muted-foreground mt-2">
         {shadowClass}
       </span>
     </div>

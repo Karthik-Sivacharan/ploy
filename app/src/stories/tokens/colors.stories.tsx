@@ -23,7 +23,7 @@ function Swatch({
       className={`${bg} ${fg} rounded-lg p-4 min-w-[140px] flex flex-col gap-1`}
     >
       <span className="text-xs font-semibold">{label}</span>
-      <span className="text-[11px] opacity-70">Aa Bb Cc</span>
+      <span className="text-detail opacity-70">Aa Bb Cc</span>
     </div>
   );
 }
