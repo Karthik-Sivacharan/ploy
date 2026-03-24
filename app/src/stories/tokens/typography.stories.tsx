@@ -29,7 +29,7 @@ export const TypeScale: Story = {
         <div key={step.name} className="flex items-baseline gap-6">
           <div className="w-28 text-right shrink-0">
             <p className="text-xs font-semibold text-foreground">{step.name}</p>
-            <p className="text-[10px] text-muted-foreground">{step.size}</p>
+            <p className="text-badge text-muted-foreground">{step.size}</p>
           </div>
           <p
             className="text-foreground"

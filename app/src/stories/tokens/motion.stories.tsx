@@ -40,7 +40,7 @@ function DurationBox({
     <div className="flex items-center gap-4">
       <div className="w-28 text-right">
         <p className="text-sm font-semibold text-foreground">{name}</p>
-        <p className="text-[11px] text-muted-foreground">{value}</p>
+        <p className="text-detail text-muted-foreground">{value}</p>
       </div>
       <div className="flex-1 h-12 bg-muted rounded-lg relative overflow-hidden">
         <div
@@ -73,7 +73,7 @@ function EasingBox({
     <div className="flex items-center gap-4">
       <div className="w-32 text-right">
         <p className="text-sm font-semibold text-foreground">{name}</p>
-        <p className="text-[11px] text-muted-foreground">{desc}</p>
+        <p className="text-detail text-muted-foreground">{desc}</p>
       </div>
       <div className="flex-1 h-12 bg-muted rounded-lg relative overflow-hidden">
         <div
