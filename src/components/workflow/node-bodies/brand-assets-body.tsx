@@ -3,7 +3,9 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
-import { SectionHeader, InfoRow, SourceInfo } from "@/components/workflow/node-bodies/shared";
+import { SectionHeader } from "@/components/ui/section-header";
+import { InfoRow } from "@/components/ui/info-row";
+import { SourceInfo } from "@/components/ui/source-info";
 
 const BRAND_NAME = "Peloton";
 const LIBRARY_NAME = "Brand Library";

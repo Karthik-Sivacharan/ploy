@@ -11,7 +11,9 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
-import { SectionHeader, InfoRow, SourceInfo } from "@/components/workflow/node-bodies/shared";
+import { SectionHeader } from "@/components/ui/section-header";
+import { InfoRow } from "@/components/ui/info-row";
+import { SourceInfo } from "@/components/ui/source-info";
 
 const PAGE_SCREENSHOT = "/assets/landing-pages/summer-trial.png";
 const PAGE_TITLE = "Start Your Free Trial";

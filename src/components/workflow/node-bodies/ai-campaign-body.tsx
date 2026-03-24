@@ -11,7 +11,8 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
-import { SectionHeader, SourceInfo } from "@/components/workflow/node-bodies/shared";
+import { SectionHeader } from "@/components/ui/section-header";
+import { SourceInfo } from "@/components/ui/source-info";
 
 const AVAILABLE_MODELS = [
   { id: "claude-opus-4-6", label: "Claude Opus 4.6", provider: "anthropic" },
@@ -164,7 +165,7 @@ function ExpandedBody() {
         <div className="flex flex-col gap-1.5">
           {GENERATED_ITEMS.map((item) => (
             <div key={item} className="flex items-center gap-2">
-              <Icon name="check-circle" size="xs" className="text-chart-2" />
+              <Icon name="check-circle" size="xs" className="text-success" />
               <span className="text-xs text-foreground">{item}</span>
             </div>
           ))}

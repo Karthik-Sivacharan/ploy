@@ -16,7 +16,9 @@ import {
   ProgressTrack,
   ProgressIndicator,
 } from "@/components/ui/progress";
-import { SectionHeader, InfoRow, SourceInfo } from "@/components/workflow/node-bodies/shared";
+import { SectionHeader } from "@/components/ui/section-header";
+import { InfoRow } from "@/components/ui/info-row";
+import { SourceInfo } from "@/components/ui/source-info";
 
 const AVAILABLE_MODELS = [
   { id: "claude-opus-4-6", label: "Claude Opus 4.6", provider: "anthropic" },

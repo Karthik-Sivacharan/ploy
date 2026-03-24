@@ -3,7 +3,9 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
-import { SectionHeader, InfoRow, SourceInfo } from "@/components/workflow/node-bodies/shared";
+import { SectionHeader } from "@/components/ui/section-header";
+import { InfoRow } from "@/components/ui/info-row";
+import { SourceInfo } from "@/components/ui/source-info";
 
 const SEGMENT_NAME = "Summer Trial Prospects";
 const CONTACT_COUNT = "12,847";
@@ -13,9 +15,9 @@ const LAST_SYNCED = "Mar 18, 2026";
 const FILTER_PILLS = ["Fitness", "25-54", "Urban"] as const;
 
 const CONTACT_BREAKDOWN = [
-  { label: "New (last 30d)", value: "2,341", percent: 18, color: "bg-chart-2" },
-  { label: "Engaged", value: "8,912", percent: 70, color: "bg-primary" },
-  { label: "At risk", value: "1,594", percent: 12, color: "bg-chart-5" },
+  { label: "New (last 30d)", value: "2,341", percent: 18, color: "bg-primary" },
+  { label: "Engaged", value: "8,912", percent: 70, color: "bg-success" },
+  { label: "At risk", value: "1,594", percent: 12, color: "bg-warning" },
 ] as const;
 
 const FILTERS = [

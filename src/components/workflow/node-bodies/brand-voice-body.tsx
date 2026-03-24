@@ -12,7 +12,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { BrandVoiceEditor } from "@/components/workflow/node-bodies/brand-voice-editor";
-import { SectionHeader, InfoRow, SourceInfo } from "@/components/workflow/node-bodies/shared";
+import { SectionHeader } from "@/components/ui/section-header";
+import { InfoRow } from "@/components/ui/info-row";
+import { SourceInfo } from "@/components/ui/source-info";
 
 const PAGE_TITLE = "Brand Voice Guidelines";
 const DATABASE_NAME = "Marketing Hub";
