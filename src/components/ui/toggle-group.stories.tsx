@@ -28,13 +28,13 @@ export const HorizontalWithIcons: Story = {
   render: () => (
     <ToggleGroup defaultValue={["bold"]} spacing={0}>
       <ToggleGroupItem value="bold" aria-label="Bold">
-        <Icon name="text" size="sm" />
+        <Icon name="text-bold" size="sm" />
       </ToggleGroupItem>
       <ToggleGroupItem value="italic" aria-label="Italic">
-        <Icon name="edit" size="sm" />
+        <Icon name="text-italic" size="sm" />
       </ToggleGroupItem>
       <ToggleGroupItem value="underline" aria-label="Underline">
-        <Icon name="minus" size="sm" />
+        <Icon name="text-underline" size="sm" />
       </ToggleGroupItem>
     </ToggleGroup>
   ),

@@ -13,6 +13,7 @@ import {
   NodeStatusBar,
 } from "@/components/ai-elements/node";
 import { NodeHoverToolbar } from "@/components/workflow/node-hover-toolbar";
+import { Badge } from "@/components/ui/badge";
 import { Icon } from "@/components/ui/icon";
 import { ProviderIcon } from "@/components/ui/provider-icon";
 import { getProvider } from "@/lib/providers";
@@ -102,9 +103,9 @@ function renderNodeBody(nodeData: ActionNodeData, fields: { key: string; value: 
       return (
         <>
           <BrandAssetsBody variant="compact" />
-          <NodeFooter className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            <Icon name="check-circle" size="xs" className="text-chart-2" />
-            24 assets synced
+          <NodeFooter className="flex items-center justify-between text-xs text-muted-foreground">
+            <Badge variant="success" className="text-badge">36 assets</Badge>
+            <span className="text-badge text-muted-foreground">Synced Mar 18, 2026</span>
           </NodeFooter>
         </>
       );

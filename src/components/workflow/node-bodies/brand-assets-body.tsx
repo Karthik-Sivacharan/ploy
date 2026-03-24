@@ -1,9 +1,16 @@
 "use client";
 
-import { Icon } from "@/components/ui/icon";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { SectionHeader, SourceInfo } from "@/components/workflow/node-bodies/shared";
+import { Icon } from "@/components/ui/icon";
+import { SectionHeader, InfoRow, SourceInfo } from "@/components/workflow/node-bodies/shared";
+
+const BRAND_NAME = "Peloton";
+const LIBRARY_NAME = "Brand Library";
+const TOTAL_ASSETS = 36;
+const LAST_SYNCED = "Mar 18, 2026";
+
+const ASSET_TAGS = ["Product Photography", "Social Media", "Campaign 2026"] as const;
 
 const BRAND_COLORS = [
   { name: "Primary", hex: "#6C3AED" },
@@ -35,6 +42,11 @@ const ASSET_TYPES = [
 function CompactBody() {
   return (
     <div className="flex flex-col gap-3 p-3">
+      {/* Brand + library name */}
+      <span className="text-xs text-muted-foreground">
+        {BRAND_NAME} &middot; {LIBRARY_NAME}
+      </span>
+
       {/* Color swatches */}
       <div className="flex items-center gap-2">
         {BRAND_COLORS.map((color) => (
@@ -71,6 +83,19 @@ function CompactBody() {
 function ExpandedBody() {
   return (
     <div className="flex flex-col gap-5 p-4">
+      {/* Source config */}
+      <section className="flex flex-col gap-2">
+        <SectionHeader>Source</SectionHeader>
+        <div className="flex flex-col gap-1.5">
+          <InfoRow label="Brand" value={BRAND_NAME} />
+          <InfoRow label="Library" value={LIBRARY_NAME} />
+          <InfoRow
+            label="Assets"
+            value={<Badge variant="success" className="text-badge">{TOTAL_ASSETS} synced</Badge>}
+          />
+        </div>
+      </section>
+
       {/* Colors */}
       <section className="flex flex-col gap-2">
         <SectionHeader>Colors</SectionHeader>
@@ -169,8 +194,15 @@ function ExpandedBody() {
         </Button>
       </section>
 
+      {/* Asset tags */}
+      <div className="flex flex-wrap gap-1.5">
+        {ASSET_TAGS.map((tag) => (
+          <Badge key={tag} variant="outline" className="text-badge">{tag}</Badge>
+        ))}
+      </div>
+
       {/* Source info */}
-      <SourceInfo>Synced from Frontify &middot; Mar 18, 2026</SourceInfo>
+      <SourceInfo>Synced from Frontify &middot; {LAST_SYNCED}</SourceInfo>
     </div>
   );
 }
