@@ -48,11 +48,11 @@ function CompactBody() {
     <div className="flex flex-col gap-3 p-3">
       {/* Model + status badges */}
       <div className="flex items-center gap-1.5">
-        <Badge variant="secondary" className="gap-1 text-badge">
+        <Badge variant="secondary" className="gap-1 txt-badge">
           <ModelSelectorLogo provider="anthropic" className="size-3" />
           Claude Opus 4.6
         </Badge>
-        <Badge variant="success" className="text-badge">Generated</Badge>
+        <Badge variant="success" className="txt-badge">Generated</Badge>
       </div>
 
       {/* Campaign title */}
@@ -78,7 +78,7 @@ function CompactBody() {
       {/* Channel output pills */}
       <div className="flex flex-wrap gap-1.5">
         {CHANNEL_OUTPUTS.map((channel) => (
-          <Badge key={channel} variant="outline" className="text-badge">
+          <Badge key={channel} variant="outline" className="txt-badge">
             {channel}
           </Badge>
         ))}
@@ -151,7 +151,7 @@ function ExpandedBody() {
         <SectionHeader>Channel Outputs</SectionHeader>
         <div className="flex flex-wrap gap-1.5">
           {CHANNEL_OUTPUTS.map((channel) => (
-            <Badge key={channel} variant="outline" className="text-badge">
+            <Badge key={channel} variant="outline" className="txt-badge">
               {channel}
             </Badge>
           ))}
@@ -161,7 +161,7 @@ function ExpandedBody() {
       {/* Generation status */}
       <section className="flex flex-col gap-2">
         <SectionHeader>Generation Status</SectionHeader>
-        <Badge variant="success" className="w-fit text-badge">Generated</Badge>
+        <Badge variant="success" className="w-fit txt-badge">Generated</Badge>
         <div className="flex flex-col gap-1.5">
           {GENERATED_ITEMS.map((item) => (
             <div key={item} className="flex items-center gap-2">

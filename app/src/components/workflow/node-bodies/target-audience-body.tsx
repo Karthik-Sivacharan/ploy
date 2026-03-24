@@ -44,7 +44,7 @@ function CompactBody() {
       {/* Filter pills */}
       <div className="flex flex-wrap gap-1.5">
         {FILTER_PILLS.map((pill) => (
-          <Badge key={pill} variant="outline" className="text-badge">
+          <Badge key={pill} variant="outline" className="txt-badge">
             {pill}
           </Badge>
         ))}
@@ -52,8 +52,8 @@ function CompactBody() {
 
       {/* List type + sync time */}
       <div className="flex items-center justify-between">
-        <Badge variant="success" className="text-badge">{PROCESSING_TYPE}</Badge>
-        <span className="text-badge text-muted-foreground">Synced {LAST_SYNCED}</span>
+        <Badge variant="success" className="txt-badge">{PROCESSING_TYPE}</Badge>
+        <span className="txt-badge text-muted-foreground">Synced {LAST_SYNCED}</span>
       </div>
     </div>
   );
@@ -75,7 +75,7 @@ function ExpandedBody() {
           </div>
           <div className="flex flex-wrap gap-1.5">
             {FILTER_PILLS.map((pill) => (
-              <Badge key={pill} variant="outline" className="text-badge">
+              <Badge key={pill} variant="outline" className="txt-badge">
                 {pill}
               </Badge>
             ))}
@@ -120,7 +120,7 @@ function ExpandedBody() {
       {/* List type */}
       <InfoRow
         label={PROCESSING_TYPE}
-        value={<Badge variant="success" className="text-badge">Active</Badge>}
+        value={<Badge variant="success" className="txt-badge">Active</Badge>}
       />
 
       {/* Open in HubSpot */}

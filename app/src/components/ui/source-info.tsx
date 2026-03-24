@@ -9,7 +9,7 @@ export function SourceInfo({
   children: ReactNode;
 }) {
   return (
-    <div className="flex items-center gap-1.5 text-badge text-muted-foreground">
+    <div className="flex items-center gap-1.5 txt-badge text-muted-foreground">
       <Icon
         name={icon}
         size="xs"

@@ -57,7 +57,7 @@ function CompactBody() {
               className="size-6 rounded-full border border-border-subtle"
               style={{ backgroundColor: color.hex }}
             />
-            <span className="text-caption text-muted-foreground">{color.name}</span>
+            <span className="txt-caption text-muted-foreground">{color.name}</span>
           </div>
         ))}
       </div>
@@ -93,7 +93,7 @@ function ExpandedBody() {
           <InfoRow label="Library" value={LIBRARY_NAME} />
           <InfoRow
             label="Assets"
-            value={<Badge variant="success" className="text-badge">{TOTAL_ASSETS} synced</Badge>}
+            value={<Badge variant="success" className="txt-badge">{TOTAL_ASSETS} synced</Badge>}
           />
         </div>
       </section>
@@ -113,7 +113,7 @@ function ExpandedBody() {
               />
               <div className="flex flex-col">
                 <span className="text-xs font-medium text-foreground">{color.name}</span>
-                <span className="text-badge font-mono text-muted-foreground">{color.hex}</span>
+                <span className="txt-badge font-mono text-muted-foreground">{color.hex}</span>
               </div>
             </div>
           ))}
@@ -139,7 +139,7 @@ function ExpandedBody() {
                   {font.family} &middot; {font.weight}
                 </span>
               </div>
-              <Badge variant="secondary" className="text-badge">{font.role}</Badge>
+              <Badge variant="secondary" className="txt-badge">{font.role}</Badge>
             </div>
           ))}
         </div>
@@ -155,7 +155,7 @@ function ExpandedBody() {
             alt="Peloton logo"
             className="h-7 w-auto rounded-md object-contain"
           />
-          <span className="text-badge text-muted-foreground">Logo &middot; Primary</span>
+          <span className="txt-badge text-muted-foreground">Logo &middot; Primary</span>
         </div>
         {/* Secondary marks */}
         <div className="grid grid-cols-2 gap-2">
@@ -167,7 +167,7 @@ function ExpandedBody() {
               <div className="flex size-8 items-center justify-center rounded-md bg-muted text-muted-foreground">
                 <Icon name="image" size="sm" />
               </div>
-              <span className="text-badge text-muted-foreground">{logo.name} &middot; {logo.type}</span>
+              <span className="txt-badge text-muted-foreground">{logo.name} &middot; {logo.type}</span>
             </div>
           ))}
         </div>
@@ -199,7 +199,7 @@ function ExpandedBody() {
       {/* Asset tags */}
       <div className="flex flex-wrap gap-1.5">
         {ASSET_TAGS.map((tag) => (
-          <Badge key={tag} variant="outline" className="text-badge">{tag}</Badge>
+          <Badge key={tag} variant="outline" className="txt-badge">{tag}</Badge>
         ))}
       </div>
 

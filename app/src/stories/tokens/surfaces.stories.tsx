@@ -26,10 +26,10 @@ function SurfaceCard({
     >
       <p className="text-sm font-semibold text-foreground">{label}</p>
       <div className="flex flex-col gap-0.5 mt-3">
-        <span className="text-detail text-muted-foreground">{bgClass}</span>
-        <span className="text-detail text-muted-foreground">{borderClass}</span>
+        <span className="txt-detail text-muted-foreground">{bgClass}</span>
+        <span className="txt-detail text-muted-foreground">{borderClass}</span>
         {backdrop && (
-          <span className="text-detail text-muted-foreground">{backdrop}</span>
+          <span className="txt-detail text-muted-foreground">{backdrop}</span>
         )}
       </div>
     </div>
@@ -46,7 +46,7 @@ export const GlassSurfaces: Story = {
         Glass surfaces (shown over image to reveal translucency)
       </h3>
       {/* Container surfaces — these carry content directly */}
-      <p className="text-detail font-medium uppercase tracking-wider text-white/70 mb-2 drop-shadow-sm">
+      <p className="txt-detail font-medium uppercase tracking-wider text-white/70 mb-2 drop-shadow-sm">
         Container surfaces
       </p>
       <div className="flex flex-wrap gap-4 mb-8">
@@ -70,7 +70,7 @@ export const GlassSurfaces: Story = {
       </div>
 
       {/* State overlays — tint layers applied on top of containers */}
-      <p className="text-detail font-medium uppercase tracking-wider text-white/70 mb-2 drop-shadow-sm">
+      <p className="txt-detail font-medium uppercase tracking-wider text-white/70 mb-2 drop-shadow-sm">
         State overlays (layered on a card, not standalone)
       </p>
       <div className="flex flex-wrap gap-4">
@@ -90,8 +90,8 @@ export const GlassSurfaces: Story = {
               </div>
             </div>
             <div className="flex flex-col gap-0.5 px-1">
-              <span className="text-detail text-white/80 drop-shadow-sm">{label}</span>
-              <span className="text-detail text-white/60 drop-shadow-sm">{bgClass}</span>
+              <span className="txt-detail text-white/80 drop-shadow-sm">{label}</span>
+              <span className="txt-detail text-white/60 drop-shadow-sm">{bgClass}</span>
             </div>
           </div>
         ))}

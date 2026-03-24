@@ -23,7 +23,7 @@ function Swatch({
       className={`${bg} ${fg} rounded-lg p-4 min-w-[140px] flex flex-col gap-1`}
     >
       <span className="text-xs font-semibold">{label}</span>
-      <span className="text-detail opacity-70">Aa Bb Cc</span>
+      <span className="txt-detail opacity-70">Aa Bb Cc</span>
     </div>
   );
 }
@@ -217,7 +217,7 @@ function PrimitiveScale({ scale }: { scale: (typeof PRIMITIVE_SCALES)[number] })
         {scale.shades.map((s) => (
           <div key={s.shade} className="flex flex-col items-center gap-1">
             <div className={`${s.bg} h-10 w-12 rounded-md border border-border/30`} />
-            <span className="text-caption text-muted-foreground">{s.shade}</span>
+            <span className="txt-caption text-muted-foreground">{s.shade}</span>
           </div>
         ))}
       </div>

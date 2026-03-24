@@ -412,7 +412,7 @@ function CopilotChat() {
                 Build
               </Button>
               <Button variant="outline" size="sm" className="max-w-32 md:max-w-none rounded-full text-sm md:text-xs text-muted-foreground">
-                <span className="shrink-0 font-mono text-badge font-semibold">A\</span>
+                <span className="shrink-0 font-mono txt-badge font-semibold">A\</span>
                 <span className="truncate">Claude Opus 4.5</span>
               </Button>
             </div>

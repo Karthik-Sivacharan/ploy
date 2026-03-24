@@ -20,7 +20,7 @@ export const Default: Story = {};
 export const WithBadgeValue: Story = {
   args: {
     label: "Assets",
-    value: <Badge variant="success" className="text-badge">36 synced</Badge>,
+    value: <Badge variant="success" className="txt-badge">36 synced</Badge>,
   },
 };
 
@@ -32,7 +32,7 @@ export const Stacked: Story = {
       <InfoRow label="Recipients" value="12,847 contacts" />
       <InfoRow
         label="Status"
-        value={<Badge variant="success" className="text-badge">Active</Badge>}
+        value={<Badge variant="success" className="txt-badge">Active</Badge>}
       />
     </div>
   ),

@@ -54,7 +54,7 @@ function CompactBody() {
     <div className="flex flex-col gap-3 p-3">
       {/* Model badge */}
       <div className="flex justify-start">
-        <Badge variant="secondary" className="gap-1 text-badge">
+        <Badge variant="secondary" className="gap-1 txt-badge">
           <ModelSelectorLogo provider="anthropic" className="size-3" />
           Claude Sonnet 4.6
         </Badge>
@@ -67,17 +67,17 @@ function CompactBody() {
           <div className="flex size-5 items-center justify-center rounded-md bg-muted">
             <Icon name="bell" size="xs" />
           </div>
-          <span className="text-badge font-medium text-foreground">
+          <span className="txt-badge font-medium text-foreground">
             Peloton
           </span>
-          <span className="ml-auto text-badge text-muted-foreground">now</span>
+          <span className="ml-auto txt-badge text-muted-foreground">now</span>
         </div>
         {/* Title */}
-        <p className="mt-1.5 text-detail font-semibold text-foreground">
+        <p className="mt-1.5 txt-detail font-semibold text-foreground">
           Your Summer Starts Here 🚴
         </p>
         {/* Body */}
-        <p className="mt-0.5 text-badge leading-snug text-muted-foreground line-clamp-2">
+        <p className="mt-0.5 txt-badge leading-snug text-muted-foreground line-clamp-2">
           Start your free trial today and join millions riding together.
         </p>
       </div>
@@ -86,14 +86,14 @@ function CompactBody() {
       <span className="text-xs text-muted-foreground">{SEGMENT_NAME}</span>
 
       {/* Recipients + schedule */}
-      <span className="text-detail text-muted-foreground">
+      <span className="txt-detail text-muted-foreground">
         {RECIPIENT_COUNT} recipients &middot; {SCHEDULE_COMPACT}
       </span>
 
       {/* Platform pills */}
       <div className="flex gap-1.5">
-        <Badge variant="outline" className="text-badge">iOS</Badge>
-        <Badge variant="outline" className="text-badge">Android</Badge>
+        <Badge variant="outline" className="txt-badge">iOS</Badge>
+        <Badge variant="outline" className="txt-badge">Android</Badge>
       </div>
     </div>
   );
@@ -134,7 +134,7 @@ function ExpandedBody() {
               <Icon name="bell" size="xs" />
             </div>
             <span className="text-xs font-medium text-foreground">Peloton</span>
-            <span className="ml-auto text-badge text-muted-foreground">now</span>
+            <span className="ml-auto txt-badge text-muted-foreground">now</span>
           </div>
           {/* Title */}
           <p className="mt-2 text-sm font-semibold text-foreground">
@@ -150,7 +150,7 @@ function ExpandedBody() {
             {ACTION_BUTTONS.map((btn) => (
               <div
                 key={btn.id}
-                className="rounded-md border border-border-subtle px-2.5 py-1 text-badge font-medium text-foreground"
+                className="rounded-md border border-border-subtle px-2.5 py-1 txt-badge font-medium text-foreground"
               >
                 {btn.text}
               </div>
@@ -167,7 +167,7 @@ function ExpandedBody() {
           <InfoRow label="Date" value={SCHEDULE_DATE} />
           <InfoRow
             label="Mode"
-            value={<Badge variant="outline" className="text-badge">Timezone-aware</Badge>}
+            value={<Badge variant="outline" className="txt-badge">Timezone-aware</Badge>}
           />
         </div>
       </section>
@@ -195,7 +195,7 @@ function ExpandedBody() {
           {/* Priority row with badge */}
           <InfoRow
             label="Priority"
-            value={<Badge variant="secondary" className="text-badge">High</Badge>}
+            value={<Badge variant="secondary" className="txt-badge">High</Badge>}
           />
         </div>
       </section>
@@ -204,10 +204,10 @@ function ExpandedBody() {
       <section className="flex flex-col gap-2">
         <SectionHeader>Targeting</SectionHeader>
         <div className="flex flex-wrap gap-1.5">
-          <Badge variant="outline" className="text-badge">iOS</Badge>
-          <Badge variant="outline" className="text-badge">Android</Badge>
-          <Badge variant="outline" className="text-badge">Fitness</Badge>
-          <Badge variant="outline" className="text-badge">25-54</Badge>
+          <Badge variant="outline" className="txt-badge">iOS</Badge>
+          <Badge variant="outline" className="txt-badge">Android</Badge>
+          <Badge variant="outline" className="txt-badge">Fitness</Badge>
+          <Badge variant="outline" className="txt-badge">25-54</Badge>
         </div>
       </section>
 

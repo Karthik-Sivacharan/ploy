@@ -262,7 +262,7 @@
   --success: var(--green-600);
   --success-foreground: oklch(0.985 0 0);
   --success-muted: var(--green-100);
-  --success-muted-foreground: var(--green-700);
+  --success-muted-foreground: var(--green-800);
   /* Warning — amber-derived */
   --warning: var(--amber-400);
   --warning-foreground: var(--amber-900);
@@ -337,7 +337,7 @@
   --success: var(--green-400);
   --success-foreground: oklch(0.985 0 0);
   --success-muted: var(--green-950);
-  --success-muted-foreground: var(--green-200);
+  --success-muted-foreground: var(--green-300);
   /* Warning — amber-derived */
   --warning: var(--amber-400);
   --warning-foreground: var(--amber-900);
@@ -464,16 +464,18 @@
   ring-color: var(--primary);
 }
 
-/* ── Node-content text utilities ── */
-@utility text-caption {
+/* ── Node-content text utilities ──
+   Named `txt-*` instead of `text-*` to avoid tailwind-merge
+   stripping `text-<color>` classes (both share the `text-` prefix). */
+@utility txt-caption {
   font-size: var(--font-size-caption);
   line-height: 1;
 }
-@utility text-badge {
+@utility txt-badge {
   font-size: var(--font-size-badge);
   line-height: 1.2;
 }
-@utility text-detail {
+@utility txt-detail {
   font-size: var(--font-size-detail);
   line-height: 1.4;
 }

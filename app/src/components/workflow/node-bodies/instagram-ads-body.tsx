@@ -53,11 +53,11 @@ function CompactBody() {
     <div className="flex flex-col gap-3 p-3">
       {/* Model + status badges */}
       <div className="flex items-center gap-1.5">
-        <Badge variant="secondary" className="gap-1 text-badge">
+        <Badge variant="secondary" className="gap-1 txt-badge">
           <ModelSelectorLogo provider="google" className="size-3" />
           Gemini 2.0 Flash
         </Badge>
-        <Badge variant="outline" className="text-badge">{CAMPAIGN_STATUS}</Badge>
+        <Badge variant="outline" className="txt-badge">{CAMPAIGN_STATUS}</Badge>
       </div>
 
       {/* Ad preview card */}
@@ -71,28 +71,28 @@ function CompactBody() {
         {/* Headline + sponsored */}
         <div className="flex items-center justify-between">
           <span className="text-xs font-medium text-foreground">Your Journey Starts Here</span>
-          <Badge variant="secondary" className="text-caption">Sponsored</Badge>
+          <Badge variant="secondary" className="txt-caption">Sponsored</Badge>
         </div>
         {/* CTA label */}
-        <span className="text-badge text-muted-foreground">{CTA_TYPE} &rarr;</span>
+        <span className="txt-badge text-muted-foreground">{CTA_TYPE} &rarr;</span>
       </div>
 
       {/* Format line */}
-      <span className="text-detail text-muted-foreground">
+      <span className="txt-detail text-muted-foreground">
         Carousel — 4 slides
       </span>
 
       {/* Targeting pills */}
       <div className="flex flex-wrap gap-1">
         {TARGETING_PILLS.map((pill) => (
-          <Badge key={pill} variant="outline" className="text-badge">
+          <Badge key={pill} variant="outline" className="txt-badge">
             {pill}
           </Badge>
         ))}
       </div>
 
       {/* Budget */}
-      <span className="text-detail text-muted-foreground">
+      <span className="txt-detail text-muted-foreground">
         $500/day
       </span>
     </div>
@@ -142,7 +142,7 @@ function ExpandedBody() {
           </p>
           {/* Sponsored badge */}
           <div className="flex justify-start">
-            <Badge variant="secondary" className="text-caption">Sponsored</Badge>
+            <Badge variant="secondary" className="txt-caption">Sponsored</Badge>
           </div>
         </div>
         <div className="flex flex-col gap-1.5">
@@ -171,7 +171,7 @@ function ExpandedBody() {
         </div>
         <div className="flex flex-wrap gap-1.5">
           {INTEREST_PILLS.map((pill) => (
-            <Badge key={pill} variant="outline" className="text-badge">{pill}</Badge>
+            <Badge key={pill} variant="outline" className="txt-badge">{pill}</Badge>
           ))}
         </div>
       </section>

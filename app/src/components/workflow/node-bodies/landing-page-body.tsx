@@ -38,7 +38,7 @@ function CompactBody() {
     <div className="flex flex-col gap-3 p-3">
       {/* Model badge */}
       <div className="flex justify-start">
-        <Badge variant="secondary" className="gap-1 text-badge">
+        <Badge variant="secondary" className="gap-1 txt-badge">
           <ModelSelectorLogo provider="anthropic" className="size-3" />
           Claude Sonnet 4.6
         </Badge>
@@ -57,9 +57,9 @@ function CompactBody() {
       <div className="flex flex-col gap-1">
         <div className="flex items-center justify-between">
           <span className="text-xs font-medium text-foreground">{PAGE_SLUG}</span>
-          <Badge variant="success" className="text-badge">{PUBLISH_STATUS}</Badge>
+          <Badge variant="success" className="txt-badge">{PUBLISH_STATUS}</Badge>
         </div>
-        <span className="truncate text-detail text-muted-foreground">{TARGET_DOMAIN}</span>
+        <span className="truncate txt-detail text-muted-foreground">{TARGET_DOMAIN}</span>
       </div>
     </div>
   );
@@ -97,7 +97,7 @@ function ExpandedBody() {
         <div className="flex flex-col gap-1.5">
           <InfoRow
             label="Status"
-            value={<Badge variant="success" className="text-badge">{PUBLISH_STATUS}</Badge>}
+            value={<Badge variant="success" className="txt-badge">{PUBLISH_STATUS}</Badge>}
           />
           <InfoRow label="Domain" value={TARGET_DOMAIN} />
           <InfoRow label="Last published" value={LAST_PUBLISHED} />

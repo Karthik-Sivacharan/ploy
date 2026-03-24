@@ -73,7 +73,7 @@ function CompactBody() {
     <div className="flex flex-col gap-3 p-3">
       {/* Model badge */}
       <div className="flex justify-start">
-        <Badge variant="secondary" className="gap-1 text-badge">
+        <Badge variant="secondary" className="gap-1 txt-badge">
           <ModelSelectorLogo provider="anthropic" className="size-3" />
           Claude Sonnet 4.6
         </Badge>
@@ -88,11 +88,11 @@ function CompactBody() {
           >
             <div className="flex items-center gap-2">
               <span className={`size-1.5 shrink-0 rounded-full ${STATUS_DOT_COLORS[email.status]}`} />
-              <span className="text-badge font-medium text-foreground">
+              <span className="txt-badge font-medium text-foreground">
                 Day {email.day}
               </span>
             </div>
-            <span className="text-badge text-muted-foreground">
+            <span className="txt-badge text-muted-foreground">
               {email.label}
             </span>
           </div>
@@ -101,8 +101,8 @@ function CompactBody() {
 
       {/* Recipients + automation type */}
       <div className="flex items-center justify-between">
-        <span className="text-detail text-muted-foreground">{RECIPIENT_COUNT} contacts</span>
-        <Badge variant="outline" className="text-badge">{CAMPAIGN_TYPE}</Badge>
+        <span className="txt-detail text-muted-foreground">{RECIPIENT_COUNT} contacts</span>
+        <Badge variant="outline" className="txt-badge">{CAMPAIGN_TYPE}</Badge>
       </div>
     </div>
   );
@@ -117,7 +117,7 @@ function ExpandedBody() {
       <section className="flex flex-col gap-2">
         <SectionHeader>Campaign Config</SectionHeader>
         <div className="flex flex-col gap-1.5">
-          <InfoRow label="Type" value={<Badge variant="outline" className="text-badge">{CAMPAIGN_TYPE}</Badge>} />
+          <InfoRow label="Type" value={<Badge variant="outline" className="txt-badge">{CAMPAIGN_TYPE}</Badge>} />
           <InfoRow label="Trigger" value={CAMPAIGN_TRIGGER} />
         </div>
       </section>
@@ -158,7 +158,7 @@ function ExpandedBody() {
                   {email.subject}
                 </p>
                 <div className="mt-2">
-                  <Badge variant={STATUS_BADGE_VARIANTS[email.status]} className="text-badge capitalize">
+                  <Badge variant={STATUS_BADGE_VARIANTS[email.status]} className="txt-badge capitalize">
                     {email.status}
                   </Badge>
                 </div>

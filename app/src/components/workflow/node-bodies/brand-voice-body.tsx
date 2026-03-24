@@ -165,26 +165,26 @@ function CompactBody() {
         </ArtifactTitle>
       </ArtifactHeader>
       <ArtifactContent className="flex flex-col gap-3 px-3 py-3">
-        <blockquote className="border-l-2 border-border pl-2.5 text-detail leading-relaxed text-muted-foreground italic">
+        <blockquote className="border-l-2 border-border pl-2.5 txt-detail leading-relaxed text-muted-foreground italic">
           &ldquo;Motivating without being pushy. Inclusive, never exclusive. We&rsquo;re a coach in your corner, not a drill sergeant.&rdquo;
         </blockquote>
 
         <div className="flex flex-col gap-1.5">
-          <div className="flex items-center justify-between text-detail">
+          <div className="flex items-center justify-between txt-detail">
             <span className="text-muted-foreground">Audience</span>
             <span className="font-medium text-foreground">Fitness adults, 25-54</span>
           </div>
-          <div className="flex items-center justify-between text-detail">
+          <div className="flex items-center justify-between txt-detail">
             <span className="text-muted-foreground">Tone</span>
             <span className="font-medium text-foreground">Empowering &amp; warm</span>
           </div>
-          <div className="flex items-center justify-between text-detail">
+          <div className="flex items-center justify-between txt-detail">
             <span className="text-muted-foreground">Style</span>
             <span className="font-medium text-foreground">Community-first</span>
           </div>
         </div>
 
-        <span className="text-badge text-muted-foreground">
+        <span className="txt-badge text-muted-foreground">
           Edited by {LAST_EDITED_BY} &middot; {LAST_EDITED_TIME}
         </span>
       </ArtifactContent>
@@ -260,7 +260,7 @@ function ExpandedBody() {
       {/* Tags */}
       <div className="flex flex-wrap gap-1.5">
         {PAGE_TAGS.map((tag) => (
-          <Badge key={tag} variant="outline" className="text-badge">{tag}</Badge>
+          <Badge key={tag} variant="outline" className="txt-badge">{tag}</Badge>
         ))}
       </div>
 
