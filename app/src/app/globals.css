@@ -50,8 +50,14 @@
   /* Status semantic colors */
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
+  --color-success-muted: var(--success-muted);
+  --color-success-muted-foreground: var(--success-muted-foreground);
+  --color-destructive-muted: var(--destructive-muted);
+  --color-destructive-muted-foreground: var(--destructive-muted-foreground);
   --color-warning: var(--warning);
   --color-warning-foreground: var(--warning-foreground);
+  --color-warning-muted: var(--warning-muted);
+  --color-warning-muted-foreground: var(--warning-muted-foreground);
 
   /* Glass surface tokens — Tailwind-accessible as bg-surface-*, border-glass, etc. */
   --color-surface-translucent: var(--surface-translucent);
@@ -61,6 +67,30 @@
   --color-surface-overlay-hover: var(--surface-overlay-hover);
   --color-border-glass: var(--border-glass);
   --color-border-subtle: var(--border-subtle);
+
+  /* Primitive scale colors — exposed for documentation/stories only */
+  --color-neutral-50: var(--neutral-50);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-400: var(--neutral-400);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-600: var(--neutral-600);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-800: var(--neutral-800);
+  --color-neutral-900: var(--neutral-900);
+  --color-neutral-950: var(--neutral-950);
+  --color-purple-50: var(--purple-50);
+  --color-purple-100: var(--purple-100);
+  --color-purple-200: var(--purple-200);
+  --color-purple-300: var(--purple-300);
+  --color-purple-400: var(--purple-400);
+  --color-purple-500: var(--purple-500);
+  --color-purple-600: var(--purple-600);
+  --color-purple-700: var(--purple-700);
+  --color-purple-800: var(--purple-800);
+  --color-purple-900: var(--purple-900);
+  --color-purple-950: var(--purple-950);
 
   /* Glow accent colors */
   --color-glow-accent: var(--glow-accent);
@@ -129,45 +159,137 @@
   --breakpoint-mobile: 768px;
 }
 
+/* ── Primitive color tokens ──
+   Raw palette values — never change between themes.
+   Semantic tokens below reference these.
+   Purple & neutral generated via culori (scripts/generate-scales.mjs).
+   Green, red, amber from Tailwind v4 defaults. */
+:root {
+  /* Neutral primitives (achromatic) */
+  --neutral-50: oklch(0.978 0 0);
+  --neutral-100: oklch(0.936 0 0);
+  --neutral-200: oklch(0.881 0 0);
+  --neutral-300: oklch(0.827 0 0);
+  --neutral-400: oklch(0.742 0 0);
+  --neutral-500: oklch(0.648 0 0);
+  --neutral-600: oklch(0.573 0 0);
+  --neutral-700: oklch(0.469 0 0);
+  --neutral-800: oklch(0.394 0 0);
+  --neutral-900: oklch(0.320 0 0);
+  --neutral-950: oklch(0.238 0 0);
+
+  /* Purple primitives (hue 293.009, gamut-mapped) */
+  --purple-50: oklch(0.978 0.011 293.009);
+  --purple-100: oklch(0.936 0.034 293.009);
+  --purple-200: oklch(0.881 0.064 293.009);
+  --purple-300: oklch(0.827 0.095 293.009);
+  --purple-400: oklch(0.742 0.147 293.009);
+  --purple-500: oklch(0.648 0.208 293.009);
+  --purple-600: oklch(0.573 0.248 293.009);
+  --purple-700: oklch(0.469 0.204 293.009);
+  --purple-800: oklch(0.394 0.172 293.009);
+  --purple-900: oklch(0.320 0.139 293.009);
+  --purple-950: oklch(0.238 0.103 293.009);
+
+  /* Green primitives */
+  --green-50: oklch(0.982 0.018 155.826);
+  --green-100: oklch(0.962 0.044 156.743);
+  --green-200: oklch(0.925 0.084 155.995);
+  --green-300: oklch(0.871 0.15 154.449);
+  --green-400: oklch(0.792 0.209 151.711);
+  --green-500: oklch(0.723 0.219 149.579);
+  --green-600: oklch(0.627 0.194 149.214);
+  --green-700: oklch(0.527 0.154 150.069);
+  --green-800: oklch(0.448 0.119 151.328);
+  --green-900: oklch(0.393 0.095 152.535);
+  --green-950: oklch(0.266 0.065 152.934);
+
+  /* Red primitives */
+  --red-50: oklch(0.971 0.013 17.38);
+  --red-100: oklch(0.936 0.032 17.717);
+  --red-200: oklch(0.885 0.062 18.334);
+  --red-300: oklch(0.808 0.114 19.571);
+  --red-400: oklch(0.704 0.191 22.216);
+  --red-500: oklch(0.637 0.237 25.331);
+  --red-600: oklch(0.577 0.245 27.325);
+  --red-700: oklch(0.505 0.213 27.518);
+  --red-800: oklch(0.444 0.177 26.899);
+  --red-900: oklch(0.396 0.141 25.723);
+  --red-950: oklch(0.258 0.092 26.042);
+
+  /* Amber primitives */
+  --amber-50: oklch(0.987 0.022 95.277);
+  --amber-100: oklch(0.962 0.059 95.617);
+  --amber-200: oklch(0.924 0.12 95.746);
+  --amber-300: oklch(0.879 0.169 91.605);
+  --amber-400: oklch(0.828 0.189 84.429);
+  --amber-500: oklch(0.769 0.188 70.08);
+  --amber-600: oklch(0.666 0.179 58.318);
+  --amber-700: oklch(0.555 0.163 48.998);
+  --amber-800: oklch(0.473 0.137 46.201);
+  --amber-900: oklch(0.414 0.112 45.904);
+  --amber-950: oklch(0.279 0.077 45.635);
+}
+
+/* ── Semantic tokens — light mode ──
+   Derived from primitives above. Brand-specific values that fall between
+   primitive steps are kept exact and annotated. */
 :root {
   color-scheme: light;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  /* Surfaces — neutral-derived */
+  --background: oklch(1 0 0);               /* white — lighter than neutral-50 */
+  --foreground: oklch(0.145 0 0);           /* near-black — darker than neutral-950 */
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
+  /* Primary — purple-derived (brand color, hand-tuned between purple-600/700) */
   --primary: oklch(0.541 0.281 293.009);
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
+  /* Secondary / muted / accent — neutral-derived */
+  --secondary: var(--neutral-50);
+  --secondary-foreground: oklch(0.205 0 0); /* darker than neutral-950, design-specific */
+  --muted: var(--neutral-50);
+  --muted-foreground: var(--neutral-600);
+  --accent: var(--neutral-50);
   --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
+  /* Destructive — red-derived */
+  --destructive: var(--red-600);
   --destructive-foreground: oklch(0.985 0 0);
-  --success: oklch(0.56 0.24 142.495);
+  --destructive-muted: var(--red-100);
+  --destructive-muted-foreground: var(--red-700);
+  /* Success — green-derived */
+  --success: var(--green-600);
   --success-foreground: oklch(0.985 0 0);
-  --warning: oklch(0.84 0.16 84);
-  --warning-foreground: oklch(0.28 0.07 46);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
+  --success-muted: var(--green-100);
+  --success-muted-foreground: var(--green-700);
+  /* Warning — amber-derived */
+  --warning: var(--amber-400);
+  --warning-foreground: var(--amber-900);
+  --warning-muted: var(--amber-100);
+  --warning-muted-foreground: var(--amber-800);
+  /* Borders — neutral-derived */
+  --border: var(--neutral-100);
+  --input: var(--neutral-100);
+  /* Ring — purple-derived (brand color, hand-tuned between purple-500/600) */
   --ring: oklch(0.606 0.25 292.717);
-  --chart-1: oklch(0.606 0.25 292.717);
-  --chart-2: oklch(0.696 0.17 142.495);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
+  /* Charts */
+  --chart-1: var(--purple-500);
+  --chart-2: var(--green-400);
+  --chart-3: var(--amber-500);
+  --chart-4: oklch(0.627 0.265 303.9);     /* blue-purple, no primitive scale */
+  --chart-5: oklch(0.645 0.246 16.439);    /* red-orange, no primitive scale */
+  /* Layout */
   --radius: 0.625rem;
   --font-weight-base: 500;
-  --sidebar: oklch(0.985 0 0);
+  /* Sidebar — neutral + purple-derived */
+  --sidebar: var(--neutral-50);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.541 0.281 293.009);
   --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent: var(--neutral-50);
   --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-border: var(--neutral-100);
   --sidebar-ring: oklch(0.606 0.25 292.717);
 
   /* Glass tokens — light mode: opaque fallback */
@@ -189,39 +311,55 @@
 
 .dark {
   color-scheme: dark;
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
+  /* Surfaces — neutral-derived */
+  --background: oklch(0.145 0 0);           /* near-black — darker than neutral-950 */
+  --foreground: oklch(0.985 0 0);           /* near-white */
+  --card: var(--neutral-950);
   --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
+  --popover: var(--neutral-950);
   --popover-foreground: oklch(0.985 0 0);
+  /* Primary — purple-derived (brand color, hand-tuned between purple-500/600) */
   --primary: oklch(0.606 0.25 292.717);
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.269 0 0);
+  /* Secondary / muted / accent — neutral-derived */
+  --secondary: var(--neutral-900);
   --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
+  --muted: var(--neutral-900);
+  --muted-foreground: var(--neutral-400);
+  --accent: var(--neutral-900);
   --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
+  /* Destructive — red-derived */
+  --destructive: var(--red-400);
   --destructive-foreground: oklch(0.985 0 0);
-  --success: oklch(0.7 0.24 142.495);
+  --destructive-muted: var(--red-950);
+  --destructive-muted-foreground: var(--red-300);
+  /* Success — green-derived */
+  --success: var(--green-400);
   --success-foreground: oklch(0.985 0 0);
-  --warning: oklch(0.84 0.16 84);
-  --warning-foreground: oklch(0.28 0.07 46);
+  --success-muted: var(--green-950);
+  --success-muted-foreground: var(--green-200);
+  /* Warning — amber-derived */
+  --warning: var(--amber-400);
+  --warning-foreground: var(--amber-900);
+  --warning-muted: var(--amber-950);
+  --warning-muted-foreground: var(--amber-300);
+  /* Borders — alpha-based for dark mode transparency */
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
+  /* Ring — purple-derived (brand color) */
   --ring: oklch(0.541 0.281 293.009);
-  --chart-1: oklch(0.606 0.25 292.717);
-  --chart-2: oklch(0.696 0.17 142.495);
-  --chart-3: oklch(0.769 0.188 70.08);
+  /* Charts */
+  --chart-1: var(--purple-500);
+  --chart-2: var(--green-400);
+  --chart-3: var(--amber-500);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
+  /* Sidebar — neutral + purple-derived */
+  --sidebar: var(--neutral-950);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.606 0.25 292.717);
   --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent: var(--neutral-900);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.541 0.281 293.009);
@@ -364,11 +502,11 @@
   background: transparent;
 }
 .dark ::-webkit-scrollbar-thumb {
-  background: oklch(0.3 0 0);
+  background: var(--neutral-900);
   border-radius: 2px;
 }
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.4 0 0);
+  background: var(--neutral-800);
 }
 
 /* ── Reduced motion ── */
