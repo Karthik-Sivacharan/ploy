@@ -113,9 +113,9 @@ function renderNodeBody(nodeData: ActionNodeData, fields: { key: string; value: 
       return (
         <>
           <BrandVoiceBody variant="compact" />
-          <NodeFooter className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            <Icon name="clock" size="xs" className="text-muted-foreground" />
-            Last edited Mar 12, 2026
+          <NodeFooter className="flex items-center justify-between text-xs text-muted-foreground">
+            <Badge variant="success" className="text-badge">Synced</Badge>
+            <span className="text-badge text-muted-foreground">Edited Mar 12, 2026</span>
           </NodeFooter>
         </>
       );
@@ -123,9 +123,9 @@ function renderNodeBody(nodeData: ActionNodeData, fields: { key: string; value: 
       return (
         <>
           <TargetAudienceBody variant="compact" />
-          <NodeFooter className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            <Icon name="check-circle" size="xs" className="text-chart-2" />
-            Active &middot; Auto-updating
+          <NodeFooter className="flex items-center justify-between text-xs text-muted-foreground">
+            <Badge variant="success" className="text-badge">Active</Badge>
+            <span className="text-badge text-muted-foreground">Auto-updating</span>
           </NodeFooter>
         </>
       );
@@ -133,9 +133,9 @@ function renderNodeBody(nodeData: ActionNodeData, fields: { key: string; value: 
       return (
         <>
           <AiCampaignBody variant="compact" />
-          <NodeFooter className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            <Icon name="check-circle" size="xs" className="text-chart-2" />
-            Generated
+          <NodeFooter className="flex items-center justify-between text-xs text-muted-foreground">
+            <Badge variant="success" className="text-badge">Generated</Badge>
+            <span className="text-badge text-muted-foreground">All channels ready</span>
           </NodeFooter>
         </>
       );
@@ -143,9 +143,9 @@ function renderNodeBody(nodeData: ActionNodeData, fields: { key: string; value: 
       return (
         <>
           <LandingPageBody variant="compact" />
-          <NodeFooter className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            <Icon name="check-circle" size="xs" className="text-chart-2" />
-            Published
+          <NodeFooter className="flex items-center justify-between text-xs text-muted-foreground">
+            <Badge variant="success" className="text-badge">Published</Badge>
+            <span className="text-badge text-muted-foreground">Mar 18, 2026</span>
           </NodeFooter>
         </>
       );
@@ -153,9 +153,9 @@ function renderNodeBody(nodeData: ActionNodeData, fields: { key: string; value: 
       return (
         <>
           <EmailSequenceBody variant="compact" />
-          <NodeFooter className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            <Icon name="check-circle" size="xs" className="text-chart-2" />
-            Ready to send
+          <NodeFooter className="flex items-center justify-between text-xs text-muted-foreground">
+            <Badge variant="secondary" className="text-badge">Ready to send</Badge>
+            <span className="text-badge text-muted-foreground">3 emails queued</span>
           </NodeFooter>
         </>
       );
@@ -163,9 +163,9 @@ function renderNodeBody(nodeData: ActionNodeData, fields: { key: string; value: 
       return (
         <>
           <InstagramAdsBody variant="compact" />
-          <NodeFooter className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            <Icon name="clock" size="xs" className="text-muted-foreground" />
-            Campaign draft
+          <NodeFooter className="flex items-center justify-between text-xs text-muted-foreground">
+            <Badge variant="outline" className="text-badge">Draft</Badge>
+            <span className="text-badge text-muted-foreground">Pending review</span>
           </NodeFooter>
         </>
       );
@@ -173,9 +173,9 @@ function renderNodeBody(nodeData: ActionNodeData, fields: { key: string; value: 
       return (
         <>
           <PushNotificationBody variant="compact" />
-          <NodeFooter className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            <Icon name="clock" size="xs" className="text-muted-foreground" />
-            Scheduled &middot; Jun 1, 2026
+          <NodeFooter className="flex items-center justify-between text-xs text-muted-foreground">
+            <Badge variant="outline" className="text-badge">Scheduled</Badge>
+            <span className="text-badge text-muted-foreground">Jun 1, 2026</span>
           </NodeFooter>
         </>
       );
