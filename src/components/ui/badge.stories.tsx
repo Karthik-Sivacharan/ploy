@@ -8,7 +8,7 @@ const meta = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "secondary", "destructive", "outline", "ghost", "link"],
+      options: ["default", "secondary", "destructive", "success", "outline", "ghost", "link"],
     },
   },
   args: {
@@ -30,6 +30,10 @@ export const Destructive: Story = {
   args: { variant: "destructive" },
 }
 
+export const Success: Story = {
+  args: { variant: "success" },
+}
+
 export const Outline: Story = {
   args: { variant: "outline" },
 }
@@ -48,6 +52,7 @@ export const AllVariants: Story = {
       <Badge variant="default">Default</Badge>
       <Badge variant="secondary">Secondary</Badge>
       <Badge variant="destructive">Destructive</Badge>
+      <Badge variant="success">Success</Badge>
       <Badge variant="outline">Outline</Badge>
       <Badge variant="ghost">Ghost</Badge>
       <Badge variant="link">Link</Badge>

@@ -1,26 +1,28 @@
 "use client";
 
-import { Icon } from "@/components/ui/icon";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
 import { SectionHeader, InfoRow, SourceInfo } from "@/components/workflow/node-bodies/shared";
 
 const SEGMENT_NAME = "Summer Trial Prospects";
 const CONTACT_COUNT = "12,847";
+const PROCESSING_TYPE = "Dynamic";
+const LAST_SYNCED = "Mar 18, 2026";
 
 const FILTER_PILLS = ["Fitness", "25-54", "Urban"] as const;
 
 const CONTACT_BREAKDOWN = [
-  { label: "New (last 30d)", value: "2,341" },
-  { label: "Engaged", value: "8,912" },
-  { label: "At risk", value: "1,594" },
+  { label: "New (last 30d)", value: "2,341", percent: 18, color: "bg-chart-2" },
+  { label: "Engaged", value: "8,912", percent: 70, color: "bg-primary" },
+  { label: "At risk", value: "1,594", percent: 12, color: "bg-chart-5" },
 ] as const;
 
 const FILTERS = [
-  { label: "Interest", value: "Fitness & Wellness" },
-  { label: "Age range", value: "25-54" },
-  { label: "Location", value: "Urban metro areas" },
-  { label: "Source", value: "Trial sign-up form" },
+  { property: "Interest", operator: "contains", value: "Fitness & Wellness" },
+  { property: "Age range", operator: "between", value: "25–54" },
+  { property: "Location", operator: "is", value: "Urban metro areas" },
+  { property: "Source", operator: "equals", value: "Trial sign-up form" },
 ] as const;
 
 /* ── Compact variant — rendered inside the canvas node ── */
@@ -46,10 +48,10 @@ function CompactBody() {
         ))}
       </div>
 
-      {/* List type */}
-      <div className="flex items-center justify-between text-detail">
-        <span className="text-muted-foreground">List type</span>
-        <span className="font-medium text-foreground">Dynamic - Auto-updating</span>
+      {/* List type + sync time */}
+      <div className="flex items-center justify-between">
+        <Badge variant="success" className="text-badge">{PROCESSING_TYPE}</Badge>
+        <span className="text-badge text-muted-foreground">Synced {LAST_SYNCED}</span>
       </div>
     </div>
   );
@@ -84,7 +86,11 @@ function ExpandedBody() {
         <SectionHeader>Filters</SectionHeader>
         <div className="flex flex-col gap-1.5">
           {FILTERS.map((filter) => (
-            <InfoRow key={filter.label} label={filter.label} value={filter.value} />
+            <InfoRow
+              key={filter.property}
+              label={<>{filter.property} <span className="text-muted-foreground/60">{filter.operator}</span></>}
+              value={filter.value}
+            />
           ))}
         </div>
       </section>
@@ -92,6 +98,16 @@ function ExpandedBody() {
       {/* Contact breakdown */}
       <section className="flex flex-col gap-2">
         <SectionHeader>Contact Breakdown</SectionHeader>
+        {/* Proportional bar */}
+        <div className="flex h-2 overflow-hidden rounded-full">
+          {CONTACT_BREAKDOWN.map((item) => (
+            <div
+              key={item.label}
+              className={`${item.color} first:rounded-l-full last:rounded-r-full`}
+              style={{ width: `${item.percent}%` }}
+            />
+          ))}
+        </div>
         <div className="flex flex-col gap-1.5">
           {CONTACT_BREAKDOWN.map((item) => (
             <InfoRow key={item.label} label={item.label} value={item.value} />
@@ -100,13 +116,10 @@ function ExpandedBody() {
       </section>
 
       {/* List type */}
-      <section className="flex flex-col gap-2">
-        <SectionHeader>List Type</SectionHeader>
-        <InfoRow
-          label="Dynamic - Auto-updating"
-          value={<Badge variant="secondary" className="text-badge">Active</Badge>}
-        />
-      </section>
+      <InfoRow
+        label={PROCESSING_TYPE}
+        value={<Badge variant="success" className="text-badge">Active</Badge>}
+      />
 
       {/* Open in HubSpot */}
       <Button variant="outline" size="sm" className="w-full gap-1.5 text-xs">
