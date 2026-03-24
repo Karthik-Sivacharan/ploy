@@ -20,7 +20,7 @@ const preview: Preview = {
           fontFamily:
             'var(--font-clash-grotesk), ui-sans-serif, system-ui, sans-serif',
         } as React.CSSProperties}
-        className="antialiased"
+        className="bg-background text-foreground antialiased"
       >
         <Story />
       </div>

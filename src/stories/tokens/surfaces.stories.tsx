@@ -39,16 +39,17 @@ function SurfaceCard({
 export const GlassSurfaces: Story = {
   render: () => (
     <div
-      className="p-8 rounded-2xl min-h-[400px]"
-      style={{
-        background:
-          "linear-gradient(135deg, oklch(0.55 0.28 293), oklch(0.7 0.15 175))",
-      }}
+      className="p-8 rounded-2xl min-h-[400px] bg-cover bg-center"
+      style={{ backgroundImage: "url(/storybook-assets/surface-bg.jpg)" }}
     >
-      <h3 className="text-sm font-semibold text-white mb-6">
-        Glass surfaces (shown over gradient to reveal translucency)
+      <h3 className="text-sm font-semibold text-white mb-6 drop-shadow-sm">
+        Glass surfaces (shown over image to reveal translucency)
       </h3>
-      <div className="flex flex-wrap gap-4">
+      {/* Container surfaces — these carry content directly */}
+      <p className="text-[11px] font-medium uppercase tracking-wider text-white/70 mb-2 drop-shadow-sm">
+        Container surfaces
+      </p>
+      <div className="flex flex-wrap gap-4 mb-8">
         <SurfaceCard
           label="surface-translucent"
           bgClass="bg-surface-translucent"
@@ -66,18 +67,34 @@ export const GlassSurfaces: Story = {
           bgClass="bg-surface-inset"
           borderClass="border border-border-subtle"
         />
-        <SurfaceCard
-          label="surface-overlay"
-          bgClass="bg-surface-overlay"
-          borderClass="border border-border-glass"
-          backdrop="backdrop-overlay"
-        />
-        <SurfaceCard
-          label="surface-overlay-hover"
-          bgClass="bg-surface-overlay-hover"
-          borderClass="border border-border-glass"
-          backdrop="backdrop-overlay"
-        />
+      </div>
+
+      {/* State overlays — tint layers applied on top of containers */}
+      <p className="text-[11px] font-medium uppercase tracking-wider text-white/70 mb-2 drop-shadow-sm">
+        State overlays (layered on a card, not standalone)
+      </p>
+      <div className="flex flex-wrap gap-4">
+        {[
+          { label: "surface-overlay", bgClass: "bg-surface-overlay", desc: "Default state" },
+          { label: "surface-overlay-hover", bgClass: "bg-surface-overlay-hover", desc: "Hover state" },
+        ].map(({ label, bgClass, desc }) => (
+          <div key={label} className="flex flex-col gap-2">
+            {/* Base card with overlay on top */}
+            <div className="relative rounded-xl border border-border bg-card p-6 min-w-[200px] min-h-[120px]">
+              <div className={`absolute inset-0 rounded-xl ${bgClass}`} />
+              <div className="relative">
+                <p className="text-sm font-semibold text-foreground">{desc}</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Card content remains readable
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-0.5 px-1">
+              <span className="text-[11px] text-white/80 drop-shadow-sm">{label}</span>
+              <span className="text-[11px] text-white/60 drop-shadow-sm">{bgClass}</span>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   ),
