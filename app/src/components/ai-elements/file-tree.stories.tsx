@@ -79,17 +79,17 @@ export const WithCustomIcons: Story = {
         <FileTreeFile
           path="project/README.md"
           name="README.md"
-          icon={<Icon name="book" size="xs" className="text-blue-500" />}
+          icon={<Icon name="book" size="xs" className="text-primary" />}
         />
         <FileTreeFile
           path="project/package.json"
           name="package.json"
-          icon={<Icon name="settings" size="xs" className="text-green-500" />}
+          icon={<Icon name="settings" size="xs" className="text-success" />}
         />
         <FileTreeFile
           path="project/.env"
           name=".env"
-          icon={<Icon name="lock" size="xs" className="text-yellow-500" />}
+          icon={<Icon name="lock" size="xs" className="text-warning" />}
         />
       </FileTreeFolder>
     </FileTree>
