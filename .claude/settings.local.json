@@ -1,19 +1,31 @@
 {
   "permissions": {
     "allow": [
-      "Bash(lsof -ti:3000)",
-      "Bash(xargs kill:*)",
-      "Bash(pkill -f \"next dev\")",
-      "Bash(pkill -f \"next-server\")",
-      "mcp__playwright__browser_resize",
-      "mcp__playwright__browser_navigate",
-      "mcp__playwright__browser_take_screenshot",
+      "WebSearch",
       "mcp__playwright__browser_click",
-      "mcp__playwright__browser_press_key",
-      "Bash(wc -l /Users/karthiksivacharan/.claude/commands/tools/*.md)",
-      "Bash(head -1 /Users/karthiksivacharan/Projects/Ploy/app/.claude/commands/tools/*.md)",
-      "Bash(grep -l \"model:\" /Users/karthiksivacharan/.claude/commands/tools/*.md)",
-      "Bash(find ~/.claude -iname *frontend* -o -iname *front-end*)"
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_take_screenshot",
+      "Bash(git status:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git worktree:*)",
+      "Bash(find /Users/karthiksivacharan/Projects/Ploy -name *.worktree -o -name worktree*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run:*)",
+      "Bash(npx next:*)",
+      "Bash(grep -v '^$')",
+      "Bash(while read:*)",
+      "Bash(do echo:*)",
+      "Bash(done)",
+      "Bash(node -e \":*)",
+      "WebFetch(domain:storybook.js.org)",
+      "WebFetch(domain:www.chromatic.com)",
+      "WebFetch(domain:zeroheight.com)",
+      "WebFetch(domain:supernova.io)",
+      "Bash(npm install:*)",
+      "Bash(cd:*)"
     ]
   }
 }

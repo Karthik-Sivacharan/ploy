@@ -1,10 +1,37 @@
-node_modules/
-.next/
+# Dependencies
+app/node_modules/
+
+# Next.js
+app/.next/
+
+# Build outputs
+app/storybook-static/
+app/build-storybook.log
+app/tsconfig.tsbuildinfo
+
+# Environment variables
 .env
 .env.local
 .env*.local
-.vercel
-storybook-static/
-build-storybook.log
+app/.env
+app/.env.local
+app/.env*.local
+
+# Vercel
+app/.vercel/
+
+# AI tooling (not application code)
+app/.agents/
+app/.claude/
+.claude/
+
+# Media and data (too large / not source code)
+video/
+data/
+
+# Playwright MCP
+.playwright-mcp/
+
+# OS files
 .DS_Store
-tsconfig.tsbuildinfo
+**/.DS_Store
