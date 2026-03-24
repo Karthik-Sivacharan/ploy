@@ -24,11 +24,20 @@ const AVAILABLE_MODELS = [
 ] as const;
 
 const AD_IMAGE_SRC = "/assets/instagram-ads/peloton-instagram-ad.jpeg";
+const CAMPAIGN_STATUS = "Draft";
+const CTA_TYPE = "Shop Now";
+const DESTINATION_URL = "https://www.peloton.com/shop/summer-sale";
 
 const TARGETING_PILLS = ["Fitness", "25-54", "Urban"] as const;
-const EXPANDED_TARGETING_PILLS = ["Fitness", "25-54", "Urban", "Instagram Feed", "Instagram Stories"] as const;
+const INTEREST_PILLS = ["Fitness", "Wellness", "Home Workout"] as const;
 
-const CAMPAIGN_DETAILS = [
+const TARGETING_ROWS = [
+  { key: "Demographics", value: "25-54, All genders" },
+  { key: "Locations", value: "Urban metro areas" },
+  { key: "Placements", value: "Feed, Stories" },
+] as const;
+
+const BUDGET_SCHEDULE = [
   { key: "Format", value: "Carousel — 4 slides" },
   { key: "Objective", value: "Conversions" },
   { key: "Budget", value: "$500/day" },
@@ -40,12 +49,13 @@ const CAMPAIGN_DETAILS = [
 function CompactBody() {
   return (
     <div className="flex flex-col gap-3 p-3">
-      {/* Model badge */}
-      <div className="flex justify-start">
+      {/* Model + status badges */}
+      <div className="flex items-center gap-1.5">
         <Badge variant="secondary" className="gap-1 text-badge">
           <ModelSelectorLogo provider="google" className="size-3" />
           Gemini 2.0 Flash
         </Badge>
+        <Badge variant="outline" className="text-badge">{CAMPAIGN_STATUS}</Badge>
       </div>
 
       {/* Ad preview card */}
@@ -61,6 +71,8 @@ function CompactBody() {
           <span className="text-xs font-medium text-foreground">Your Journey Starts Here</span>
           <Badge variant="secondary" className="text-caption">Sponsored</Badge>
         </div>
+        {/* CTA label */}
+        <span className="text-badge text-muted-foreground">{CTA_TYPE} &rarr;</span>
       </div>
 
       {/* Format line */}
@@ -131,13 +143,17 @@ function ExpandedBody() {
             <Badge variant="secondary" className="text-caption">Sponsored</Badge>
           </div>
         </div>
+        <div className="flex flex-col gap-1.5">
+          <InfoRow label="CTA" value={CTA_TYPE} />
+          <InfoRow label="Destination" value={<span className="max-w-[60%] truncate">{DESTINATION_URL}</span>} />
+        </div>
       </section>
 
-      {/* Campaign details */}
+      {/* Budget & Schedule */}
       <section className="flex flex-col gap-2">
-        <SectionHeader>Campaign Details</SectionHeader>
+        <SectionHeader>Budget &amp; Schedule</SectionHeader>
         <div className="flex flex-col gap-1.5">
-          {CAMPAIGN_DETAILS.map((detail) => (
+          {BUDGET_SCHEDULE.map((detail) => (
             <InfoRow key={detail.key} label={detail.key} value={detail.value} />
           ))}
         </div>
@@ -146,11 +162,14 @@ function ExpandedBody() {
       {/* Targeting */}
       <section className="flex flex-col gap-2">
         <SectionHeader>Targeting</SectionHeader>
+        <div className="flex flex-col gap-1.5">
+          {TARGETING_ROWS.map((row) => (
+            <InfoRow key={row.key} label={row.key} value={row.value} />
+          ))}
+        </div>
         <div className="flex flex-wrap gap-1.5">
-          {EXPANDED_TARGETING_PILLS.map((pill) => (
-            <Badge key={pill} variant="outline" className="text-badge">
-              {pill}
-            </Badge>
+          {INTEREST_PILLS.map((pill) => (
+            <Badge key={pill} variant="outline" className="text-badge">{pill}</Badge>
           ))}
         </div>
       </section>

@@ -14,7 +14,11 @@ import {
 import { SectionHeader, InfoRow, SourceInfo } from "@/components/workflow/node-bodies/shared";
 
 const PAGE_SCREENSHOT = "/assets/landing-pages/summer-trial.png";
-const STAGING_URL = "https://peloton-summer.webflow.io/summer-trial";
+const PAGE_TITLE = "Start Your Free Trial";
+const PAGE_SLUG = "/summer-trial";
+const PUBLISH_STATUS = "Published";
+const TARGET_DOMAIN = "peloton-summer.webflow.io";
+const LAST_PUBLISHED = "Mar 18, 2026";
 
 const AVAILABLE_MODELS = [
   { id: "claude-opus-4-6", label: "Claude Opus 4.6", provider: "anthropic" },
@@ -43,14 +47,17 @@ function CompactBody() {
         <img
           src={PAGE_SCREENSHOT}
           alt="Landing page preview"
-          className="h-64 w-full object-cover object-top"
+          className="h-36 w-full object-cover object-top"
         />
       </div>
 
       {/* Page metadata */}
       <div className="flex flex-col gap-1">
-        <span className="text-xs font-medium text-foreground">/summer-trial</span>
-        <span className="truncate text-detail text-muted-foreground">{STAGING_URL}</span>
+        <div className="flex items-center justify-between">
+          <span className="text-xs font-medium text-foreground">{PAGE_SLUG}</span>
+          <Badge variant="success" className="text-badge">{PUBLISH_STATUS}</Badge>
+        </div>
+        <span className="truncate text-detail text-muted-foreground">{TARGET_DOMAIN}</span>
       </div>
     </div>
   );
@@ -77,17 +84,21 @@ function ExpandedBody() {
       <section className="flex flex-col gap-2">
         <SectionHeader>Details</SectionHeader>
         <div className="flex flex-col gap-1.5">
-          <InfoRow label="Title" value="Start Your Free Trial" />
-          <InfoRow label="Slug" value={<span className="font-mono">/summer-trial</span>} />
+          <InfoRow label="Title" value={PAGE_TITLE} />
+          <InfoRow label="Slug" value={<span className="font-mono">{PAGE_SLUG}</span>} />
+        </div>
+      </section>
+
+      {/* Publish controls */}
+      <section className="flex flex-col gap-2">
+        <SectionHeader>Publish Controls</SectionHeader>
+        <div className="flex flex-col gap-1.5">
           <InfoRow
             label="Status"
-            value={<Badge variant="secondary" className="text-badge text-chart-2">Published</Badge>}
+            value={<Badge variant="success" className="text-badge">{PUBLISH_STATUS}</Badge>}
           />
-          <InfoRow
-            label="Staging"
-            value={<span className="max-w-[60%] truncate">{STAGING_URL}</span>}
-            className="items-start"
-          />
+          <InfoRow label="Domain" value={TARGET_DOMAIN} />
+          <InfoRow label="Last published" value={LAST_PUBLISHED} />
         </div>
       </section>
 
@@ -118,7 +129,7 @@ function ExpandedBody() {
       </Button>
 
       {/* Source info */}
-      <SourceInfo>Published to Webflow &middot; Mar 18, 2026</SourceInfo>
+      <SourceInfo>Published to Webflow &middot; {LAST_PUBLISHED}</SourceInfo>
     </div>
   );
 }

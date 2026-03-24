@@ -31,17 +31,27 @@ const CONNECTED_SOURCES = ["Frontify", "Notion", "HubSpot"] as const;
 
 const CHANNEL_OUTPUTS = ["Web", "Email", "Instagram", "Push"] as const;
 
+const GENERATED_ITEMS = [
+  "Landing Page",
+  "3 Emails",
+  "2 Ad Creatives",
+  "Push Notification",
+] as const;
+
+const STATUS_TEXT = "Generated \u00B7 All channels ready";
+
 /* ── Compact variant — rendered inside the canvas node ── */
 
 function CompactBody() {
   return (
     <div className="flex flex-col gap-3 p-3">
-      {/* Model badge */}
-      <div className="flex justify-start">
+      {/* Model + status badges */}
+      <div className="flex items-center gap-1.5">
         <Badge variant="secondary" className="gap-1 text-badge">
           <ModelSelectorLogo provider="anthropic" className="size-3" />
           Claude Opus 4.6
         </Badge>
+        <Badge variant="success" className="text-badge">Generated</Badge>
       </div>
 
       {/* Campaign title */}
@@ -147,8 +157,22 @@ function ExpandedBody() {
         </div>
       </section>
 
+      {/* Generation status */}
+      <section className="flex flex-col gap-2">
+        <SectionHeader>Generation Status</SectionHeader>
+        <Badge variant="success" className="w-fit text-badge">Generated</Badge>
+        <div className="flex flex-col gap-1.5">
+          {GENERATED_ITEMS.map((item) => (
+            <div key={item} className="flex items-center gap-2">
+              <Icon name="check-circle" size="xs" className="text-chart-2" />
+              <span className="text-xs text-foreground">{item}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Status */}
-      <SourceInfo>Generated &middot; All channels ready</SourceInfo>
+      <SourceInfo>{STATUS_TEXT}</SourceInfo>
     </div>
   );
 }

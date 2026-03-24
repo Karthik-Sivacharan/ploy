@@ -4,15 +4,23 @@ import { useState } from "react";
 import type { SerializedEditorState } from "lexical";
 import {
   Artifact,
+  ArtifactContent,
   ArtifactHeader,
   ArtifactTitle,
-  ArtifactContent,
 } from "@/components/ai-elements/artifact";
-import { Icon } from "@/components/ui/icon";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
 import { BrandVoiceEditor } from "@/components/workflow/node-bodies/brand-voice-editor";
 import { SectionHeader, InfoRow, SourceInfo } from "@/components/workflow/node-bodies/shared";
+
+const PAGE_TITLE = "Brand Voice Guidelines";
+const DATABASE_NAME = "Marketing Hub";
+const LAST_SYNCED = "Mar 12, 2026";
+const LAST_EDITED_BY = "Sarah";
+const LAST_EDITED_TIME = "2h ago";
+
+const PAGE_TAGS = ["Fitness", "DTC", "Community", "Wellness"] as const;
 
 const INITIAL_EDITOR_STATE = {
   root: {
@@ -151,7 +159,7 @@ function CompactBody() {
     <Artifact className="m-3 shadow-none">
       <ArtifactHeader className="px-3 py-2">
         <ArtifactTitle className="text-xs font-semibold">
-          Brand Voice Guidelines
+          {PAGE_TITLE}
         </ArtifactTitle>
       </ArtifactHeader>
       <ArtifactContent className="flex flex-col gap-3 px-3 py-3">
@@ -173,6 +181,10 @@ function CompactBody() {
             <span className="font-medium text-foreground">Community-first</span>
           </div>
         </div>
+
+        <span className="text-badge text-muted-foreground">
+          Edited by {LAST_EDITED_BY} &middot; {LAST_EDITED_TIME}
+        </span>
       </ArtifactContent>
     </Artifact>
   );
@@ -199,6 +211,15 @@ function ExpandedBody() {
 
   return (
     <div className="flex flex-col gap-5 p-4">
+      {/* Source config */}
+      <section className="flex flex-col gap-2">
+        <SectionHeader>Source</SectionHeader>
+        <div className="flex flex-col gap-1.5">
+          <InfoRow label="Page" value={PAGE_TITLE} />
+          <InfoRow label="Database" value={DATABASE_NAME} />
+        </div>
+      </section>
+
       {/* Voice attributes */}
       <section className="flex flex-col gap-2">
         <SectionHeader>Voice Attributes</SectionHeader>
@@ -236,10 +257,9 @@ function ExpandedBody() {
 
       {/* Tags */}
       <div className="flex flex-wrap gap-1.5">
-        <Badge variant="secondary" className="text-badge">Fitness</Badge>
-        <Badge variant="secondary" className="text-badge">DTC</Badge>
-        <Badge variant="secondary" className="text-badge">Community</Badge>
-        <Badge variant="secondary" className="text-badge">Wellness</Badge>
+        {PAGE_TAGS.map((tag) => (
+          <Badge key={tag} variant="outline" className="text-badge">{tag}</Badge>
+        ))}
       </div>
 
       {/* Open in Notion */}
@@ -249,7 +269,7 @@ function ExpandedBody() {
       </Button>
 
       {/* Source info */}
-      <SourceInfo>Synced from Notion &middot; Mar 12, 2026</SourceInfo>
+      <SourceInfo>Synced from Notion &middot; {LAST_SYNCED}</SourceInfo>
     </div>
   );
 }

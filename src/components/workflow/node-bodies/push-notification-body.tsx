@@ -27,11 +27,22 @@ const AVAILABLE_MODELS = [
   { id: "deepseek-r1", label: "DeepSeek R1", provider: "deepseek" },
 ] as const;
 
+const SEGMENT_NAME = "Summer Trial Prospects";
+const RECIPIENT_COUNT = "12,847";
+const SCHEDULE_DATE = "Jun 1, 2026 \u00b7 9:00 AM";
+const SCHEDULE_COMPACT = "Jun 1, 9AM";
+const DESTINATION_URL = "https://onepeloton.com/summer-trial";
+
+const ACTION_BUTTONS = [
+  { id: "start-trial", text: "Start Trial" },
+  { id: "learn-more", text: "Learn More" },
+] as const;
+
 const CAMPAIGN_DETAILS = [
-  { key: "Recipients", value: "12,847" },
-  { key: "Segment", value: "Summer Trial Prospects" },
+  { key: "Recipients", value: RECIPIENT_COUNT },
+  { key: "Segment", value: SEGMENT_NAME },
   { key: "Platforms", value: "iOS, Android" },
-  { key: "Schedule", value: "Jun 1, 2026 \u00b7 9:00 AM" },
+  { key: "URL", value: DESTINATION_URL },
 ] as const;
 
 /* -- Compact variant -- rendered inside the canvas node -- */
@@ -69,9 +80,12 @@ function CompactBody() {
         </p>
       </div>
 
-      {/* Recipients */}
+      {/* Segment name */}
+      <span className="text-xs text-muted-foreground">{SEGMENT_NAME}</span>
+
+      {/* Recipients + schedule */}
       <span className="text-detail text-muted-foreground">
-        12,847 recipients
+        {RECIPIENT_COUNT} recipients &middot; {SCHEDULE_COMPACT}
       </span>
 
       {/* Platform pills */}
@@ -129,6 +143,30 @@ function ExpandedBody() {
             Start your free trial today and join millions riding together. Your
             first 30 days are free.
           </p>
+          {/* Action buttons */}
+          <div className="mt-2 flex gap-1.5">
+            {ACTION_BUTTONS.map((btn) => (
+              <div
+                key={btn.id}
+                className="rounded-md border border-border-subtle px-2.5 py-1 text-badge font-medium text-foreground"
+              >
+                {btn.text}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Scheduling */}
+      <section className="flex flex-col gap-2">
+        <SectionHeader>Scheduling</SectionHeader>
+        <div className="flex flex-col gap-1.5">
+          <InfoRow label="Delivery" value="Scheduled" />
+          <InfoRow label="Date" value={SCHEDULE_DATE} />
+          <InfoRow
+            label="Mode"
+            value={<Badge variant="outline" className="text-badge">Timezone-aware</Badge>}
+          />
         </div>
       </section>
 

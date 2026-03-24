@@ -28,29 +28,40 @@ const AVAILABLE_MODELS = [
   { id: "deepseek-r1", label: "DeepSeek R1", provider: "deepseek" },
 ] as const;
 
+type EmailStatus = "draft" | "scheduled" | "sent";
+
+const STATUS_DOT_COLORS: Record<EmailStatus, string> = {
+  sent: "bg-chart-2",
+  scheduled: "bg-primary",
+  draft: "bg-muted-foreground",
+};
+
+const STATUS_BADGE_VARIANTS: Record<EmailStatus, "success" | "secondary" | "outline"> = {
+  sent: "success",
+  scheduled: "outline",
+  draft: "secondary",
+};
+
+const CAMPAIGN_TYPE = "Automation";
+const CAMPAIGN_TRIGGER = "Tag trigger";
+const RECIPIENT_COUNT = "12,847";
+const FROM_NAME = "peloton@email.onepeloton.com";
+const SEND_TIME = "9:00 AM — Recipient timezone";
+const EMAIL_COUNT = 3;
+
 const EMAILS = [
-  {
-    day: 1,
-    label: "Welcome",
-    subject: "Welcome to Peloton — your journey starts here",
-  },
-  {
-    day: 3,
-    label: "Key Features",
-    subject: "Discover what makes Peloton different",
-  },
-  {
-    day: 7,
-    label: "Start Trial",
-    subject: "Ready to ride? Start your free trial today",
-  },
+  { day: 1, label: "Welcome", subject: "Welcome to Peloton — your journey starts here", status: "draft" as EmailStatus },
+  { day: 3, label: "Key Features", subject: "Discover what makes Peloton different", status: "draft" as EmailStatus },
+  { day: 7, label: "Start Trial", subject: "Ready to ride? Start your free trial today", status: "draft" as EmailStatus },
 ] as const;
 
 const CAMPAIGN_DETAILS = [
-  { key: "Recipients", value: "12,847 contacts" },
-  { key: "Automation", value: "Classic — Tag trigger" },
-  { key: "Send window", value: "9:00 AM — Recipient timezone" },
-  { key: "From", value: "peloton@email.onepeloton.com" },
+  { key: "Recipients", value: `${RECIPIENT_COUNT} contacts` },
+] as const;
+
+const SEND_WINDOW = [
+  { key: "From", value: FROM_NAME },
+  { key: "Send time", value: SEND_TIME },
 ] as const;
 
 /* ── Compact variant — rendered inside the canvas node ── */
@@ -73,9 +84,12 @@ function CompactBody() {
             key={email.day}
             className="flex items-center justify-between rounded-lg border border-border-subtle bg-secondary/50 px-2.5 py-2"
           >
-            <span className="text-badge font-medium text-foreground">
-              Day {email.day}
-            </span>
+            <div className="flex items-center gap-2">
+              <span className={`size-1.5 shrink-0 rounded-full ${STATUS_DOT_COLORS[email.status]}`} />
+              <span className="text-badge font-medium text-foreground">
+                Day {email.day}
+              </span>
+            </div>
             <span className="text-badge text-muted-foreground">
               {email.label}
             </span>
@@ -83,16 +97,10 @@ function CompactBody() {
         ))}
       </div>
 
-      {/* Recipients */}
-      <span className="text-detail text-muted-foreground">
-        12,847 contacts
-      </span>
-
-      {/* Automation type */}
-      <div className="flex justify-start">
-        <Badge variant="outline" className="text-badge">
-          Tag trigger
-        </Badge>
+      {/* Recipients + automation type */}
+      <div className="flex items-center justify-between">
+        <span className="text-detail text-muted-foreground">{RECIPIENT_COUNT} contacts</span>
+        <Badge variant="outline" className="text-badge">{CAMPAIGN_TYPE}</Badge>
       </div>
     </div>
   );
@@ -103,6 +111,15 @@ function CompactBody() {
 function ExpandedBody() {
   return (
     <div className="flex flex-col gap-5 p-4">
+      {/* Campaign config */}
+      <section className="flex flex-col gap-2">
+        <SectionHeader>Campaign Config</SectionHeader>
+        <div className="flex flex-col gap-1.5">
+          <InfoRow label="Type" value={<Badge variant="outline" className="text-badge">{CAMPAIGN_TYPE}</Badge>} />
+          <InfoRow label="Trigger" value={CAMPAIGN_TRIGGER} />
+        </div>
+      </section>
+
       {/* Model */}
       <section className="flex flex-col gap-2">
         <SectionHeader>Model</SectionHeader>
@@ -139,8 +156,8 @@ function ExpandedBody() {
                   {email.subject}
                 </p>
                 <div className="mt-2">
-                  <Badge variant="secondary" className="text-badge">
-                    Draft
+                  <Badge variant={STATUS_BADGE_VARIANTS[email.status]} className="text-badge capitalize">
+                    {email.status}
                   </Badge>
                 </div>
               </CardContent>
@@ -159,6 +176,16 @@ function ExpandedBody() {
         </div>
       </section>
 
+      {/* Send window */}
+      <section className="flex flex-col gap-2">
+        <SectionHeader>Send Window</SectionHeader>
+        <div className="flex flex-col gap-1.5">
+          {SEND_WINDOW.map((item) => (
+            <InfoRow key={item.key} label={item.key} value={item.value} />
+          ))}
+        </div>
+      </section>
+
       {/* CTA button */}
       <Button variant="outline" size="sm" className="w-full gap-1.5 text-xs">
         <Icon name="link" size="xs" />
@@ -166,7 +193,7 @@ function ExpandedBody() {
       </Button>
 
       {/* Source info */}
-      <SourceInfo>Ready to send &middot; 3 emails queued</SourceInfo>
+      <SourceInfo>Ready to send &middot; {EMAIL_COUNT} emails queued</SourceInfo>
     </div>
   );
 }
