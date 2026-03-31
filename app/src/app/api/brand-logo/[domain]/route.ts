@@ -84,9 +84,11 @@ export async function GET(
       headers: {
         Referer: "https://useploy.vercel.app/",
       },
+      redirect: "manual",
     });
 
-    if (!upstream.ok) {
+    // Brandfetch returns 302 redirect when client ID is invalid or missing
+    if (upstream.status >= 300 || !upstream.ok) {
       return NextResponse.json(
         { error: "Logo not found" },
         { status: 404 },
@@ -95,6 +97,15 @@ export async function GET(
 
     const contentType =
       upstream.headers.get("content-type") ?? "image/png";
+
+    // Verify we actually got an image, not an HTML error page
+    if (contentType.includes("text/html")) {
+      return NextResponse.json(
+        { error: "Logo not found" },
+        { status: 404 },
+      );
+    }
+
     const body = await upstream.arrayBuffer();
 
     return new NextResponse(body, {
