@@ -63,7 +63,8 @@ export const designSystemRules: string = `
 ## Provider Branding
 - Use <ProviderIcon provider="..." size="..." /> for third-party service logos.
 - The provider registry at src/lib/providers.ts maps provider names to Brandfetch domains and fallback icons.
-- Brand logos are served via a proxy at useploy.vercel.app/api/brand-logo/{domain} — no API key needed.
+- Brand logos require a free Brandfetch client ID. Get one at https://developers.brandfetch.com/register
+- Set NEXT_PUBLIC_BRANDFETCH_CLIENT_ID in the user's .env.local file. Without it, brand logos won't load and ProviderIcon falls back to Hugeicons icons.
 - If you need a new provider, add it to the providers registry with its domain and a Hugeicons fallback.
 - ProviderIcon automatically falls back to a Hugeicons icon if the brand logo fails to load.
 

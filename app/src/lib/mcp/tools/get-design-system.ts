@@ -64,7 +64,6 @@ export interface DesignSystemResponse {
     code_font: string;
   };
   env_vars: {
-    NEXT_PUBLIC_PLOY_BRAND_PROXY_URL: string;
     NEXT_PUBLIC_BRANDFETCH_CLIENT_ID: string;
   };
   rules: string;
@@ -128,10 +127,8 @@ export async function getDesignSystem(): Promise<DesignSystemResponse> {
         "Geist Mono — install via next/font/google or use: font-family: 'Geist Mono', monospace;",
     },
     env_vars: {
-      NEXT_PUBLIC_PLOY_BRAND_PROXY_URL:
-        "Optional. Override the brand logo proxy URL. Defaults to https://useploy.vercel.app.",
       NEXT_PUBLIC_BRANDFETCH_CLIENT_ID:
-        "Optional. If set, ProviderIcon fetches logos directly from Brandfetch CDN instead of the proxy.",
+        "Required for brand logos. Free client ID from https://developers.brandfetch.com/register — without it, ProviderIcon falls back to Hugeicons icons instead of brand logos. Add to .env.local",
     },
     rules: designSystemRules,
     npm_dependencies: {
