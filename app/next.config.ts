@@ -17,6 +17,17 @@ const nextConfig: NextConfig = {
       ],
     },
     {
+      source: "/api/brand-logo/:path*",
+      headers: [
+        { key: "Access-Control-Allow-Origin", value: "*" },
+        { key: "Access-Control-Allow-Methods", value: "GET, OPTIONS" },
+        {
+          key: "Access-Control-Allow-Headers",
+          value: "Content-Type",
+        },
+      ],
+    },
+    {
       source: "/fonts/:path*",
       headers: [
         {

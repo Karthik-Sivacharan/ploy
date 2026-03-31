@@ -170,7 +170,7 @@ export const componentIndex: ComponentEntry[] = [
     name: "provider-icon",
     category: "ui",
     description:
-      "Third-party service provider icon (e.g. Anthropic, OpenAI, Google) rendered from a provider registry",
+      "Third-party service provider icon rendered from the provider registry (src/lib/providers.ts). Fetches brand logos via the Brandfetch proxy at useploy.vercel.app/api/brand-logo/{domain} — no API key needed. Falls back to a Hugeicons icon on error.",
     filePath: "src/components/ui/provider-icon.tsx",
     dependencies: ["icon"],
   },

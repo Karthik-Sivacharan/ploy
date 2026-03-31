@@ -23,11 +23,16 @@ export interface DesignSystemResponse {
   tokens: string;
   icons: string;
   utilities: string;
+  providers: string;
   font_setup: {
     instructions: string;
     link_tag: string;
     css_variable: string;
     code_font: string;
+  };
+  env_vars: {
+    NEXT_PUBLIC_PLOY_BRAND_PROXY_URL: string;
+    NEXT_PUBLIC_BRANDFETCH_CLIENT_ID: string;
   };
   rules: string;
   npm_dependencies: {
@@ -49,6 +54,7 @@ export async function getDesignSystem(): Promise<DesignSystemResponse> {
   const tokens = readFile("src/app/globals.css");
   const icons = readFile("src/lib/icons.ts");
   const utilities = readFile("src/lib/utils.ts");
+  const providers = readFile("src/lib/providers.ts");
 
   return {
     project_setup: {
@@ -80,6 +86,7 @@ export async function getDesignSystem(): Promise<DesignSystemResponse> {
     tokens,
     icons,
     utilities,
+    providers,
     font_setup: {
       instructions:
         "Add the link tag to your HTML <head>. Fonts are served from Fontshare CDN — do not download or bundle them.",
@@ -87,6 +94,12 @@ export async function getDesignSystem(): Promise<DesignSystemResponse> {
       css_variable: "--font-clash-grotesk: 'Clash Grotesk', sans-serif;",
       code_font:
         "Geist Mono — install via next/font/google or use: font-family: 'Geist Mono', monospace;",
+    },
+    env_vars: {
+      NEXT_PUBLIC_PLOY_BRAND_PROXY_URL:
+        "Optional. Override the brand logo proxy URL. Defaults to https://useploy.vercel.app.",
+      NEXT_PUBLIC_BRANDFETCH_CLIENT_ID:
+        "Optional. If set, ProviderIcon fetches logos directly from Brandfetch CDN instead of the proxy.",
     },
     rules: designSystemRules,
     npm_dependencies: {

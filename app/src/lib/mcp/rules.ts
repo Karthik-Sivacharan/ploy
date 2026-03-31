@@ -57,6 +57,13 @@ export const designSystemRules: string = `
 - Use easing tokens: --ease-out, --ease-out-expo, --ease-in-out, --ease-hover.
 - Never hardcode animation durations or easing curves.
 
+## Provider Branding
+- Use <ProviderIcon provider="..." size="..." /> for third-party service logos.
+- The provider registry at src/lib/providers.ts maps provider names to Brandfetch domains and fallback icons.
+- Brand logos are served via a proxy at useploy.vercel.app/api/brand-logo/{domain} — no API key needed.
+- If you need a new provider, add it to the providers registry with its domain and a Hugeicons fallback.
+- ProviderIcon automatically falls back to a Hugeicons icon if the brand logo fails to load.
+
 ## Architecture
 - Server Components by default. Only add 'use client' when interactivity is needed.
 - Push 'use client' boundary as low as possible (leaf components).

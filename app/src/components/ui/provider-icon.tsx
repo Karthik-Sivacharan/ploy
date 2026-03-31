@@ -5,18 +5,28 @@ import { Icon } from "@/components/ui/icon";
 import { cn } from "@/lib/utils";
 import { getProvider } from "@/lib/providers";
 
+const BRAND_PROXY_URL = process.env.NEXT_PUBLIC_PLOY_BRAND_PROXY_URL ?? "";
 const BRANDFETCH_CLIENT_ID = process.env.NEXT_PUBLIC_BRANDFETCH_CLIENT_ID ?? "";
 
+/** Default proxy hosted on Ploy's deployment — no API key needed. */
+const DEFAULT_PROXY = "https://useploy.vercel.app";
+
 /**
- * Build a Brandfetch CDN URL for a brand icon.
+ * Build a brand logo URL for a given domain.
  *
- * Requests a high-res icon (512×512) so it stays crisp on retina displays
- * even when rendered at 16–24 px. The CDN serves WebP by default which is
- * lightweight despite the higher resolution.
+ * Priority:
+ * 1. NEXT_PUBLIC_PLOY_BRAND_PROXY_URL → custom proxy
+ * 2. NEXT_PUBLIC_BRANDFETCH_CLIENT_ID → Brandfetch CDN directly
+ * 3. Default Ploy proxy at useploy.vercel.app
  */
 function brandfetchUrl(domain: string): string {
-  const base = `https://cdn.brandfetch.io/${domain}/w/512/h/512/icon`;
-  return BRANDFETCH_CLIENT_ID ? `${base}?c=${BRANDFETCH_CLIENT_ID}` : base;
+  if (BRAND_PROXY_URL) {
+    return `${BRAND_PROXY_URL}/api/brand-logo/${domain}`;
+  }
+  if (BRANDFETCH_CLIENT_ID) {
+    return `https://cdn.brandfetch.io/${domain}/w/512/h/512/icon?c=${BRANDFETCH_CLIENT_ID}`;
+  }
+  return `${DEFAULT_PROXY}/api/brand-logo/${domain}`;
 }
 
 type IconSize = "xs" | "sm" | "md";
