@@ -15,6 +15,11 @@ const REQUIRED_DEPS = [
 const OPTIONAL_DEPS = ["@xyflow/react", "zustand", "motion"];
 
 export interface DesignSystemResponse {
+  project_setup: {
+    instructions: string;
+    stack: string[];
+    init_commands: string[];
+  };
   tokens: string;
   icons: string;
   utilities: string;
@@ -46,6 +51,32 @@ export async function getDesignSystem(): Promise<DesignSystemResponse> {
   const utilities = readFile("src/lib/utils.ts");
 
   return {
+    project_setup: {
+      instructions: [
+        "If starting from scratch, scaffold a new project with the init commands below.",
+        "If a project already exists, skip to installing the required npm dependencies.",
+        "After setup, copy the tokens (globals.css) into src/app/globals.css,",
+        "the icons registry into src/lib/icons.ts, and the utilities into src/lib/utils.ts.",
+        "Then use get_component() to fetch and install individual components as needed.",
+      ].join(" "),
+      stack: [
+        "Next.js 16.x (App Router)",
+        "TypeScript 5.x",
+        "Tailwind CSS 4.x (OKLCH design tokens)",
+        "shadcn/ui pattern (components in src/components/ui/)",
+        "@xyflow/react (React Flow v12+) for workflow canvas",
+        "Zustand for state management",
+        "Hugeicons for icons (via registry pattern, never import directly)",
+        "class-variance-authority (cva) for component variants",
+        "Motion (Framer Motion) for animations",
+        "next-themes for dark mode",
+      ],
+      init_commands: [
+        "npx create-next-app@latest . --typescript --tailwind --app --src-dir --import-alias '@/*'",
+        "npm install @hugeicons/react @hugeicons/core-free-icons class-variance-authority @radix-ui/react-slot",
+        "npm install @xyflow/react zustand motion next-themes sonner",
+      ],
+    },
     tokens,
     icons,
     utilities,
