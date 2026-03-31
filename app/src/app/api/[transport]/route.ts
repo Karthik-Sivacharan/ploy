@@ -88,7 +88,7 @@ const handler = createMcpHandler(
   },
   {
     serverInfo: {
-      name: "ploy-registry",
+      name: "ploy-design-system",
       version: "1.0.0",
     },
   },

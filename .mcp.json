@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "ploy-registry": {
+    "ploy-design-system": {
       "type": "url",
       "url": "http://localhost:3000/api/mcp"
     }
