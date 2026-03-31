@@ -66,8 +66,10 @@ export async function GET(
     );
   }
 
-  // Brandfetch client ID
-  const clientId = process.env.NEXT_PUBLIC_BRANDFETCH_CLIENT_ID;
+  // Brandfetch client ID — prefer server-only var, fall back to public one
+  const clientId =
+    process.env.BRANDFETCH_CLIENT_ID ??
+    process.env.NEXT_PUBLIC_BRANDFETCH_CLIENT_ID;
   if (!clientId) {
     return NextResponse.json(
       { error: "Brandfetch client ID is not configured" },
