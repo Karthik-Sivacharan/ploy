@@ -1,7 +1,31 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  headers: async () => [
+    {
+      source: "/api/mcp",
+      headers: [
+        { key: "Access-Control-Allow-Origin", value: "*" },
+        {
+          key: "Access-Control-Allow-Methods",
+          value: "GET, POST, DELETE, OPTIONS",
+        },
+        {
+          key: "Access-Control-Allow-Headers",
+          value: "Content-Type, Authorization, mcp-session-id",
+        },
+      ],
+    },
+    {
+      source: "/fonts/:path*",
+      headers: [
+        {
+          key: "Cache-Control",
+          value: "public, max-age=31536000, immutable",
+        },
+      ],
+    },
+  ],
 };
 
 export default nextConfig;
