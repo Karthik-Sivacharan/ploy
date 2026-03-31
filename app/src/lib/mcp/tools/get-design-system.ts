@@ -9,10 +9,43 @@ const REQUIRED_DEPS = [
   "@hugeicons/react",
   "@hugeicons/core-free-icons",
   "class-variance-authority",
-  "@radix-ui/react-slot",
+  "@base-ui/react",
+  "clsx",
+  "tailwind-merge",
+  "tw-animate-css",
+  "shadcn",
+  "cmdk",
+  "next-themes",
+  "sonner",
+  "embla-carousel-react",
 ];
 
-const OPTIONAL_DEPS = ["@xyflow/react", "zustand", "motion"];
+const OPTIONAL_DEPS = [
+  "@xyflow/react",
+  "zustand",
+  "dagre",
+  "@types/dagre",
+  "motion",
+  "@radix-ui/react-use-controllable-state",
+  "ai",
+  "nanoid",
+  "shiki",
+  "streamdown",
+  "@streamdown/cjk",
+  "@streamdown/code",
+  "@streamdown/math",
+  "@streamdown/mermaid",
+  "tokenlens",
+  "ansi-to-react",
+  "use-stick-to-bottom",
+  "react-jsx-parser",
+  "media-chrome",
+  "fuse.js",
+  "lexical",
+  "@lexical/react",
+  "@lexical/rich-text",
+  "@lexical/table",
+];
 
 export interface DesignSystemResponse {
   project_setup: {
@@ -79,8 +112,7 @@ export async function getDesignSystem(): Promise<DesignSystemResponse> {
       ],
       init_commands: [
         "npx create-next-app@latest . --typescript --tailwind --app --src-dir --import-alias '@/*'",
-        "npm install @hugeicons/react @hugeicons/core-free-icons class-variance-authority @radix-ui/react-slot",
-        "npm install @xyflow/react zustand motion next-themes sonner",
+        "npm install @hugeicons/react @hugeicons/core-free-icons class-variance-authority @base-ui/react clsx tailwind-merge tw-animate-css shadcn cmdk next-themes sonner embla-carousel-react",
       ],
     },
     tokens,

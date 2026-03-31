@@ -11,6 +11,9 @@ export const designSystemRules: string = `
 - Always resolve dependencies: if "button" depends on "icon", check if "icon" exists first.
 - After first setup, subsequent sessions should skip installation. The agent should check, not assume.
 - NEVER re-copy a component that already exists. Import what's there.
+- After installing components, call get_shared_files() to get library files (stores, hooks, types, utilities) that components import from.
+- Copy these to their respective paths. They are required for components to compile.
+- The workflow store (src/stores/workflow-store.ts) is the central state — install it if using any workflow components.
 
 ## Foundation Setup (first time only)
 - If the user's project is missing design tokens → copy globals.css token block into their root CSS.
@@ -63,6 +66,27 @@ export const designSystemRules: string = `
 - Brand logos are served via a proxy at useploy.vercel.app/api/brand-logo/{domain} — no API key needed.
 - If you need a new provider, add it to the providers registry with its domain and a Hugeicons fallback.
 - ProviderIcon automatically falls back to a Hugeicons icon if the brand logo fails to load.
+
+## Workflow Nodes
+- ALWAYS use action-node for workflow canvas nodes. It supports rich body rendering via actionType.
+- NEVER use trigger-node directly for composed workflows — it only renders plain key-value fields.
+- Every provider-specific node (Frontify, Anthropic, Meta, etc.) should use action-node with the appropriate actionType and provider values.
+- Valid provider-specific actionType values: frontify-brand-assets, notion-brand-voice, hubspot-target-audience, ploy-ai-campaign, webflow-landing-page, mailchimp-email-sequence, meta-instagram-ads, onesignal-push-notification
+- Generic action types (render plain key-value fields): generate-text, generate-image, http-request, database-query, condition, github-create-issue, github-list-issues, slack-send-message, resend-send-email, stripe-create-customer, stripe-create-invoice
+
+## Page Composition
+- The workflow builder page layout should compose these components:
+  1. WorkflowHeader — top bar with branding, toolbar, and theme toggle
+  2. LeftSidebar — workspace navigation (Sheet on mobile)
+  3. WorkflowCanvas — React Flow canvas (center, takes remaining space)
+  4. ConfigPanelSidebar — right panel for node configuration (Sheet on mobile)
+  5. LogsPanel — bottom panel for logs (Sheet on mobile)
+- All layout components read from useWorkflowStore (the Zustand store)
+- The canvas must be wrapped in ReactFlowProvider
+
+## Complex Dependencies
+- brand-voice-editor requires the Lexical rich text editor framework (lexical, @lexical/react, @lexical/rich-text) plus custom editor components from @/components/editor/*. If you don't have Lexical set up, use a simple textarea placeholder instead.
+- Components that import from @/components/editor/* are Lexical editor components — they are NOT provided by this MCP server.
 
 ## Architecture
 - Server Components by default. Only add 'use client' when interactivity is needed.

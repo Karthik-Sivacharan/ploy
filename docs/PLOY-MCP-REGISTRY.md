@@ -212,6 +212,27 @@ The MCP server includes a `rules` field — a system-prompt-style string that th
 - Use easing tokens: --ease-out, --ease-out-expo, --ease-in-out, --ease-hover.
 - Never hardcode animation durations or easing curves.
 
+## Workflow Nodes
+- ALWAYS use action-node for workflow canvas nodes. It supports rich body rendering via actionType.
+- NEVER use trigger-node directly for composed workflows — it only renders plain key-value fields.
+- Every provider-specific node (Frontify, Anthropic, Meta, etc.) should use action-node with the appropriate actionType and provider values.
+- Valid provider-specific actionType values: frontify-brand-assets, notion-brand-voice, hubspot-target-audience, ploy-ai-campaign, webflow-landing-page, mailchimp-email-sequence, meta-instagram-ads, onesignal-push-notification
+- Generic action types (render plain key-value fields): generate-text, generate-image, http-request, database-query, condition, github-create-issue, github-list-issues, slack-send-message, resend-send-email, stripe-create-customer, stripe-create-invoice
+
+## Page Composition
+- The workflow builder page layout should compose these components:
+  1. WorkflowHeader — top bar with branding, toolbar, and theme toggle
+  2. LeftSidebar — workspace navigation (Sheet on mobile)
+  3. WorkflowCanvas — React Flow canvas (center, takes remaining space)
+  4. ConfigPanelSidebar — right panel for node configuration (Sheet on mobile)
+  5. LogsPanel — bottom panel for logs (Sheet on mobile)
+- All layout components read from useWorkflowStore (the Zustand store)
+- The canvas must be wrapped in ReactFlowProvider
+
+## Complex Dependencies
+- brand-voice-editor requires the Lexical rich text editor framework (lexical, @lexical/react, @lexical/rich-text) plus custom editor components from @/components/editor/*. If you don't have Lexical set up, use a simple textarea placeholder instead.
+- Components that import from @/components/editor/* are Lexical editor components — they are NOT provided by this MCP server.
+
 ## Architecture
 - Server Components by default. Only add 'use client' when interactivity is needed.
 - Push 'use client' boundary as low as possible (leaf components).
@@ -527,23 +548,24 @@ export const componentIndex = [
 
   // Workflow Components
   { name: "action-grid", category: "workflow", description: "Grid of available workflow actions to add", dependencies: ["card", "icon"] },
-  { name: "action-node", category: "workflow", description: "Workflow action node for React Flow canvas", dependencies: ["card", "badge", "icon"] },
+  { name: "action-node", category: "workflow", description: "Primary workflow node with rich body rendering via actionType (frontify-brand-assets, notion-brand-voice, hubspot-target-audience, ploy-ai-campaign, webflow-landing-page, mailchimp-email-sequence, meta-instagram-ads, onesignal-push-notification). Use this for all provider-specific nodes, not trigger-node.", dependencies: ["node", "badge", "icon", "provider-icon", "node-hover-toolbar"] },
   { name: "canvas-controls", category: "workflow", description: "Zoom in/out/fit controls for the canvas", dependencies: ["button", "icon", "tooltip"] },
   { name: "config-panel-sidebar", category: "workflow", description: "Right sidebar config panel (Sheet on mobile)", dependencies: ["sheet", "tabs"] },
   { name: "left-sidebar", category: "workflow", description: "Workspace navigation sidebar (Sheet on mobile)", dependencies: ["sheet", "button", "icon"] },
   { name: "logs-panel", category: "workflow", description: "Bottom logs panel (Sheet on mobile)", dependencies: ["sheet", "badge"] },
   { name: "node-config-panel", category: "workflow", description: "Node editor with copilot, toolbar, and editor tabs", dependencies: ["tabs", "button", "icon"] },
   { name: "node-hover-toolbar", category: "workflow", description: "Floating toolbar on node hover", dependencies: ["button", "icon", "tooltip"] },
-  { name: "trigger-node", category: "workflow", description: "Workflow trigger node for React Flow canvas", dependencies: ["card", "badge", "icon"] },
+  { name: "trigger-node", category: "workflow", description: "Low-level trigger primitive (manual, schedule, webhook) — only renders plain key-value fields. Use action-node for rich workflow nodes.", dependencies: ["node", "icon", "node-hover-toolbar"] },
   { name: "usage-indicator", category: "workflow", description: "Usage metrics display with progress", dependencies: ["progress"] },
   { name: "workflow-canvas", category: "workflow", description: "React Flow canvas wrapper with touch support", dependencies: ["trigger-node", "action-node"] },
   { name: "workflow-header", category: "workflow", description: "Top header bar with branding and actions", dependencies: ["button", "icon"] },
   { name: "workflow-toolbar", category: "workflow", description: "Main toolbar for workflow actions", dependencies: ["button", "icon", "tooltip"] },
 
   // AI Elements (subset — add more as needed)
-  { name: "ai-node", category: "ai-elements", description: "React Flow node wrapper for AI canvas", dependencies: [] },
-  { name: "ai-edge", category: "ai-elements", description: "React Flow edge wrapper for AI canvas", dependencies: [] },
-  { name: "ai-canvas", category: "ai-elements", description: "AI rendering canvas/preview", dependencies: ["ai-node", "ai-edge"] },
+  { name: "node", category: "ai-elements", description: "React Flow node wrapper with source/target handles, header, fields, and status bar", dependencies: ["card"] },
+  { name: "edge", category: "ai-elements", description: "React Flow edge namespace: Edge.Animated (bezier with dot) and Edge.Temporary (dashed). Import { Edge } and use Edge.Animated / Edge.Temporary.", dependencies: [] },
+  { name: "connection", category: "ai-elements", description: "React Flow connection line (bezier curve with endpoint circle). Exports `Connection`, not `CustomConnectionLine`.", dependencies: [] },
+  { name: "canvas", category: "ai-elements", description: "React Flow canvas wrapper with background grid, pan-on-scroll, and fit-view defaults", dependencies: [] },
   { name: "checkpoint", category: "ai-elements", description: "AI workflow checkpoint marker", dependencies: ["badge"] },
   { name: "code-block", category: "ai-elements", description: "Syntax-highlighted code block", dependencies: [] },
   { name: "confirmation", category: "ai-elements", description: "AI action confirmation dialog", dependencies: ["button", "card"] },

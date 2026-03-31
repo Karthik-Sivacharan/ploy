@@ -28,12 +28,24 @@ function extractNpmDependencies(source: string): string[] {
   let match: RegExpExecArray | null;
 
   while ((match = importRegex.exec(source)) !== null) {
-    const pkg = match[1];
+    const raw = match[1];
     // Skip relative imports (already filtered by regex) and @/ alias imports
-    if (!pkg.startsWith("@/") && !pkg.startsWith("./") && !pkg.startsWith("../")) {
-      // Normalize scoped packages to package name (e.g., @radix-ui/react-slot)
-      deps.add(pkg);
+    if (raw.startsWith("@/") || raw.startsWith("./") || raw.startsWith("../")) {
+      continue;
     }
+    // Normalize to package name only:
+    // - Scoped: @scope/pkg/deep/path → @scope/pkg
+    // - Unscoped: pkg/deep/path → pkg
+    let pkg: string;
+    if (raw.startsWith("@")) {
+      const parts = raw.split("/");
+      pkg = `${parts[0]}/${parts[1]}`;
+    } else {
+      pkg = raw.split("/")[0];
+    }
+    // Skip react and react-dom — they come with the framework
+    if (pkg === "react" || pkg === "react-dom") continue;
+    deps.add(pkg);
   }
 
   return [...deps];

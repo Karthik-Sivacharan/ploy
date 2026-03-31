@@ -4,6 +4,7 @@ import { getDesignSystem } from "@/lib/mcp/tools/get-design-system";
 import { listComponents } from "@/lib/mcp/tools/list-components";
 import { getComponent } from "@/lib/mcp/tools/get-component";
 import { searchComponents } from "@/lib/mcp/tools/search-components";
+import { getSharedFiles } from "@/lib/mcp/tools/get-shared-files";
 
 function jsonContent(result: unknown) {
   return {
@@ -82,6 +83,20 @@ const handler = createMcpHandler(
       },
       async ({ query }) => {
         const result = await searchComponents(query);
+        return jsonContent(result);
+      }
+    );
+
+    server.registerTool(
+      "get_shared_files",
+      {
+        title: "Get Shared Files",
+        description:
+          "Returns shared library files (stores, hooks, types, utilities) that components depend on. Install these alongside components.",
+        inputSchema: {},
+      },
+      async () => {
+        const result = await getSharedFiles();
         return jsonContent(result);
       }
     );

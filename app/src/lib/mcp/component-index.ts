@@ -275,6 +275,14 @@ export const componentIndex: ComponentEntry[] = [
     filePath: "src/components/ui/tooltip.tsx",
     dependencies: [],
   },
+  {
+    name: "theme-toggle",
+    category: "ui",
+    description:
+      "Light/dark mode toggle button using next-themes with sun/moon icon transition",
+    filePath: "src/components/theme-toggle.tsx",
+    dependencies: ["button", "icon", "tooltip"],
+  },
 
   // ── Workflow Components ────────────────────────────────────────────────────
 
@@ -354,7 +362,7 @@ export const componentIndex: ComponentEntry[] = [
     name: "trigger-node",
     category: "workflow",
     description:
-      "Workflow trigger node (manual, schedule, webhook) for the React Flow canvas",
+      "Low-level trigger primitive for the React Flow canvas. Only renders plain key-value fields (manual, schedule, webhook). NOT for rich workflow nodes — use action-node instead for any provider-specific or content-rich nodes.",
     filePath: "src/components/workflow/nodes/trigger-node.tsx",
     dependencies: ["node", "icon", "node-hover-toolbar"],
   },
@@ -362,7 +370,7 @@ export const componentIndex: ComponentEntry[] = [
     name: "action-node",
     category: "workflow",
     description:
-      "Workflow action node with provider icon, badge, and body variants for the React Flow canvas",
+      "Primary workflow node for the React Flow canvas. Supports rich body rendering via the `actionType` field on node data. Provider-specific actionType values: frontify-brand-assets (BrandAssetsBody), notion-brand-voice (BrandVoiceBody), hubspot-target-audience (TargetAudienceBody), ploy-ai-campaign (AiCampaignBody), webflow-landing-page (LandingPageBody), mailchimp-email-sequence (EmailSequenceBody), meta-instagram-ads (InstagramAdsBody), onesignal-push-notification (PushNotificationBody). Generic actionType values that render plain key-value fields: generate-text, generate-image, http-request, database-query, condition, github-create-issue, github-list-issues, slack-send-message, resend-send-email, stripe-create-customer, stripe-create-invoice. All real workflow nodes (Frontify, Anthropic, Meta, etc.) should use action-node, not trigger-node.",
     filePath: "src/components/workflow/nodes/action-node.tsx",
     dependencies: [
       "node",
@@ -482,7 +490,7 @@ export const componentIndex: ComponentEntry[] = [
     name: "brand-voice-editor",
     category: "workflow",
     description:
-      "Lexical rich-text editor configured for brand voice editing inside the sidebar",
+      "Lexical rich-text editor configured for brand voice editing inside the sidebar. REQUIRES the Lexical editor framework (lexical, @lexical/react, @lexical/rich-text) and custom editor components from @/components/editor/* which are NOT provided by this MCP server. If you don't have Lexical set up, use a simple textarea placeholder instead.",
     filePath:
       "src/components/workflow/node-bodies/brand-voice-editor.tsx",
     dependencies: ["tooltip"],
@@ -664,7 +672,7 @@ export const componentIndex: ComponentEntry[] = [
     name: "connection",
     category: "ai-elements",
     description:
-      "React Flow connection line component rendering a bezier curve with endpoint circle",
+      "React Flow connection line component rendering a bezier curve with endpoint circle. Exports `Connection` (not `CustomConnectionLine`). Use as: `connectionLineComponent={Connection}`.",
     filePath: "src/components/ai-elements/connection.tsx",
     dependencies: [],
   },
@@ -696,7 +704,7 @@ export const componentIndex: ComponentEntry[] = [
     name: "edge",
     category: "ai-elements",
     description:
-      "React Flow edge variants (animated bezier and temporary simple bezier) with dynamic curvature",
+      "React Flow edge variants exported as a namespace object: Edge.Animated (bezier with animated dot) and Edge.Temporary (dashed simple bezier). Import as `import { Edge } from '...'` and use `Edge.Animated` / `Edge.Temporary` — not named exports.",
     filePath: "src/components/ai-elements/edge.tsx",
     dependencies: [],
   },
