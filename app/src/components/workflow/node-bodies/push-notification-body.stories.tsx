@@ -1,11 +1,32 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { ReactFlowDecorator } from "../../../../.storybook/decorators/react-flow-decorator";
+import { StoreDecorator } from "../../../../.storybook/decorators/store-decorator";
+import { ActionNode } from "../nodes/action-node";
+import type { ActionNodeData } from "@/lib/workflow/types";
 import { PushNotificationBody } from "./push-notification-body";
 
+const makeProps = (data: ActionNodeData) => ({
+  id: "action-story",
+  type: "action" as const,
+  data: data as Record<string, unknown>,
+  dragging: false,
+  zIndex: 0,
+  isConnectable: true,
+  positionAbsoluteX: 0,
+  positionAbsoluteY: 0,
+  selected: false,
+  deletable: true,
+  selectable: true,
+  draggable: true,
+  parentId: undefined,
+  width: 256,
+  height: 400,
+});
+
 const meta = {
-  title: "Canvas/Node Bodies/Push Notification",
+  title: "Canvas/Nodes/Push Notification",
   component: PushNotificationBody,
-  decorators: [ReactFlowDecorator],
+  decorators: [ReactFlowDecorator, StoreDecorator],
   parameters: { layout: "centered" },
 } satisfies Meta<typeof PushNotificationBody>;
 
@@ -15,9 +36,18 @@ type Story = StoryObj<typeof meta>;
 
 export const Compact: Story = {
   render: () => (
-    <div className="w-64 rounded-2xl border border-border bg-card">
-      <PushNotificationBody variant="compact" />
-    </div>
+    <ActionNode
+      {...makeProps({
+        type: "action",
+        actionType: "onesignal-push-notification",
+        label: "Push Notification",
+        description: "Mobile push notification via OneSignal",
+        provider: "OneSignal",
+        enabled: true,
+        locked: false,
+        status: "idle",
+      })}
+    />
   ),
 };
 
