@@ -42,11 +42,28 @@ src/
 │   └── workflow-store.ts          # Zustand (nodes, edges, history, panel state)
 ├── hooks/
 │   └── use-is-mobile.ts          # SSR-safe mobile breakpoint hook
-└── lib/
-    ├── icons.ts                   # Icon registry (Hugeicons, single source of truth)
-    ├── utils.ts                   # cn() utility
-    └── workflow/                  # Types, constants, helpers
+├── lib/
+│   ├── icons.ts                   # Icon registry (Hugeicons, single source of truth)
+│   ├── utils.ts                   # cn() utility
+│   ├── providers.ts               # Provider registry (Brandfetch domains, fallback icons)
+│   ├── mcp/                       # MCP server data layer
+│   │   ├── component-index.ts     # Component metadata (names, descriptions, deps)
+│   │   ├── rules.ts               # Design system rules for AI agents
+│   │   └── tools/                 # MCP tool implementations
+│   │       ├── get-design-system.ts  # Returns tokens, icons, rules, setup info
+│   │       ├── list-components.ts    # Returns component index
+│   │       ├── get-component.ts      # Returns component source code
+│   │       ├── get-shared-files.ts   # Returns stores, hooks, types, utilities
+│   │       └── search-components.ts  # Fuzzy search via fuse.js
+│   └── workflow/                  # Types, constants, helpers
 ```
+
+## MCP Server
+The Ploy Design System MCP server is served as a Next.js API route at `/api/mcp`.
+- **Endpoint:** `https://useploy.vercel.app/api/mcp` (Streamable HTTP transport)
+- **5 tools:** `get_design_system`, `list_components`, `get_component`, `search_components`, `get_shared_files`
+- **Reads from disk** at request time — no build step, no sync needed
+- **Docs:** `docs/PLOY-MCP-REGISTRY.md`
 
 ## Coding Conventions
 
