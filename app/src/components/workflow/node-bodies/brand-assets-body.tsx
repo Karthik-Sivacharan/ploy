@@ -6,6 +6,7 @@ import { Icon } from "@/components/ui/icon";
 import { SectionHeader } from "@/components/ui/section-header";
 import { InfoRow } from "@/components/ui/info-row";
 import { SourceInfo } from "@/components/ui/source-info";
+import { PLACEHOLDER_LOGO } from "@/lib/placeholder";
 
 const BRAND_NAME = "Peloton";
 const LIBRARY_NAME = "Brand Library";
@@ -26,7 +27,7 @@ const BRAND_FONTS = [
   { family: "Inter", weight: "Regular", role: "Body" },
 ] as const;
 
-const BRAND_LOGO_SRC = "/assets/brands/peloton-logo-big.webp";
+const BRAND_LOGO_SRC = PLACEHOLDER_LOGO;
 
 const BRAND_LOGOS = [
   { name: "Logo", type: "Primary" },

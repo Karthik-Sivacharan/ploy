@@ -89,6 +89,12 @@ export const designSystemRules: string = `
 - brand-voice-editor requires the Lexical rich text editor framework (lexical, @lexical/react, @lexical/rich-text) plus custom editor components from @/components/editor/*. If you don't have Lexical set up, use a simple textarea placeholder instead.
 - Components that import from @/components/editor/* are Lexical editor components — they are NOT provided by this MCP server.
 
+## Images and Placeholders
+- NEVER hardcode image paths like /assets/brands/logo.webp — consumer projects won't have these files.
+- Use placeholder constants from @/lib/placeholder for mock/demo images: PLACEHOLDER_IMAGE, PLACEHOLDER_LOGO, PLACEHOLDER_AVATAR, PLACEHOLDER_BRAND.
+- These are inline SVG data URIs that work in both light and dark mode with no external dependencies.
+- When the user provides their own assets, replace the placeholder with the real image path.
+
 ## Architecture
 - Server Components by default. Only add 'use client' when interactivity is needed.
 - Push 'use client' boundary as low as possible (leaf components).

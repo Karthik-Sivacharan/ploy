@@ -47,6 +47,11 @@ const SHARED_FILES: Array<{ path: string; description: string }> = [
     description:
       "Light/dark mode toggle button using next-themes. Used by workflow-header.tsx.",
   },
+  {
+    path: "src/lib/placeholder.ts",
+    description:
+      "Inline SVG data URI placeholders (image, logo, avatar, brand) that work in light and dark mode. Used by node body components for mock images.",
+  },
 ];
 
 function readFileSafe(relativePath: string): string | null {
