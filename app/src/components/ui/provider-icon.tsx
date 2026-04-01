@@ -5,28 +5,14 @@ import { Icon } from "@/components/ui/icon";
 import { cn } from "@/lib/utils";
 import { getProvider } from "@/lib/providers";
 
-const BRAND_PROXY_URL = process.env.NEXT_PUBLIC_PLOY_BRAND_PROXY_URL ?? "";
 const BRANDFETCH_CLIENT_ID = process.env.NEXT_PUBLIC_BRANDFETCH_CLIENT_ID ?? "";
-
-/** Default proxy hosted on Ploy's deployment — no API key needed. */
-const DEFAULT_PROXY = "https://useploy.vercel.app";
 
 /**
  * Build a brand logo URL for a given domain.
- *
- * Priority:
- * 1. NEXT_PUBLIC_PLOY_BRAND_PROXY_URL → custom proxy
- * 2. NEXT_PUBLIC_BRANDFETCH_CLIENT_ID → Brandfetch CDN directly
- * 3. Default Ploy proxy at useploy.vercel.app
+ * Uses Brandfetch CDN directly (client-side, browser referer required).
  */
 function brandfetchUrl(domain: string): string {
-  if (BRAND_PROXY_URL) {
-    return `${BRAND_PROXY_URL}/api/brand-logo/${domain}`;
-  }
-  if (BRANDFETCH_CLIENT_ID) {
-    return `https://cdn.brandfetch.io/${domain}/w/512/h/512/icon?c=${BRANDFETCH_CLIENT_ID}`;
-  }
-  return `${DEFAULT_PROXY}/api/brand-logo/${domain}`;
+  return `https://cdn.brandfetch.io/${domain}/w/512/h/512/icon?c=${BRANDFETCH_CLIENT_ID}`;
 }
 
 type IconSize = "xs" | "sm" | "md";
