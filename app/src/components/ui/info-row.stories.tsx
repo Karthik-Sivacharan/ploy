@@ -3,7 +3,7 @@ import { InfoRow } from "./info-row";
 import { Badge } from "./badge";
 
 const meta = {
-  title: "Atoms/Info Row",
+  title: "Primitives/Info Row",
   component: InfoRow,
   tags: ["autodocs"],
   args: {

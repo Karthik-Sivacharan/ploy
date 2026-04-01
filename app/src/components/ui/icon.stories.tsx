@@ -5,7 +5,7 @@ import { icons, type IconName } from "@/lib/icons"
 const allIconNames = Object.keys(icons) as IconName[]
 
 const meta = {
-  title: "Atoms/Icon",
+  title: "Primitives/Icon",
   component: Icon,
   tags: ["autodocs"],
   argTypes: {

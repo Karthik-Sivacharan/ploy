@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "./tabs"
 
 const meta = {
-  title: "Atoms/Tabs",
+  title: "Primitives/Tabs",
   component: Tabs,
   tags: ["autodocs"],
 } satisfies Meta<typeof Tabs>

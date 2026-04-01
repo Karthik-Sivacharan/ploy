@@ -3,7 +3,7 @@ import { ReactFlowDecorator } from "../../../../.storybook/decorators/react-flow
 import { TargetAudienceBody } from "./target-audience-body";
 
 const meta = {
-  title: "Organisms/Node Bodies/Target Audience",
+  title: "Canvas/Node Bodies/Target Audience",
   component: TargetAudienceBody,
   decorators: [ReactFlowDecorator],
   parameters: { layout: "centered" },

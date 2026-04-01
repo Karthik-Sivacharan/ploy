@@ -9,7 +9,7 @@ import { WorkflowCanvas } from "./workflow-canvas";
 import { useWorkflowStore } from "@/stores/workflow-store";
 
 const meta = {
-  title: "Pages/Full Canvas",
+  title: "Workflow/Full Canvas",
   component: WorkflowCanvas,
   decorators: [StoreDecorator],
   parameters: { layout: "fullscreen" },

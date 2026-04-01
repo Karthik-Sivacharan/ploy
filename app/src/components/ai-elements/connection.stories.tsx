@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
 const meta = {
-  title: "Organisms/AI Elements/Connection Line",
+  title: "Canvas/Connection Line",
   tags: ["autodocs"],
 } satisfies Meta
 

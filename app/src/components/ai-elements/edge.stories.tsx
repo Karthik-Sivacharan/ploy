@@ -20,7 +20,7 @@ const nodes = [
 ]
 
 const AnimatedEdgeMeta = {
-  title: "Organisms/AI Elements/Animated Edge",
+  title: "Canvas/Animated Edge",
   decorators: [ReactFlowDecorator],
   tags: ["autodocs"],
 } satisfies Meta

@@ -3,7 +3,7 @@ import { ReactFlowDecorator } from "../../../../.storybook/decorators/react-flow
 import { InstagramAdsBody } from "./instagram-ads-body";
 
 const meta = {
-  title: "Organisms/Node Bodies/Instagram Ads",
+  title: "Canvas/Node Bodies/Instagram Ads",
   component: InstagramAdsBody,
   decorators: [ReactFlowDecorator],
   parameters: { layout: "centered" },

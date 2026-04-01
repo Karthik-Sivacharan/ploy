@@ -11,7 +11,7 @@ import {
 import { Button } from "./button"
 
 const meta = {
-  title: "Atoms/Sheet",
+  title: "Primitives/Sheet",
   component: Sheet,
   tags: ["autodocs"],
   decorators: [

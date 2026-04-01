@@ -4,7 +4,7 @@ import { Button } from "./button"
 import { Icon } from "./icon"
 
 const meta = {
-  title: "Molecules/ButtonGroup",
+  title: "Primitives/Button Group",
   component: ButtonGroup,
   tags: ["autodocs"],
   argTypes: {

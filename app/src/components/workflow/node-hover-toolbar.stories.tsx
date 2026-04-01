@@ -4,7 +4,7 @@ import { StoreDecorator } from "../../../.storybook/decorators/store-decorator";
 import { NodeHoverToolbar } from "./node-hover-toolbar";
 
 const meta = {
-  title: "Organisms/Nodes/Hover Toolbar",
+  title: "Canvas/Hover Toolbar",
   decorators: [ReactFlowDecorator, StoreDecorator],
   parameters: { layout: "centered" },
 } satisfies Meta;

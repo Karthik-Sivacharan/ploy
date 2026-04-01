@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import { UsageIndicator } from "./usage-indicator"
 
 const meta = {
-  title: "Organisms/Workflow/Usage Indicator",
+  title: "Workflow/Usage Indicator",
   component: UsageIndicator,
   tags: ["autodocs"],
   decorators: [

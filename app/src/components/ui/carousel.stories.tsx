@@ -8,7 +8,7 @@ import {
 } from "./carousel"
 
 const meta = {
-  title: "Molecules/Carousel",
+  title: "Primitives/Carousel",
   component: Carousel,
   tags: ["autodocs"],
 } satisfies Meta<typeof Carousel>

@@ -3,7 +3,7 @@ import { Switch } from "./switch"
 import { Label } from "./label"
 
 const meta = {
-  title: "Atoms/Switch",
+  title: "Primitives/Switch",
   component: Switch,
   tags: ["autodocs"],
   argTypes: {

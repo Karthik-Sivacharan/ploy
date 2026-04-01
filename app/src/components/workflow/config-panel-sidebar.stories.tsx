@@ -6,7 +6,7 @@ import { ConfigPanelSidebar } from "./config-panel-sidebar";
 import { useWorkflowStore } from "@/stores/workflow-store";
 
 const meta = {
-  title: "Pages/Config Panel",
+  title: "Workflow/Config Panel Sidebar",
   component: ConfigPanelSidebar,
   decorators: [ReactFlowDecorator, StoreDecorator],
   parameters: { layout: "fullscreen" },

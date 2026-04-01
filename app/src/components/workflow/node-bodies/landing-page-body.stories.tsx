@@ -3,7 +3,7 @@ import { ReactFlowDecorator } from "../../../../.storybook/decorators/react-flow
 import { LandingPageBody } from "./landing-page-body";
 
 const meta = {
-  title: "Organisms/Node Bodies/Landing Page",
+  title: "Canvas/Node Bodies/Landing Page",
   component: LandingPageBody,
   decorators: [ReactFlowDecorator],
   parameters: { layout: "centered" },

@@ -9,7 +9,7 @@ import {
 } from "./avatar"
 
 const meta = {
-  title: "Atoms/Avatar",
+  title: "Primitives/Avatar",
   component: Avatar,
   tags: ["autodocs"],
   argTypes: {

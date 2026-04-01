@@ -9,7 +9,7 @@ import {
 import { Icon } from "./icon"
 
 const meta = {
-  title: "Molecules/InputGroup",
+  title: "Primitives/Input Group",
   component: InputGroup,
   tags: ["autodocs"],
 } satisfies Meta<typeof InputGroup>

@@ -10,7 +10,7 @@ import {
 import { Button } from "./button"
 
 const meta = {
-  title: "Atoms/Popover",
+  title: "Primitives/Popover",
   component: Popover,
   tags: ["autodocs"],
   decorators: [

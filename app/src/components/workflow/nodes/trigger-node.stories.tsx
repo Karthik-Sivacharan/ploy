@@ -5,7 +5,7 @@ import { TriggerNode } from "./trigger-node";
 import type { TriggerNodeData } from "@/lib/workflow/types";
 
 const meta = {
-  title: "Organisms/Nodes/Trigger Node",
+  title: "Canvas/Trigger Node",
   decorators: [ReactFlowDecorator, StoreDecorator],
   parameters: { layout: "centered" },
 } satisfies Meta;

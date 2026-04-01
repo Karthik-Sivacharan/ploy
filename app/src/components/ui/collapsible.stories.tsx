@@ -4,7 +4,7 @@ import { Button } from "./button"
 import { Icon } from "./icon"
 
 const meta = {
-  title: "Molecules/Collapsible",
+  title: "Primitives/Collapsible",
   component: Collapsible,
   tags: ["autodocs"],
 } satisfies Meta<typeof Collapsible>
