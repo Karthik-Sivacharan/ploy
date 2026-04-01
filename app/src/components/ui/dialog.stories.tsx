@@ -14,7 +14,7 @@ import { Label } from "./label"
 import { Input } from "./input"
 
 const meta = {
-  title: "Atoms/Dialog",
+  title: "Primitives/Dialog",
   component: Dialog,
   tags: ["autodocs"],
   decorators: [

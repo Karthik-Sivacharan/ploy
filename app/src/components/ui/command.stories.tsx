@@ -14,7 +14,7 @@ import {
 import { Button } from "./button"
 
 const meta = {
-  title: "Atoms/Command",
+  title: "Primitives/Command",
   component: Command,
   tags: ["autodocs"],
 } satisfies Meta<typeof Command>

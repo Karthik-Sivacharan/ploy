@@ -3,7 +3,7 @@ import { ToggleGroup, ToggleGroupItem } from "./toggle-group"
 import { Icon } from "./icon"
 
 const meta = {
-  title: "Molecules/ToggleGroup",
+  title: "Primitives/Toggle Group",
   component: ToggleGroup,
   tags: ["autodocs"],
 } satisfies Meta<typeof ToggleGroup>

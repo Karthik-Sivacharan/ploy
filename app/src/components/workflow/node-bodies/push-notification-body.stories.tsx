@@ -3,7 +3,7 @@ import { ReactFlowDecorator } from "../../../../.storybook/decorators/react-flow
 import { PushNotificationBody } from "./push-notification-body";
 
 const meta = {
-  title: "Organisms/Node Bodies/Push Notification",
+  title: "Canvas/Node Bodies/Push Notification",
   component: PushNotificationBody,
   decorators: [ReactFlowDecorator],
   parameters: { layout: "centered" },

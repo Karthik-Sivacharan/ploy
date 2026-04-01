@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { SourceInfo } from "./source-info";
 
 const meta = {
-  title: "Atoms/Source Info",
+  title: "Primitives/Source Info",
   component: SourceInfo,
   tags: ["autodocs"],
   args: {

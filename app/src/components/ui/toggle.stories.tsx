@@ -3,7 +3,7 @@ import { Toggle } from "./toggle"
 import { Icon } from "./icon"
 
 const meta = {
-  title: "Atoms/Toggle",
+  title: "Primitives/Toggle",
   component: Toggle,
   tags: ["autodocs"],
   argTypes: {

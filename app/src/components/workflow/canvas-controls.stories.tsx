@@ -3,7 +3,7 @@ import { CanvasControls } from "./canvas-controls"
 import { ReactFlowDecorator } from "../../../.storybook/decorators"
 
 const meta = {
-  title: "Organisms/Workflow/Canvas Controls",
+  title: "Workflow/Canvas Controls",
   component: CanvasControls,
   tags: ["autodocs"],
   decorators: [ReactFlowDecorator],

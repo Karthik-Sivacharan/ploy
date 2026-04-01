@@ -20,7 +20,7 @@ const nodes = [
 ]
 
 const meta = {
-  title: "Organisms/AI Elements/Temporary Edge",
+  title: "Canvas/Temporary Edge",
   decorators: [ReactFlowDecorator],
   tags: ["autodocs"],
 } satisfies Meta

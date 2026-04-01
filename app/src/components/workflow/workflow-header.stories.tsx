@@ -4,7 +4,7 @@ import { ReactFlowDecorator } from "../../../.storybook/decorators/react-flow-de
 import { WorkflowHeader } from "./workflow-header";
 
 const meta = {
-  title: "Pages/Workflow Header",
+  title: "Workflow/Workflow Header",
   component: WorkflowHeader,
   decorators: [ReactFlowDecorator, StoreDecorator],
   parameters: { layout: "fullscreen" },

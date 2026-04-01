@@ -4,7 +4,7 @@ import { Icon } from "@/components/ui/icon";
 import type { IconName } from "@/lib/icons";
 
 const meta = {
-  title: "Utilities/Provider Registry",
+  title: "Canvas/Provider Registry",
   parameters: { layout: "padded" },
 } satisfies Meta;
 

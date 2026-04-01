@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import { WorkflowToolbar } from "./workflow-toolbar"
 
 const meta = {
-  title: "Organisms/Workflow/Toolbar",
+  title: "Workflow/Toolbar",
   component: WorkflowToolbar,
   tags: ["autodocs"],
   decorators: [

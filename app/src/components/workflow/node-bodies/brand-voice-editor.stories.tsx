@@ -80,7 +80,7 @@ const SAMPLE_EDITOR_STATE = {
 } as unknown as SerializedEditorState;
 
 const meta = {
-  title: "Organisms/Node Bodies/Brand Voice Editor",
+  title: "Canvas/Node Bodies/Brand Voice Editor",
   component: BrandVoiceEditor,
   decorators: [ReactFlowDecorator],
   parameters: { layout: "centered" },

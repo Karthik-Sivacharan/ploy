@@ -5,7 +5,7 @@ import { ActionNode } from "./action-node";
 import type { ActionNodeData } from "@/lib/workflow/types";
 
 const meta = {
-  title: "Organisms/Nodes/Action Node",
+  title: "Canvas/Action Node",
   decorators: [ReactFlowDecorator, StoreDecorator],
   parameters: { layout: "centered" },
 } satisfies Meta;

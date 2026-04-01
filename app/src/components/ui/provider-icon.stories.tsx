@@ -3,7 +3,7 @@ import { ProviderIcon } from "./provider-icon"
 import { PROVIDERS } from "@/lib/providers"
 
 const meta = {
-  title: "Molecules/ProviderIcon",
+  title: "Primitives/Provider Icon",
   component: ProviderIcon,
   tags: ["autodocs"],
   argTypes: {

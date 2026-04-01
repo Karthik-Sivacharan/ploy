@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import { ActionGrid } from "./action-grid"
 
 const meta = {
-  title: "Organisms/Workflow/Action Grid",
+  title: "Workflow/Action Grid",
   component: ActionGrid,
   tags: ["autodocs"],
   args: {

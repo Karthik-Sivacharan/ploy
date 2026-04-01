@@ -3,7 +3,7 @@ import { ReactFlowDecorator } from "../../../../.storybook/decorators/react-flow
 import { BrandVoiceBody } from "./brand-voice-body";
 
 const meta = {
-  title: "Organisms/Node Bodies/Brand Voice",
+  title: "Canvas/Node Bodies/Brand Voice",
   component: BrandVoiceBody,
   decorators: [ReactFlowDecorator],
   parameters: { layout: "centered" },

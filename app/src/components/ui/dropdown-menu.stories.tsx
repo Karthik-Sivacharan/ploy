@@ -17,7 +17,7 @@ import { Button } from "./button"
 import { Icon } from "./icon"
 
 const meta = {
-  title: "Atoms/DropdownMenu",
+  title: "Primitives/Dropdown Menu",
   component: DropdownMenu,
   tags: ["autodocs"],
   decorators: [

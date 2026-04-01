@@ -13,7 +13,7 @@ import {
 } from "./node";
 
 const meta = {
-  title: "Organisms/Nodes/Base Node",
+  title: "Canvas/Base Node",
   decorators: [ReactFlowDecorator],
   parameters: { layout: "centered" },
 } satisfies Meta;

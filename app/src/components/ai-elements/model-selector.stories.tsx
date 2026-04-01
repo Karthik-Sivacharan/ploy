@@ -19,7 +19,7 @@ import { Button } from "@/components/ui/button"
 import { Icon } from "@/components/ui/icon"
 
 const meta = {
-  title: "Organisms/AI Elements/Model Selector",
+  title: "Canvas/Model Selector",
   component: ModelSelector,
   tags: ["autodocs"],
 } satisfies Meta<typeof ModelSelector>

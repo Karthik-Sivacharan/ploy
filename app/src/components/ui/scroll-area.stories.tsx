@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import { ScrollArea } from "./scroll-area"
 
 const meta = {
-  title: "Molecules/ScrollArea",
+  title: "Primitives/Scroll Area",
   component: ScrollArea,
   tags: ["autodocs"],
 } satisfies Meta<typeof ScrollArea>

@@ -6,7 +6,7 @@ import { LeftSidebar } from "./left-sidebar";
 import { useWorkflowStore } from "@/stores/workflow-store";
 
 const meta = {
-  title: "Pages/Left Sidebar",
+  title: "Workflow/Left Sidebar",
   component: LeftSidebar,
   decorators: [ReactFlowDecorator, StoreDecorator],
   parameters: { layout: "fullscreen" },

@@ -3,7 +3,7 @@ import { ReactFlowDecorator } from "../../../../.storybook/decorators/react-flow
 import { AiCampaignBody } from "./ai-campaign-body";
 
 const meta = {
-  title: "Organisms/Node Bodies/AI Campaign",
+  title: "Canvas/Node Bodies/AI Campaign",
   component: AiCampaignBody,
   decorators: [ReactFlowDecorator],
   parameters: { layout: "centered" },

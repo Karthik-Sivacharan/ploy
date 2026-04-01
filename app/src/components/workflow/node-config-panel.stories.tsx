@@ -17,7 +17,7 @@ const panelWrapper: Decorator = (Story) => (
 )
 
 const meta = {
-  title: "Organisms/Workflow/Config Panel",
+  title: "Workflow/Config Panel",
   component: NodeConfigPanel,
   tags: ["autodocs"],
   decorators: [panelWrapper, StoreDecorator],

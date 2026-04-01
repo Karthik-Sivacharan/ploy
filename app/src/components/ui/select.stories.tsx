@@ -11,7 +11,7 @@ import {
 } from "./select"
 
 const meta = {
-  title: "Atoms/Select",
+  title: "Primitives/Select",
   tags: ["autodocs"],
   component: Select,
   decorators: [

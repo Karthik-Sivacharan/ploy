@@ -3,7 +3,7 @@ import { ReactFlowDecorator } from "../../../../.storybook/decorators/react-flow
 import { EmailSequenceBody } from "./email-sequence-body";
 
 const meta = {
-  title: "Organisms/Node Bodies/Email Sequence",
+  title: "Canvas/Node Bodies/Email Sequence",
   component: EmailSequenceBody,
   decorators: [ReactFlowDecorator],
   parameters: { layout: "centered" },

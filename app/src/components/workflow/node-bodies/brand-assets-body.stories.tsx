@@ -3,7 +3,7 @@ import { ReactFlowDecorator } from "../../../../.storybook/decorators/react-flow
 import { BrandAssetsBody } from "./brand-assets-body";
 
 const meta = {
-  title: "Organisms/Node Bodies/Brand Assets",
+  title: "Canvas/Node Bodies/Brand Assets",
   component: BrandAssetsBody,
   decorators: [ReactFlowDecorator],
   parameters: { layout: "centered" },
