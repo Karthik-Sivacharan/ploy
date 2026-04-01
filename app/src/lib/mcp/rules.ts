@@ -19,7 +19,7 @@ export const designSystemRules: string = `
 - If the user's project is missing design tokens → copy globals.css token block into their root CSS.
 - If @hugeicons/react is not in package.json → run npm install for required dependencies.
 - If icons.ts doesn't exist → copy it to src/lib/icons.ts.
-- If Clash Grotesk font is not set up → add the Fontshare CDN link tag to their HTML head.
+- If Clash Grotesk font is not set up → add the Fontshare CDN link tag AND the Geist Mono Google Fonts CDN link tag to their HTML head, AND add the CSS variable declarations (:root { --font-clash-grotesk: 'Clash Grotesk', sans-serif; --font-geist-mono: 'Geist Mono', ui-monospace, monospace; }) to the root CSS. Both are required — the CDN loads the font files, the CSS variables connect them to the design tokens.
 - If cn() utility doesn't exist → copy utils.ts to src/lib/utils.ts.
 - If ALL of the above already exist → skip setup entirely and start composing.
 
@@ -46,8 +46,9 @@ export const designSystemRules: string = `
 
 ## Typography
 - Use font-size tokens: txt-caption, txt-sm, txt-base, txt-lg, txt-xl, txt-2xl, heading-sm, heading-md, heading-lg, heading-xl.
-- Primary font: Clash Grotesk (--font-clash-grotesk).
-- Code font: Geist Mono (--font-geist-mono).
+- Primary font: Clash Grotesk (--font-clash-grotesk) — loaded via Fontshare CDN.
+- Code font: Geist Mono (--font-geist-mono) — loaded via Google Fonts CDN.
+- IMPORTANT: Both fonts need TWO things to work: (1) a CDN link tag in <head> to load the font files, and (2) a CSS variable declaration in :root to bridge the font name to the design token. Without the CSS variable, the font loads but never applies because globals.css references var(--font-clash-grotesk) and var(--font-geist-mono).
 
 ## Layout
 - Sidebar width: var(--sidebar-width) = 208px
