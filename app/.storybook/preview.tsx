@@ -41,7 +41,25 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ["Foundations", "Primitives", "Canvas", "Workflow"],
+        order: [
+          "Foundations",
+          "Primitives",
+          "Canvas",
+          [
+            "Workflow",
+            [
+              "Canvas Controls",
+              "Toolbar",
+              "Usage Indicator",
+              "Action Grid",
+              "Config Panel",
+              "Workflow Header",
+              "Left Sidebar",
+              "Config Panel Sidebar",
+              "Full Canvas",
+            ],
+          ],
+        ],
       },
     },
   },
