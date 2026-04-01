@@ -52,7 +52,6 @@ function CompactBody() {
           <ModelSelectorLogo provider="anthropic" className="size-3" />
           Claude Opus 4.6
         </Badge>
-        <Badge variant="success" className="txt-badge">Generated</Badge>
       </div>
 
       {/* Campaign title */}
