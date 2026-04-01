@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
 const meta: Meta = {
-  title: "Design Tokens/Typography",
+  title: "Foundations/Typography",
   tags: ["autodocs"],
 };
 
