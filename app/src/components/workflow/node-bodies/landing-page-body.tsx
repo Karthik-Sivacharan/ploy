@@ -54,10 +54,7 @@ function CompactBody() {
 
       {/* Page metadata */}
       <div className="flex flex-col gap-1">
-        <div className="flex items-center justify-between">
-          <span className="text-xs font-medium text-foreground">{PAGE_SLUG}</span>
-          <Badge variant="success" className="txt-badge">{PUBLISH_STATUS}</Badge>
-        </div>
+        <span className="text-xs font-medium text-foreground">{PAGE_SLUG}</span>
         <span className="truncate txt-detail text-muted-foreground">{TARGET_DOMAIN}</span>
       </div>
     </div>
