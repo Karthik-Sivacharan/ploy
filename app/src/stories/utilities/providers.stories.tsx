@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { PROVIDERS } from "@/lib/providers";
-import { Icon } from "@/components/ui/icon";
-import type { IconName } from "@/lib/icons";
+import { ProviderIcon } from "@/components/ui/provider-icon";
 
 const meta = {
   title: "Primitives/Provider Registry",
@@ -10,34 +9,6 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-function ProviderCard({ name, icon, logo, colors }: {
-  name: string;
-  icon?: IconName;
-  logo?: string;
-  colors: string;
-}) {
-  return (
-    <div className="flex items-center gap-3 rounded-xl border border-border bg-card p-3">
-      <div className={`flex size-10 shrink-0 items-center justify-center rounded-lg ${colors}`}>
-        {icon ? (
-          <Icon name={icon} size="md" />
-        ) : (
-          <span className="text-xs font-medium">?</span>
-        )}
-      </div>
-      <div className="min-w-0 flex-1">
-        <p className="truncate text-sm font-medium text-foreground">{name}</p>
-        {logo && (
-          <p className="truncate text-xs text-muted-foreground">{logo}</p>
-        )}
-        {!logo && icon && (
-          <p className="truncate text-xs text-muted-foreground">icon: {icon}</p>
-        )}
-      </div>
-    </div>
-  );
-}
 
 function AllProvidersGrid() {
   const entries = Object.entries(PROVIDERS);
@@ -51,13 +22,20 @@ function AllProvidersGrid() {
       </p>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
         {entries.map(([name, config]) => (
-          <ProviderCard
+          <div
             key={name}
-            name={name}
-            icon={config.icon}
-            logo={config.logo}
-            colors={config.colors}
-          />
+            className="flex items-center gap-3 rounded-xl border border-border bg-card p-3"
+          >
+            <div className={`flex size-10 shrink-0 items-center justify-center rounded-lg ${config.colors}`}>
+              <ProviderIcon provider={name} size="md" />
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-sm font-medium text-foreground">{name}</p>
+              <p className="truncate text-xs text-muted-foreground">
+                {config.logo ?? `icon: ${config.icon}`}
+              </p>
+            </div>
+          </div>
         ))}
       </div>
     </div>
