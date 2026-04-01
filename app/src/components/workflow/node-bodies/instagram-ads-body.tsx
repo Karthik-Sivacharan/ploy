@@ -14,7 +14,6 @@ import {
 import { SectionHeader } from "@/components/ui/section-header";
 import { InfoRow } from "@/components/ui/info-row";
 import { SourceInfo } from "@/components/ui/source-info";
-import { PLACEHOLDER_IMAGE } from "@/lib/placeholder";
 
 const AVAILABLE_MODELS = [
   { id: "claude-opus-4-6", label: "Claude Opus 4.6", provider: "anthropic" },
@@ -26,7 +25,7 @@ const AVAILABLE_MODELS = [
   { id: "deepseek-r1", label: "DeepSeek R1", provider: "deepseek" },
 ] as const;
 
-const AD_IMAGE_SRC = PLACEHOLDER_IMAGE;
+const AD_IMAGE_SRC = "/assets/instagram-ads/peloton-instagram-ad.jpeg";
 const CAMPAIGN_STATUS = "Draft";
 const CTA_TYPE = "Shop Now";
 const DESTINATION_URL = "https://www.peloton.com/shop/summer-sale";

@@ -14,9 +14,7 @@ import {
 import { SectionHeader } from "@/components/ui/section-header";
 import { InfoRow } from "@/components/ui/info-row";
 import { SourceInfo } from "@/components/ui/source-info";
-import { PLACEHOLDER_IMAGE } from "@/lib/placeholder";
-
-const PAGE_SCREENSHOT = PLACEHOLDER_IMAGE;
+const PAGE_SCREENSHOT = "/assets/landing-pages/summer-trial.png";
 const PAGE_TITLE = "Start Your Free Trial";
 const PAGE_SLUG = "/summer-trial";
 const PUBLISH_STATUS = "Published";
